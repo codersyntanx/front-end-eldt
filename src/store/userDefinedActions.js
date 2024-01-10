@@ -1,0 +1,21 @@
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
+export const SET_LANGUAGE = "SET_LANGUAGE";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const RESET_CART = "RESET_CART";
+
+export const ADD_TO_LIST = "ADD_TO_LIST";
+export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
+export const RESET_LIST = "RESET_LIST";
+export const SET_LIST = "SET_LIST";
+
+export const ADD_TO_PURCHASED = "ADD_TO_PURCHASED";
+export const SET_PURCHASED = "SET_PURCHASED";
+
+export const GET_COMPLETED_LIST_COURSES = "GET_COMPLETED_LIST_COURSES";
+export const CLEAR_PURCHASED = "CLEAR_PURCHASED";
+
+export const ADD_TO_COMPLETED = "ADD_TO_COMPLETED";
+export const SET_COMPLETED = "SET_COMPLETED";
+export const CLEAR_COMPLETED = "CLEAR_COMPLETED";

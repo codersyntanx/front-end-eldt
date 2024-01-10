@@ -1,0 +1,121 @@
+body{
+    min-height: initial;
+    font-family: Inter !important;
+}
+
+.construction{
+    background: #2c292a;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    margin:auto;
+    /* max-width: 850px; */
+    text-align: center;
+    display: block;
+    width: 100vw;
+    padding:0 10px;
+}
+
+.logo-construction{
+    max-width: 270px;
+    margin: 117px auto 73px;
+}
+
+.logo-construction svg{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.text-construction{
+    text-align: center;
+    color:#888888;
+    max-width: 512px;
+    margin:auto;
+}
+
+.text-construction p:first-child{
+    font-size: 34px;
+    line-height: 39px;
+    display: block;
+    margin-bottom: 32px;
+    font-weight: 500;
+}
+
+.text-construction p:last-child{
+    font-size:22px;
+    font-weight: 500;
+}
+
+.footer-constructor{
+    margin: 439px 0 36px;
+}
+
+.footer-constructor .socials{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.footer-constructor .socials a{
+    display: block;
+    transition: ease-in-out .2s;
+    margin:0 8px;
+}
+
+.footer-constructor .socials a:hover{
+    opacity: 0.7;
+}
+
+.footer-constructor .socials a svg{
+    width: 34px;
+    height: 37px;
+    display: block;
+}
+
+.footer-constructor p{
+    color:#888888;
+    display: block;
+    font-size: 14px;
+}
+    
+.__jivoMobileButton,
+.jivo-iframe-container{	
+    display:none !important;   
+}
+
+
+@media (max-width: 550px){
+    .logo-construction{
+        max-width: 157px;
+        margin: 90px auto 30px;
+    }
+
+    .text-construction{
+        max-width: 330px;
+    }
+
+    .text-construction p:first-child{
+        font-size: 22px;
+        line-height: 25px;
+    }
+
+    .text-construction p:last-child{
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    .footer-constructor{
+        margin:300px auto 36px;
+        max-width: 233px;
+    }
+
+    .footer-constructor p{
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
