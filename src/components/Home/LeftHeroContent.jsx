@@ -145,7 +145,13 @@ const APlataformaPossuiInt = styled("div")(({ theme }) => ({}));
 
 function LeftHeroContent(...props) {
   const languageState = useSelector((state) => state.language);
-
+  const handleClick = () => {
+    console.log("pushed");
+    window.scrollTo({
+      top: window.scrollY + 1000,
+      behavior: "smooth",
+    });
+  };
   return (
     <Translator
       from="en"
@@ -182,14 +188,14 @@ function LeftHeroContent(...props) {
         <DivFrame3830>
           <DivFrame3 className="main-block-buttons">
             <ComprarAgora className="buy-now">
-              <Link to="/courses">
+              <Link to="" onClick={handleClick}>
                 <Translate>{`Buy Now!`}</Translate>
               </Link>
             </ComprarAgora>
             <FaleConosco className="contact-us">
-              <Link to="/contact-us">
-                <Translate>{`Contact us`}</Translate>
-              </Link>
+            <Link to="" >
+            <Translate>{`Contact Us!`}</Translate>
+          </Link>
             </FaleConosco>
           </DivFrame3>
         </DivFrame3830>

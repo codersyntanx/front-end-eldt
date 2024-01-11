@@ -18,6 +18,13 @@ export default function Navbar({ className = "is-home" }, ...props) {
   const toggleNavbar = () => {
     setMenu(!menu);
   };
+  const handleClick = () => {
+    console.log("pushed");
+    window.scrollTo({
+      top: window.scrollY + 1000,
+      behavior: "smooth",
+    });
+  };
   const [openUser, setOpenUser] = useState(false);
 
   const userState = useSelector((state) => state.user);
@@ -208,7 +215,7 @@ export default function Navbar({ className = "is-home" }, ...props) {
                           active
                           className="active"
                         >
-                           <ScrollLink to="targetSection" smooth={true} duration={500}  className="nav-link">
+                           <ScrollLink onClick={handleClick} to="targetSection" smooth={true} duration={500}  className="nav-link">
                             <Translate>Courses</Translate>
                           </ScrollLink>
                         </Link>
