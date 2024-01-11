@@ -2,3 +2,16 @@
     width: 30px;
     height: 30px;
 }
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+}
+@media (max-width: 1440px){
+    .cards{
+        width: 80%;
+    }
+}

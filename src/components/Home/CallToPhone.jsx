@@ -28,39 +28,7 @@ export default function CallToPhone({ language }) {
                 </p>
               </div>
               <div className="button-block">
-                <button
-                  onClick={() => {
-                    Swal.fire("Please Stay tuned");
-                  }}
-                  className="btn  tw-flex tw-justify-center tw-items-center"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      d="M3 3.71803V28.2805C3.00016 28.3338 3.01606 28.3859 3.04569 28.4302C3.07532 28.4745 3.11737 28.509 3.16656 28.5295C3.21575 28.55 3.2699 28.5555 3.32222 28.5454C3.37453 28.5352 3.42268 28.5098 3.46062 28.4724L16.25 15.9999L3.46062 3.52616C3.42268 3.48874 3.37453 3.46336 3.32222 3.45321C3.2699 3.44305 3.21575 3.44856 3.16656 3.46905C3.11737 3.48954 3.07532 3.5241 3.04569 3.56839C3.01606 3.61269 3.00016 3.66474 3 3.71803Z"
-                      fill="#2C292A"
-                    />
-                    <path
-                      d="M21.6126 10.8749L5.57633 2.03994L5.56633 2.03432C5.29008 1.88432 5.02758 2.25807 5.25383 2.47557L17.8245 14.4956L21.6126 10.8749Z"
-                      fill="#2C292A"
-                    />
-                    <path
-                      d="M5.25505 29.5244C5.02755 29.7419 5.29005 30.1157 5.56755 29.9657L5.57755 29.9601L21.6126 21.1251L17.8244 17.5032L5.25505 29.5244Z"
-                      fill="#2C292A"
-                    />
-                    <path
-                      d="M28.0862 14.4374L23.6081 11.9712L19.3975 15.9999L23.6081 20.0268L28.0862 17.5624C29.3043 16.8893 29.3043 15.1106 28.0862 14.4374Z"
-                      fill="#2C292A"
-                    />
-                  </svg>
-                  <Translate>Download Google Play</Translate>
-                </button>
-
+               
                 <button
                   className="btn  tw-flex tw-justify-center tw-items-center"
                   onClick={() => {
@@ -93,8 +61,41 @@ export default function CallToPhone({ language }) {
                       />
                     </g>
                   </svg>
-                  <Translate>Download Apple Store</Translate>
+                  <Translate><div className="getitbtns">Download on the<br /><span className="getitbtnboldtext">App Store</span></div></Translate>
                 </button>
+                <button
+                  onClick={() => {
+                    Swal.fire("Please Stay tuned");
+                  }}
+                  className="btn  tw-flex tw-justify-center tw-items-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <path
+                      d="M3 3.71803V28.2805C3.00016 28.3338 3.01606 28.3859 3.04569 28.4302C3.07532 28.4745 3.11737 28.509 3.16656 28.5295C3.21575 28.55 3.2699 28.5555 3.32222 28.5454C3.37453 28.5352 3.42268 28.5098 3.46062 28.4724L16.25 15.9999L3.46062 3.52616C3.42268 3.48874 3.37453 3.46336 3.32222 3.45321C3.2699 3.44305 3.21575 3.44856 3.16656 3.46905C3.11737 3.48954 3.07532 3.5241 3.04569 3.56839C3.01606 3.61269 3.00016 3.66474 3 3.71803Z"
+                      fill="#2C292A"
+                    />
+                    <path
+                      d="M21.6126 10.8749L5.57633 2.03994L5.56633 2.03432C5.29008 1.88432 5.02758 2.25807 5.25383 2.47557L17.8245 14.4956L21.6126 10.8749Z"
+                      fill="#2C292A"
+                    />
+                    <path
+                      d="M5.25505 29.5244C5.02755 29.7419 5.29005 30.1157 5.56755 29.9657L5.57755 29.9601L21.6126 21.1251L17.8244 17.5032L5.25505 29.5244Z"
+                      fill="#2C292A"
+                    />
+                    <path
+                      d="M28.0862 14.4374L23.6081 11.9712L19.3975 15.9999L23.6081 20.0268L28.0862 17.5624C29.3043 16.8893 29.3043 15.1106 28.0862 14.4374Z"
+                      fill="#2C292A"
+                    />
+                  </svg>
+                  <Translate><div className="getitbtns">Get it on <br /><span className="getitbtnboldtext">Download Google Play</span></div></Translate>
+                </button>
+
               </div>
             </div>
           </div>

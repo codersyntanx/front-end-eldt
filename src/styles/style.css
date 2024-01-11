@@ -280,6 +280,7 @@ body{
   margin-top: 21px;
 }
 
+
 @media (max-width: 500px) {
   .block-open-close .title-open:after {
     right: -10px;
@@ -3812,13 +3813,12 @@ Funfacts Area CSS
   line-height: 54px;
   border: 2px solid #2c292a;
   letter-spacing: 0.32px;
-  padding: 0;
+padding: 10px 0px;
 }
 
 .callphone-block .button-block button:hover {
   background: #fbb723;
   border: 2px solid #2c292a;
-  padding: 0;
   color: #2c292a;
   letter-spacing: 0.32px;
   font-weight: 500;
