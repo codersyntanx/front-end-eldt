@@ -176,20 +176,17 @@ export default function PopularCourses({ language }) {
     prevArrow: (
       <div
         className="custom-arrow custom-left-arrow"
-        onClick={() => console.log("Left arrow clicked")} // Replace with your functionality
+        onClick={() => console.log("Left arrow clicked")} 
         style={{
           position: "absolute",
           top: "50%",
           left: "10px",
-          zIndex: 1,
           fontSize: "24px",
           cursor: "pointer",
-          backgroundColor: "yellow",
-          color: "black", // Change the color as needed
-          padding: "5px", // Add padding for better visibility
+         
         }}
       >
-        LEFT {"<"}
+         {"<"}
       </div>
     ),
     customPaging: (i) => (
@@ -211,6 +208,7 @@ export default function PopularCourses({ language }) {
     ),
     beforeChange: handleBeforeChange,
   };
+  
 
   
   // Responsive settings
