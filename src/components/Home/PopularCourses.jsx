@@ -52,6 +52,7 @@ export default function PopularCourses({ language }) {
   const [purchase,setpurchase]=useState("")
   const [succ, setSucc]=useState(false)
   const [err, setErr]=useState(false)
+  const [coulan, setCoulan]=useState("English")
 
   const visibleModal = () => {
     setSucc(true)
@@ -110,6 +111,7 @@ export default function PopularCourses({ language }) {
           price:  purchase.price,
           address : billingAddress,
           zip : zip,
+          language : coulan
         }
       );
 
@@ -140,7 +142,7 @@ export default function PopularCourses({ language }) {
 
 
   const handleLanguageChange = (selectedOption) => {
-    localStorage.setItem("language", selectedOption.value);
+    setCoulan(selectedOption.value)
   };
 
   const [plans, setPlans] = useState([]);
@@ -329,7 +331,7 @@ export default function PopularCourses({ language }) {
                     <div className="categoria">
                     <Translate>
 
-                      <span>Category</span></Translate>
+                      <span>Category </span></Translate>
                       <br></br>
                       <Translate>
                       <strong className="strongcontent">{plan.category}</strong></Translate>
