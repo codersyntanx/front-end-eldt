@@ -95,7 +95,7 @@ export default function HomeAboutUs({ language }) {
         googleApiKey={import.meta.env.VITE_GOOGLE_TRANSLATE_KEY}
       >
         <div className="about-area">
-          <div className="container p-5">
+          <div className="container ">
             <div className="about-area-block">
               <div className="about-content">
                 <span className="sub-title" onClick={()=>{setModalVisible(true)}}>

@@ -173,24 +173,6 @@ export default function PopularCourses({ language }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    customPaging: (i) => (
-      <div
-        className={`custom-dot ${i === activeDot ? "active" : ""}`}
-        key={i}
-        onClick={() => setActiveDot(i)}
-        style={{
-          width: "20px",
-          height: "20px",
-          background: i === activeDot ? "#FFD87F" : "#999",
-          borderRadius: "50%",
-          margin: "0 5px",
-          cursor: "pointer",
-          marginTop: i === activeDot ? "10px" : "10px",
-          transition: "all 0.3s ease-in-out",
-        }}
-      ></div>
-    ),
-    beforeChange: handleBeforeChange,
     prevArrow: (
       <div
         className="custom-arrow custom-left-arrow"
@@ -210,6 +192,24 @@ export default function PopularCourses({ language }) {
         LEFT {"<"}
       </div>
     ),
+    customPaging: (i) => (
+      <div
+        className={`custom-dot ${i === activeDot ? "active" : ""}`}
+        key={i}
+        onClick={() => setActiveDot(i)}
+        style={{
+          width: "20px",
+          height: "20px",
+          background: i === activeDot ? "#FFD87F" : "#999",
+          borderRadius: "50%",
+          margin: "0 5px",
+          cursor: "pointer",
+          marginTop: i === activeDot ? "10px" : "10px",
+          transition: "all 0.3s ease-in-out",
+        }}
+      ></div>
+    ),
+    beforeChange: handleBeforeChange,
   };
 
   
@@ -289,89 +289,9 @@ export default function PopularCourses({ language }) {
                 </Translate>
               </span>
             </div>
-            <div
-              className="courses-filter tab-filter text-center"
-              id="tab-filter"
-              data-tab-nav="tab-nav"
-              data-tab-content="tab-content"
-              data-tab-active="active"
-              data-tab-animation="on"
-            >
-            
-              {/* <div className="course-mobile">
-                <Translator
-                  from="en"
-                  to={language || "en"}
-                  googleApiKey={import.meta.env.VITE_GOOGLE_TRANSLATE_KEY}
-                >
-                  {!loading &&
-                    courses.map((course) => (
-                      <CourseCardNew
-                        user={userState?.user}
-                        localLang={localLang}
-                        key={course.id}
-                        {...course}
-                        style={{ alignContent: "center" }}
-                      />
-                    ))}
-                </Translator>
+          
 
-                {!loading && courses.length === 0 && (
-                  <div className="">
-                    <div className="courses-info">
-                      <h2>
-                        <Translate>
-                          No courses found. Please try another language.
-                        </Translate>
-                      </h2>
-                    </div>
-                  </div>
-                )}
-              </div> */}
-
-            
-            </div>
-
-            {/* <div className="">
-              {loading && (
-                <div className="">
-                  <div className="courses-info">
-                    <p>Loading...</p>
-                  </div>
-                </div>
-              )}
-
-              <div className="course-desktop d-flex">
-                <Translator
-                  from="en"
-                  to={language || "en"}
-                  googleApiKey={import.meta.env.VITE_GOOGLE_TRANSLATE_KEY}
-                >
-                  {!loading &&
-                    courses.map((course) => (
-                      <CourseCardNew
-                        user={userState?.user}
-                        localLang={localLang}
-                        key={course.id}
-                        {...course}
-                        style={{ alignContent: "center" }}
-                      />
-                    ))}
-                </Translator>
-
-                {!loading && courses.length === 0 && (
-                  <div className="">
-                    <div className="courses-info">
-                      <h2>
-                        <Translate>
-                          No courses found. Please try another language.
-                        </Translate>
-                      </h2>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div> */}
+          
           </div>
         </div>
     
@@ -389,120 +309,7 @@ export default function PopularCourses({ language }) {
       plans.length >0?(
         <>
          
-      {/* <div className="container mt-5 straightcard">
-          <div className="row cards-line">
-            {plans.map((plan) => (
-              <div key={plan._id} className="col-md-3 card-content">
-                <div className="plancard d-flex mt-2">
-                  <img src={plan.image} height="58px" alt="plan1" />
-                  <span className="flex-end">
-                    <sup className="dollar-sup">$</sup>
-                    <span className="main-price">{plan.price / 100}</span>
-                  </span>
-                </div>
-            
-                <span className="classer">{plan.courseName}</span>
-                <div className="d-flex mt-4">
-                  <div className="categoria">
-                    <span>Category</span>
-                    <br></br>
-                    <strong className="strongcontent">{plan.category}</strong>
-                  </div>
-                  <div className="ultima">
-                    <span>Last Updated</span>
-                    <br></br>
-                    <strong className="strongcontent">07/07/2023</strong>
-                  </div>
-                </div>
-                <div className="dropdown mt-3">
-      Select Language:<br></br>
-      <Select
-      className="mt-1"
-  options={languageOptions}
-  isSearchable={false}
-  onChange={handleLanguageChange}
-  defaultValue={languageOptions.find((option) => option.value === 'English')} // Set default value to 'English'
-  getOptionLabel={(option) => (
-    <div className="d-flex  align-items-center">
-      <img src={option.image} alt={option.label} className="language-image" />
-      &nbsp;   {option.label}
-    </div>
-  )}
-  components={{ DropdownIndicator: CustomDropdownIndicator }}
-/>
-
-
-    </div>
-                <div className="mt-3 Acesso">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                  >
-                    <path
-                      d="M12 21.8086C16.9706 21.8086 21 17.7792 21 12.8086C21 7.83803 16.9706 3.80859 12 3.80859C7.02944 3.80859 3 7.83803 3 12.8086C3 17.7792 7.02944 21.8086 12 21.8086Z"
-                      stroke="#FBB723"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M12 7.55859V12.8086H17.25"
-                      stroke="#FBB723"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>{" "}
-                  <span>Access:<strong className="strong-text">Unlimited</strong> </span>
-                </div>
-                <div className="mt-3 Acesso">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                  >
-                    <path
-                      d="M12 17.3086C16.1421 17.3086 19.5 13.9507 19.5 9.80859C19.5 5.66646 16.1421 2.30859 12 2.30859C7.85786 2.30859 4.5 5.66646 4.5 9.80859C4.5 13.9507 7.85786 17.3086 12 17.3086Z"
-                      stroke="#FBB723"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M12 14.3086C14.4853 14.3086 16.5 12.2939 16.5 9.80859C16.5 7.32331 14.4853 5.30859 12 5.30859C9.51472 5.30859 7.5 7.32331 7.5 9.80859C7.5 12.2939 9.51472 14.3086 12 14.3086Z"
-                      stroke="#FBB723"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M16.5 15.8086V23.3086L12 21.0586L7.5 23.3086V15.8086"
-                      stroke="#FBB723"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>{" "}
-                  <span>Certificate:<strong className="strong-text">Yes</strong> </span>
-                </div>
-                <Link >
-                  <button
-                    className="mt-3 buy-button"
-                    onClick={showModal}
-                  >
-                    Buy Now
-                  </button>
-                </Link>
-              </div>
-            ))}
-          </div>
-       
-      </div> */}
+     
       <div className="caroselcomponent">
       <animated.div style={propsSpring} className="container" >
           <Slider {...combinedSettings}>
@@ -511,23 +318,30 @@ export default function PopularCourses({ language }) {
                   <div className="plancard d-flex mt-2">
                     <img src={plan.image} height="58px" alt="plan1" />
                     <span className="flex-end">
+                    <Translate>
+
                       <sup className="dollar-sup">$</sup>
-                      <span className="main-price">{plan.price / 100}</span>
+                      <span className="main-price">{plan.price / 100}</span></Translate>
                     </span>
                   </div>
-                  <span className="classer">{plan.courseName}</span>
+                  <Translate>
+
+                  <span className="classer">{plan.courseName}</span></Translate>
                   <div className="d-flex mt-4">
                     <div className="categoria">
-                      <span>Category</span>
+                    <Translate>
+
+                      <span>Category</span></Translate>
                       <br></br>
-                      <strong className="strongcontent">{plan.category}</strong>
-                    </div>
+                      <Translate>
+                      <strong className="strongcontent">{plan.category}</strong></Translate>
+                    </div><Translate>
                     <div className="ultima">
                       <span>Last Updated</span>
                       <br></br>
                       <strong className="strongcontent">07/07/2023</strong>
-                    </div>
-                  </div>
+                    </div></Translate>
+                  </div><Translate>
                   <div className="dropdown mt-3">
                     Select Language:<br></br>
                     <Select
@@ -551,7 +365,7 @@ export default function PopularCourses({ language }) {
   components={{ DropdownIndicator: CustomDropdownIndicator }}
 />
 
-                  </div>
+                  </div></Translate>
                   <div className="mt-4 Acesso">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -574,8 +388,8 @@ export default function PopularCourses({ language }) {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
-                    </svg>{" "}
-                    <span>Access:<strong className="strong-text">Unlimited</strong> </span>
+                    </svg>{" "}<Translate>
+                    <span>Access:<strong className="strong-text">Unlimited</strong> </span></Translate>
                   </div>
                   <div className="mt-4 Acesso">
                     <svg
@@ -606,16 +420,16 @@ export default function PopularCourses({ language }) {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
-                    </svg>{" "}
-                    <span>Certificate:<strong className="strong-text">Yes</strong> </span>
-                  </div>
+                    </svg>{" "}<Translate>
+                    <span>Certificate:<strong className="strong-text">Yes</strong> </span></Translate>
+                  </div><Translate>
                     <button
                       className=" buy-button"
                       style={{marginTop:"24px"}}
                       onClick={()=>{showModal(plan._id)}}
                     >
                       Buy Now
-                    </button>
+                    </button></Translate>
                 </div>
               ))}
           </Slider>

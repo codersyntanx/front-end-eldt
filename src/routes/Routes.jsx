@@ -50,7 +50,7 @@ const AppRoutes = () => {
       <div
         className=""
         style={{
-          maxHeight: "100vh",
+          maxHeight: "fit-content",
         }}
       >
         <Routes>

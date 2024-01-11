@@ -1,6 +1,7 @@
 import React from "react";
 import { Translator, Translate } from "react-auto-translate";
 import { useSelector } from "react-redux";
+import { Carousel } from 'antd';
 
 export default function FeedbackSliderWithFunFacts({ language }) {
   const languageState = useSelector((state) => state.language);
@@ -22,13 +23,12 @@ export default function FeedbackSliderWithFunFacts({ language }) {
                 <span className="sub-title">
                   <Translate>Distance learning</Translate>
                 </span>
-                <h2 className="title">
+                <h2 className="title" style={{marginTop:"16px"}}>
                   <Translate>
-                    Flexible Study at Your Own Language, According to Your Own
-                    Needs
+                  Meet those who studied flexibly and in their own language, tailored to their needs.
                   </Translate>
                 </h2>
-                <p className="sub " style={{ color: "whitesmoke" }}>
+                <p className="sub " style={{ color: "whitesmoke",marginTop:"16px" }}>
                   <Translate>
                     With the UNITED ELDT, you can get your CDL Endorsement.
                   </Translate>

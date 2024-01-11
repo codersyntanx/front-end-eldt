@@ -142,6 +142,8 @@ body{
 .about-area .about-area-block {
   display: flex;
   flex-direction: row;
+  column-gap: 50px;
+
 }
 
 .about-area .about-image {
@@ -166,7 +168,8 @@ body{
 
 .about-area .about-content {
   width: calc(100% - 586px);
-  padding-left: 40px;
+  justify-content: left;
+  max-width: 650px;
 }
 
 .about-content .sub-title {
@@ -401,10 +404,13 @@ body{
 @media (max-width: 1270px) {
   .about-area .about-image {
     width: 460px;
+
   }
 
   .about-area .about-content {
     width: calc(100% - 460px);
+    max-width: 650px;
+
   }
 }
 
@@ -418,7 +424,9 @@ body{
   }
 
   .about-area .about-content {
-    width: calc(100% - 400px);
+    width: calc(100% - 400px); 
+    max-width: 650px;
+
   }
 
   .about-area .about-bottom .features-list li span {
@@ -459,6 +467,7 @@ body{
   .about-area .about-bottom .features-list,
   .about-area .about-area-block {
     flex-direction: column;
+
   }
 
   .about-image.mobile {
@@ -6111,6 +6120,9 @@ Profile Authentication Area CSS
   color: #fbb723;
 }
 
+.footer-content .item:last-child {
+  padding-left: 10px;
+}
 @media (max-width: 1280px) {
   .login-form-container {
     padding-right: 20px;
@@ -6704,21 +6716,25 @@ Footer Area CSS
   margin-right: 24px;
 }
 
-.footer-content .payments li {
+/* .footer-content .payments li {
   margin-right: 13px;
-}
+} */
 
-.footer-content .payments li:last-child {
+/* .footer-content .payments li:last-child {
   margin-right: 0;
-}
+} */
 
 .footer-content .item {
-  padding: 0 56px;
+  padding: 0 30px;
 }
 
 .footer-content .item:first-child {
   padding-left: 0;
   max-width: 331px;
+}
+
+.footer-content .item:last-child {
+  padding-left: 10px;
 }
 
 .footer-content .item:nth-child(2) {
@@ -6740,9 +6756,7 @@ Footer Area CSS
   margin: 0;
 }
 
-.footer-content .item:last-child {
-  padding-right: 0;
-}
+
 
 .footer-content .item .seal {
   margin-bottom: 17px;
@@ -6860,9 +6874,7 @@ Footer Area CSS
     margin-right: 0;
   }
 
-  .footer-content .item:last-child {
-    padding: 0;
-  }
+ 
 
   .ref-bottom .where-to-find {
     padding-bottom: 52px;
