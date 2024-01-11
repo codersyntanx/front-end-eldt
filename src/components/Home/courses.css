@@ -174,7 +174,7 @@ letter-spacing: 0.32px;
 }
 .labeltext{
     display: flex;
-width: 435px;
+width: 100%;
 justify-content: space-between;
 align-items: flex-start;
 margin-top: 24px;
@@ -434,7 +434,7 @@ margin-top: 24px;
         display: flex;
         width: 90%;
         margin: auto;
-        height: 780px;
+        height: 567px;
     }
     .card-content{
         width: 95% !important;
