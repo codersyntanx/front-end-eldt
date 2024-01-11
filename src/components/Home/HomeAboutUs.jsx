@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const WhyChooseUs = () => {
 
+ 
   
   return (
     <React.Fragment>
@@ -86,7 +87,13 @@ const WhyChooseUs = () => {
 };
 export default function HomeAboutUs({ language }) {
   const languageState = useSelector((state) => state.language);
-
+  const handleClick = () => {
+    console.log("pushed");
+    window.scrollTo({
+      top: 1000, // Scroll to the position 1000 pixels from the top
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <Translator
@@ -118,7 +125,7 @@ export default function HomeAboutUs({ language }) {
                     unlock a world of opportunities.
                   </Translate>
                   <div className="tw-flex lg:tw-justify-start tw-justify-center">
-                    <button className="default-btn lg:tw-w-1/2 ">
+                    <button className="default-btn lg:tw-w-1/2 " onClick={handleClick}>
                       View courses
                     </button>
                   </div>
