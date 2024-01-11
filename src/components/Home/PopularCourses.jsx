@@ -37,6 +37,46 @@ const languageOptions = [
   { value: 'French', label: 'French', image: "https://img.icons8.com/color/24/france-circular.png" },
   { value: 'Urdu', label: 'Urdu', image: "https://img.icons8.com/color/48/pakistan-circular.png" },
 ];
+
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "red",
+        width: "50px",
+        borderRadius: "50px",
+        height: "50px",
+        position: "absolute",
+        top: "50%",
+        right: 0,
+        transform: "translateY(-50%)",
+        zIndex: 1,
+        textAlign: "center",
+        lineHeight: "50px",
+        color: "white",
+      }}
+      onClick={onClick}
+    >
+      <span style={{ color: "black" }}>Hello</span>
+    </div>
+  );
+}
+
+function SamplepreArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "red",width:"50px",borderRadius:"50px" ,height:"50px"}}
+      onClick={onClick}
+    >Hello</div>
+  );
+}
 export default function PopularCourses({ language }) {
   const userState = useSelector((state) => state.user);
   const [selectedLang, setSelected] = useState("all");
@@ -175,22 +215,8 @@ export default function PopularCourses({ language }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: (
-      <div
-        className="custom-arrow custom-left-arrow"
-        onClick={() => console.log("Left arrow clicked")} 
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "10px",
-          fontSize: "24px",
-          cursor: "pointer",
-         
-        }}
-      >
-         {"<"}
-      </div>
-    ),
+    nextArrow: <SampleNextArrow />,
+    prevArrow:<SamplepreArrow/>,
     customPaging: (i) => (
       <div
         className={`custom-dot ${i === activeDot ? "active" : ""}`}

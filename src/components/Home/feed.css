@@ -1,0 +1,26 @@
+.svgcontain{
+    position: relative;
+    top: 244px;
+}
+.svgcontainafter{
+    position: relative;
+    top: 180px;
+}
+
+@media screen and (max-width: 1440px) {
+    .svgcontain{
+        right: 50px;
+    }
+    .svgcontainafter{
+        display: none;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .svgcontain{
+        top: 400px;
+    }
+    .feedback-content .title{
+        font-size: 32px;
+    }
+ 
+}
