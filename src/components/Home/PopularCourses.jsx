@@ -344,32 +344,32 @@ export default function PopularCourses({ language }) {
                   <div className="plancard d-flex mt-2">
                     <img src={plan.image} height="58px" alt="plan1" />
                     <span className="flex-end">
-                    <Translate>
+                   
 
                       <sup className="dollar-sup">$</sup>
-                      <span className="main-price">{plan.price / 100}</span></Translate>
+                      <span className="main-price"> <Translate>{plan.price / 100}</Translate></span>
                     </span>
                   </div>
-                  <Translate>
+                
 
-                  <span className="classer">{plan.courseName}</span></Translate>
+                  <span className="classer">  <Translate>{plan.courseName}</Translate></span>
                   <div className="d-flex mt-4">
                     <div className="categoria">
-                    <Translate>
+                   
 
-                      <span>Category </span></Translate>
+                      <span> <Translate>Category </Translate></span>
                       <br></br>
-                      <Translate>
-                      <strong className="strongcontent">{plan.category}</strong></Translate>
-                    </div><Translate>
+                    
+                      <strong className="strongcontent">  <Translate>{plan.category}</Translate></strong>
+                    </div>
                     <div className="ultima">
-                      <span>Last Updated</span>
+                      <span><Translate>Last Updated</Translate></span>
                       <br></br>
                       <strong className="strongcontent">07/07/2023</strong>
-                    </div></Translate>
-                  </div><Translate>
+                    </div>
+                  </div>
                   <div className="dropdown mt-3">
-                    Select Language:<br></br>
+                    <Translate>Select Language:</Translate><br></br>
                     <Select
   options={languageOptions}
   className="mt-1"
@@ -391,7 +391,7 @@ export default function PopularCourses({ language }) {
   components={{ DropdownIndicator: CustomDropdownIndicator }}
 />
 
-                  </div></Translate>
+                  </div>
                   <div className="mt-4 Acesso">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -414,8 +414,8 @@ export default function PopularCourses({ language }) {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
-                    </svg>{" "}<Translate>
-                    <span>Access:<strong className="strong-text">Unlimited</strong> </span></Translate>
+                    </svg>{" "}
+                    <span><Translate>Access:</Translate><strong className="strong-text">Unlimited</strong> </span>
                   </div>
                   <div className="mt-4 Acesso">
                     <svg
@@ -446,16 +446,16 @@ export default function PopularCourses({ language }) {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
-                    </svg>{" "}<Translate>
-                    <span>Certificate:<strong className="strong-text">Yes</strong> </span></Translate>
-                  </div><Translate>
+                    </svg>{" "}
+                    <span><Translate>Certificate:</Translate><strong className="strong-text">Yes</strong> </span>
+                  </div>
                     <button
                       className=" buy-button"
                       style={{marginTop:"24px"}}
                       onClick={()=>{showModal(plan._id)}}
                     >
-                      Buy Now
-                    </button></Translate>
+                      <Translate>Buy Now</Translate>
+                    </button>
                 </div>
               ))}
           </Slider>

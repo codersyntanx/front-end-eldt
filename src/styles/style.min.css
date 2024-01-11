@@ -1656,6 +1656,11 @@ textarea.form-control {
   margin-bottom: 0;
   list-style-type: none;
 }
+.main-title-hero{
+  max-width: 589px;
+  min-width: 589px;
+  display: inline-block;
+}
 .basic-info .label-file,
 .checkout-area .cart-side-left .content .info .list span,
 .checkout-area .cart-side-left .content .info .list strong,
@@ -3135,7 +3140,12 @@ textarea.form-control {
   .courses-details-content .right-side {
     width: 350px;
   }
+  .main-title-hero{
+    min-width: auto;
+  }
 }
+@media (max-width: 786px) {}
+
 .instructor-header-content {
   display: flex;
   flex-direction: row;
