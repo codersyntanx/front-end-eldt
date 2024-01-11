@@ -23,10 +23,8 @@ export default function HomeMain() {
       <Banner language={languageState.language.value} />
       <Elements stripe={stripePromise}><PopularCourses id="targetSection" language={languageState.language.value} /></Elements> 
       <Disclaimer language={languageState.language.value} />
-
       <HomeAboutUs language={languageState.language.value} />
       <FeedbackSliderWithFunFacts language={languageState.language.value} />
-      
       <NewsLetter language={languageState.language.value} />
     </>
   );

@@ -367,6 +367,10 @@ body{
   .about-area-main .about-image {
     max-width: 800px;
   }
+  .rightimagecontent{
+    height: auto !important;
+    overflow-x: hidden;
+  }
 }
 
 @media (max-width: 1250px) {

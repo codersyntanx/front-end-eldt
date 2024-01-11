@@ -25,13 +25,13 @@ const Hero = styled("div")({
   display: `flex`,
   position: `relative`,
   flexDirection: `row`,
-  justifyContent: `center`,
-  alignItems: `center`,
+  // justifyContent: `center`,
+  // alignItems: `center`,
   padding: `0px`,
   boxSizing: `border-box`,
   flex: `1`,
   margin: `0px`,
-  flexWrap: "wrap",
+  flexWrap: "nowrap",
 });
 
 const DivHeroLeft = styled("div")({
@@ -64,8 +64,8 @@ const DivHeroRight = styled("div")({
   boxSizing: `border-box`,
   flex: `1`,
   width: `inherit`,
-  flexWrap: "wrap",
-  height: `calc(100vh - 100px)`,
+  flexWrap: "nowrap",
+  // height: `auto`,
 });
 
 const DivHeroRightContent = styled("div")({
@@ -77,9 +77,10 @@ const DivHeroRightContent = styled("div")({
   padding: `0px`,
   boxSizing: `border-box`,
   flex: `1`,
-  width: `100%`,
+  width: `974px`,
   height: `100vh`,
   flexWrap: "wrap",
+  
 });
 
 function Banner(...props) {
@@ -96,15 +97,17 @@ function Banner(...props) {
           <DivHeroLeft className="main-left-content">
             <LeftHeroContentDiv language={props.language} />
           </DivHeroLeft>
-          <DivHeroRight className="main-right-content">
-            <DivHeroRightContent>
+          <DivHeroRight className="main-right-content rightimagecontent">
+            <DivHeroRightContent imgcontent>
               <div className="main-image desktop">
                 <img src={heroimg}  alt="" />
               </div>
+            </DivHeroRightContent>
+            <div className="maincover">
               <div className="main-image mobile">
                 <img src={heroimg} alt="" />
               </div>
-            </DivHeroRightContent>
+            </div>
           </DivHeroRight>
         </Hero>
       </HeroBanner>

@@ -3441,6 +3441,7 @@ textarea.form-control {
   letter-spacing: 1.2px;
   font-weight: 800;
   margin-bottom: 8px;
+  color:"white"
 }
 .callphone-block .right-side p {
   font-size: 16px;
@@ -3451,6 +3452,7 @@ textarea.form-control {
   line-height: 25px;
   max-width: 400px;
   display: block;
+  color: whitesmoke;
 }
 .callphone-block .button-block,
 .checkout-area .cart-side-left .list {

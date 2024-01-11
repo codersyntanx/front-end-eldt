@@ -154,7 +154,7 @@ function LeftHeroContent(...props) {
     >
       <LeftHeroContent1 className={`left-hero-block ${props.className}`}>
         <Frame6818>
-          <ObtenhaCertificaçãoD className="main-title-hero" style={{fontSize:"51px"}}>
+          <ObtenhaCertificaçãoD className="main-title-hero herosectionhead">
               <Translate>{`Get`}</Translate>
            &nbsp;
               <span className="yellow">

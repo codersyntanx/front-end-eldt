@@ -9,6 +9,7 @@ export default function CallToPhone({ language }) {
         to={language || "en"}
         googleApiKey={import.meta.env.VITE_GOOGLE_TRANSLATE_KEY}
       >
+        
         <div className="callphone-block">
           <div className="left-side">
             <img src={`images/iphone-layout.png`} />
