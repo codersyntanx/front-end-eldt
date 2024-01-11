@@ -391,8 +391,9 @@ cursor: pointer;
     padding: 50px;
     text-align: center;
 }
-.imgalign{
-    display: block ruby
+.imgalign {
+    display: flex;
+    justify-content: center;
 }
 .message{
     color: #0A0A0A;
@@ -480,10 +481,23 @@ margin-top: 24px;
         font-size: 16px;
         padding-left: 25px;
     }
+  
 }
 
 
+@media (max-width: 450px) {
 
+    .ant-modal-content{
+        padding: 0px !important;
+        width: 100% !important;
+        border-radius: 16px !important;
+        row-gap: 24px !important;
+        height: 100% !important;
+    }
+    .mainblack{
+        width: 100%;
+    }
+}
 
   .css-1u9des2-indicatorSeparator{
     display: none;
