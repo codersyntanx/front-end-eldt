@@ -26,9 +26,9 @@ import { useCookies } from "react-cookie";
 
 export default function LoginForm() {
   const [cookies, setCookie] = useCookies();
-
+ const[forget, setForget]=useState(true)
   const languageState = useSelector((state) => state.language);
-
+  
   const INITIAL_USER = {
     email: "",
     password: "",
@@ -45,7 +45,9 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false);
   const router = useNavigate();
   const dispatch = useDispatch();
-
+ const handleforget =()=>{
+  setForget(false)
+ }
   return (
     <>
       <Translator
@@ -53,7 +55,10 @@ export default function LoginForm() {
         to={languageState?.language?.value || "en"}
         googleApiKey={import.meta.env.VITE_GOOGLE_TRANSLATE_KEY}
       >
-        <div className="login-form-container">
+        {
+          forget ?(
+            <>
+             <div className="login-form-container">
           <span className="welcome">
             <Translate>Welcome back</Translate>
           </span>
@@ -165,7 +170,7 @@ export default function LoginForm() {
             <div className="row align-items-center">
               <div className="login-forgot-password">
                 <span>Forgot your password?</span>
-                <Link to="/forgot-password">
+                <Link onClick={handleforget}>
                   <a className="login-lost-password">
                     <Translate>I forgot my password</Translate>
                   </a>
@@ -174,6 +179,14 @@ export default function LoginForm() {
             </div>
           </form>
         </div>
+            </>
+          ):(
+            <>
+            forget password
+            </>
+          )
+        }
+       
       </Translator>
     </>
   );

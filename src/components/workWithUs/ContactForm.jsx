@@ -3,23 +3,21 @@ import TailwindLoader from "../../utils/tailwindLoader";
 import { Translator, Translate } from "react-auto-translate";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Axios } from "axios";
 
 export default function ContactForm({ language }) {
-  const INITIAL_STATE = {
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  };
+const [name,setName]=useState("")
 
-  const [contact, setContact] = useState(INITIAL_STATE);
   const [disabled, setDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setContact((prevState) => ({ ...prevState, [name]: value }));
-  };
+ const sendemail =()=>{
+  axios.post("nkjhaks",{
+    name,
+    email,
+    
+  })
+ }
+  
 
   return (
     <>
@@ -50,8 +48,9 @@ export default function ContactForm({ language }) {
                     type="text"
                     placeholder="Placeholder"
                     name="name"
-                    value={contact.name}
-                    onChange={handleChange}
+                    value={name}
+                    onChange={(e)=>{setName(e.target.value)}}
+                    required
                   />
                 </label>
               </div>
@@ -121,6 +120,7 @@ export default function ContactForm({ language }) {
                   type="submit"
                   className="default-btn"
                   disabled={disabled}
+                  
                 >
                   <Translate>Send Message</Translate>{" "}
                   {loading ? <TailwindLoader /> : ""}
