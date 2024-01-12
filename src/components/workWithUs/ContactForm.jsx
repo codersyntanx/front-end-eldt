@@ -30,12 +30,11 @@ export default function ContactForm({ language }) {
       >
         <div className="contact-form">
           <h2>
-            <Translate>Ready to Get Started?</Translate>
+            <Translate>Ready to Begin?</Translate>
           </h2>
           <p>
             <Translate>
-              Your email address will not be published. Required fields are
-              marked
+            Your email address will not be published. Required fields are marked
             </Translate>
             *
           </p>

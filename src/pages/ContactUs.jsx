@@ -20,9 +20,9 @@ export default function ContactUs() {
       <div className="contact-area">
         <div className="container-wider">
           <div className="contact-area-content">
-            <div className="left-side">
+            {/* <div className="left-side">
               <ContactInfo language={languageState?.language?.value} />
-            </div>
+            </div> */}
             <div className="right-side">
               <ContactForm language={languageState?.language?.value} />
             </div>

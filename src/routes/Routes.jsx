@@ -43,6 +43,7 @@ import EditQuiz from "../pages/Instrcutor/Lesson/Quiz/EditQuiz";
 import MyCourseProgress from "../pages/Student/MyCourseProgress";
 import LessonDataEditor from "../pages/Instrcutor/LessonDataEditor.jsx";
 import CreateLessonUpdated from "../pages/Instrcutor/Lesson/CreateLessonUpdated";
+import Homepage from "../Studentdashboard/Homepage";
 
 const AppRoutes = () => {
   return (
@@ -73,11 +74,9 @@ const AppRoutes = () => {
             }
           />
           <Route
-            path="/authentication/student"
+            path="login"
             element={
-              <HeaderFooter>
                 <AuthenticationStudent />
-              </HeaderFooter>
             }
           />
 
@@ -433,6 +432,7 @@ const AppRoutes = () => {
             </Route>
           </Route>
           {/* ============== Admin Routes Ended  */}
+          <Route path="/studentdash/*" element={<Homepage />} />
 
           <Route
             path="/*"

@@ -2283,7 +2283,6 @@ textarea.form-control {
   font-weight: 700;
 }
 .basic-info .label-file > span,
-.contact-row .item label span,
 .courses-details-desc
   .react-tabs__tab-panel
   .courses-review-comments
@@ -2292,6 +2291,10 @@ textarea.form-control {
 .courses-review-comments .user-review .review-rating {
   display: block;
   margin-bottom: 8px;
+}
+.contact-row .item label span{
+  display: flex;
+  margin-bottom: 10px;
 }
 .courses-details-desc
   .react-tabs__tab-panel
@@ -4652,14 +4655,7 @@ textarea.form-control {
   border: none;
   margin-bottom: 0;
 }
-.login-form::after,
-.login-form::before {
-  position: absolute;
-  margin: auto;
-  display: block;
-  top: 0;
-  bottom: 0;
-}
+
 .faq-accordion .accordion .accordion__item {
   border-radius: 5px;
   display: block;
@@ -4717,6 +4713,7 @@ textarea.form-control {
   margin-top: 71px;
   position: relative;
   width: 100%;
+  margin-left: 122px;
 }
 .login-register-block h2 {
   color: #2c292a;
@@ -4729,30 +4726,12 @@ textarea.form-control {
   padding-right: 90px;
 }
 .register-form {
-  padding-left: 90px;
+width: 1079px;
+height: 100%;
+overflow-x: hidden;
 }
-.login-form::after {
-  content: "or";
-  height: 61px;
-  padding: 16px 0;
-  width: 32px;
-  font-weight: 600;
-  line-height: 28.8px;
-  background: #fff;
-  color: rgba(44, 41, 42, 0.25);
-  font-size: 24px;
-  letter-spacing: 1.2px;
-  right: -17px;
-  z-index: 2;
-}
-.login-form::before {
-  content: "";
-  background: rgba(44, 41, 42, 0.1);
-  right: 0;
-  height: 100%;
-  width: 3px;
-  z-index: 1;
-}
+
+
 .login-lost-password,
 .login-lost-password:hover {
   margin-left: 4px;
@@ -4943,7 +4922,6 @@ textarea.form-control {
   width: calc(100% - 608px);
   padding-right: 51px;
 }
-.contact-area-content .right-side,
 .teacher-content .right-side,
 .work-content .right-side {
   width: 608px;
@@ -6092,6 +6070,12 @@ div#pdf-renderer {
   position: relative;
   top: -1px;
 }
+@media (max-width: 1442px) {
+  .contact-area-content .right-side{
+    width: 1240px;
+    margin: auto;
+  }
+}
 @media (max-width: 1380px) {
   .courses-main .courses-block {
     padding: 46px 80px 46px 100px;
@@ -6106,7 +6090,6 @@ div#pdf-renderer {
   .work-content .left-side {
     width: calc(100% - 500px);
   }
-  .contact-area-content .right-side,
   .teacher-content .right-side,
   .work-content .right-side {
     width: 500px;
@@ -6372,11 +6355,7 @@ div#pdf-renderer {
     height: 26px;
     padding: 0 20px;
   }
-  .login-form::before {
-    top: auto;
-    height: 3px;
-    width: 100%;
-  }
+ 
   .login-form-container {
     padding: 0;
     max-width: 100%;

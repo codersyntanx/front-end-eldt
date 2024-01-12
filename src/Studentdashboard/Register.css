@@ -1,0 +1,65 @@
+.main-contain-regist{
+    width: 90%;
+    margin: auto;
+    height: auto;
+    background-color: white;
+    border-radius: 16px;
+    margin-top: 81px;
+}
+.card-head{
+    border-radius: 16px 16px 0px 0px;
+    background: #2C292A;
+    display: flex;
+padding: 12px 32px;
+align-items: center;
+gap: 10px;
+align-self: stretch;
+color: #FFF;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 160%; /* 32px */
+letter-spacing: 1px;
+}
+.card-body{
+    padding-top: 0px !important;
+    padding: 32px;
+}
+.foam-label{
+    color: #2C292A;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 150% */
+display: block;
+margin-top: 40px;
+}
+.registinput{
+    display: flex;
+    height: 56px;
+    padding: 16px;
+    align-items: center;
+    margin-top: 10px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 2px solid rgba(44, 41, 42, 0.25);
+    width: 100%;
+}
+.btn-warning{
+width: 134px;
+height: 48px;
+
+gap: 8px;
+border-radius: 8px;
+background: #FBB723;
+color: #2C292A;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 150% */
+letter-spacing: 0.32px;
+margin-top: 40px;
+}
