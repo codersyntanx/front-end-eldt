@@ -63,6 +63,14 @@ function StudentNav (){
 </div>
     </div>
     <div className="main-std-dash">
+    <div className="Mobile_Nav_Std">
+<img src={logo} alt="complogo"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <path d="M6.25 20H33.75" stroke="#FBB723" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.25 10H33.75" stroke="#FBB723" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.25 30H33.75" stroke="#FBB723" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </div>
     {renderPage()}
     </div>
     </div>

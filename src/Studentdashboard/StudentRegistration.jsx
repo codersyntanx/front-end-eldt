@@ -3,10 +3,12 @@ function StudentRegistration(){
     return(
         <>
         <div className="main-contain-regist">
+        
             <div className="card-head">
                 My Account
             </div>
             <div className="card-body">
+              
                 <form>
                 <label className="foam-label">First name</label>
                 <input className="registinput" type="text" placeholder="Name"/>

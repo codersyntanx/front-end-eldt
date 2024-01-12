@@ -61,3 +61,27 @@ letter-spacing: 0.7px;
     width: 100%;
     /* height: 922px; */
 }
+.Mobile_Nav_Std{
+    display: none;
+}
+@media (max-width: 786px) {
+    .main-nav{
+        display: none;
+    }
+    .Mobile_Nav_Std{
+        display: inline-flex;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+        border-right: 1px solid #F4F4F4;
+        background: #FFF;
+        box-shadow: 0px 4px 10px 0px rgba(212, 212, 212, 0.25);
+        width: 100%;    
+        padding-left: 10px;
+        padding-right: 10px;
+    
+    }
+
+  }
+  
