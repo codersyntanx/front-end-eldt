@@ -193,7 +193,7 @@ function LeftHeroContent(...props) {
               </Link>
             </ComprarAgora>
             <FaleConosco className="contact-us">
-            <Link to="" >
+            <Link to="/contact-us" >
             <Translate>{`Contact Us!`}</Translate>
           </Link>
             </FaleConosco>

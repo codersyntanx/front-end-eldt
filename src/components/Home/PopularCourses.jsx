@@ -570,7 +570,7 @@ export default function PopularCourses({ language }) {
   </div>
   <span className="message">Payment successfully processed</span><br></br>
   <span className="exp">Congratulations! You are now part of United. Click the button below to start your studies.</span>
-  <button className="buybtn">Start Now</button>
+  <Link to ="/login"><button className="buybtn">Start Now</button></Link>
 </div>
        </Modal>
        <Modal

@@ -88,7 +88,6 @@ export default function Navbar({ className = "is-home" }, ...props) {
               />
             </svg>
           </span>
-          <i className="fa fa-angle-down"></i>
         </BtnLang>
         <div className={"dropdown-menu m-auto"} id="language-menu">
           <ul className="list-striped">
@@ -244,7 +243,7 @@ export default function Navbar({ className = "is-home" }, ...props) {
                           onClick={() => {
                             setMenu(false);
                           }}
-                          to="/authentication/student"
+                          to="/login"
                         >
                           <a className="default-btn">
                             <Translate>Login</Translate>

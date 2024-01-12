@@ -6,6 +6,15 @@
     border-radius: 16px;
     margin-top: 81px;
 }
+.error-message{
+    color: red;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+}
+.error-border{
+    border: 2px solid red !important;
+}
 .card-head{
     border-radius: 16px 16px 0px 0px;
     background: #2C292A;

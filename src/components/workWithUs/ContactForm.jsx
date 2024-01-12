@@ -3,15 +3,15 @@ import TailwindLoader from "../../utils/tailwindLoader";
 import { Translator, Translate } from "react-auto-translate";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Axios } from "axios";
-
+import  axios  from "axios";
+import successi from "./Group 6674.png"
 export default function ContactForm({ language }) {
 const [name,setName]=useState("");
 const [email,setEmail]=useState("");
 const [phone,setPhone]=useState("");
 const [message,setMessage]=useState("");
 const [subject, setSubject]=useState("");
-
+const [sent, setSent]=useState(true)
   const [disabled, setDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
   const sendEmail = async (e) => {
@@ -19,7 +19,7 @@ const [subject, setSubject]=useState("");
     setLoading(true);
   
     try {
-      const response = await Axios.post("https://your-email-endpoint.com", {
+      const response = await axios.post("http://localhost:3003/api/contactusemail", {
         name,
         email,
         phone,
@@ -27,8 +27,9 @@ const [subject, setSubject]=useState("");
         subject,
       });
   
-      // Handle the response here
-      console.log(response.data); // You might want to do something with the response data
+    if(response.data.message === "Email sent successfully"){
+setSent(false)
+    }
   
     } catch (error) {
       console.error(error);
@@ -47,7 +48,10 @@ const [subject, setSubject]=useState("");
         googleApiKey={import.meta.env.VITE_GOOGLE_TRANSLATE_KEY}
       >
         <div className="contact-form">
-          <h2>
+{
+  sent ?(
+    <>
+     <h2>
             <Translate>Ready to Begin?</Translate>
           </h2>
           <p>
@@ -144,12 +148,26 @@ const [subject, setSubject]=useState("");
                   className="default-btn"  
                   onClick={sendEmail}                
                 >
-                  <Translate>Send Message</Translate>{" "}
-                  {loading ? <TailwindLoader /> : ""}
+                 
+                  {loading ?  <Translate>Sending....</Translate> :  <Translate>Send Message</Translate>}
                 </button>
               </div>
             </div>
           </form>
+    </>
+  ):(<>
+  <div className="successsent">
+    <div className="d-flex justify-content-center">
+    <img src={successi} alt=" success"/>
+
+    </div>
+ <Translate>
+  Your data has been successfully submitted;</Translate> <br></br>
+  <Translate>please await our team's response.</Translate> 
+  </div>
+    </>)
+}
+         
         </div>
       </Translator>
     </>
