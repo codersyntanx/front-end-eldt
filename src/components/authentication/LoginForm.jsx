@@ -181,8 +181,25 @@ export default function LoginForm() {
         </div>
             </>
           ):(
-            <>
-            forget password
+            <>    
+            <h2>
+            <Translate>I forgot my password</Translate>
+          </h2>
+            <form>
+            <div className="form-group email">
+              <label>
+                <Translate>Email</Translate>
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Ex. myemail@email.com"
+              />
+            </div>
+            <button type="submit" whileTap={{ scale: 0.9 }}>
+              <Translate>Password Recovery</Translate>
+            </button>
+            </form>
             </>
           )
         }
