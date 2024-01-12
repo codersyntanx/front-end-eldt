@@ -13,7 +13,7 @@ padding: 20px;
 .Navbar_Links{
     margin-top: 40px;
 }
-.Navbar_Links ul li{
+.mainlink{
     display: flex;
     width: 231px;
     height: 48px;
@@ -33,7 +33,7 @@ letter-spacing: 0.7px;
     gap: 10px;
     margin-top: 10px;
 }
-.Navbar_Links ul li:hover{
+.mainlink:hover{
    
     border-radius: 8px;
     background: rgba(251, 183, 35, 0.20);
@@ -43,11 +43,11 @@ letter-spacing: 0.7px;
     border-radius: 8px;
     background: rgba(251, 183, 35, 0.20);
     cursor: pointer;
-    color: #0A0A0A;
+    color: #000000;
 font-family: Inter;
 font-size: 14px;
 font-style: normal;
-font-weight: 600;
+font-weight: 500;
 line-height: 160%; /* 22.4px */
 letter-spacing: 0.7px;
 }
