@@ -6,7 +6,11 @@ import { useSelector } from "react-redux";
 import { Axios } from "axios";
 
 export default function ContactForm({ language }) {
-const [name,setName]=useState("")
+const [name,setName]=useState("");
+const [email,setEmail]=useState("");
+const [phone,setPhone]=useState("");
+const [message,setMessage]=useState("");
+const [subject, setSubject]=useState("");
 
   const [disabled, setDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -14,7 +18,10 @@ const [name,setName]=useState("")
   axios.post("nkjhaks",{
     name,
     email,
-    
+    phone,
+    message,
+    subject
+
   })
  }
   
@@ -37,7 +44,7 @@ const [name,setName]=useState("")
             *
           </p>
 
-          <form id="contactForm" onSubmit={() => {}}>
+          <form id="contactForm">
             <div className="contact-row">
               <div className="item">
                 <label>
@@ -62,8 +69,9 @@ const [name,setName]=useState("")
                     type="text"
                     placeholder="Ex. meuemail@email.com"
                     name="email"
-                    value={contact.email}
-                    onChange={handleChange}
+                    value={email}
+                    onChange={(e)=>{setEmail(e.target.value)}}
+                    required
                   />
                 </label>
               </div>
@@ -77,8 +85,9 @@ const [name,setName]=useState("")
                     type="text"
                     placeholder="Ex. +1 (240) 9875-8956"
                     name="phone"
-                    value={contact.phone}
-                    onChange={handleChange}
+                    value={phone}
+                    onChange={(e)=>{setPhone(e.target.value)}}
+                    required
                   />
                 </label>
               </div>
@@ -90,11 +99,11 @@ const [name,setName]=useState("")
                   </span>
                   <input
                     type="text"
-                    name="subject"
-                    value={contact.subject}
-                    onChange={handleChange}
-                    // placeholder={<Translate>Subject</Translate>}
                     placeholder="Subject"
+                    name="subject"
+                    value={subject}
+                    onChange={(e)=>{setSubject(e.target.value)}}
+                    required
                   />
                 </label>
               </div>
@@ -109,8 +118,9 @@ const [name,setName]=useState("")
                     rows="5"
                     placeholder="Write your message..."
                     name="message"
-                    value={contact.message}
-                    onChange={handleChange}
+                    value={message}
+                    onChange={(e)=>{setMessage(e.target.value)}}
+                    required
                   />
                 </label>
               </div>
