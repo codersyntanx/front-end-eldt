@@ -14,16 +14,29 @@ const [subject, setSubject]=useState("");
 
   const [disabled, setDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
- const sendemail =()=>{
-  axios.post("nkjhaks",{
-    name,
-    email,
-    phone,
-    message,
-    subject
-
-  })
- }
+  const sendEmail = async (e) => {
+    e.preventDefault()
+    setLoading(true);
+  
+    try {
+      const response = await Axios.post("https://your-email-endpoint.com", {
+        name,
+        email,
+        phone,
+        message,
+        subject,
+      });
+  
+      // Handle the response here
+      console.log(response.data); // You might want to do something with the response data
+  
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   
 
   return (
@@ -128,9 +141,8 @@ const [subject, setSubject]=useState("");
               <div className="item text-center">
                 <button
                   type="submit"
-                  className="default-btn"
-                  disabled={disabled}
-                  
+                  className="default-btn"  
+                  onClick={sendEmail}                
                 >
                   <Translate>Send Message</Translate>{" "}
                   {loading ? <TailwindLoader /> : ""}
