@@ -25,6 +25,9 @@ p {
 a {
   transition: 0.5s;
 }
+.mainlog{
+margin-bottom: 80px;
+}
 .block-open-close .title-open.active:after,
 .faq-accordion .accordion .accordion__button.active i {
   transform: rotate(180deg);
@@ -1039,6 +1042,9 @@ textarea.form-control {
     right: -10px;
     bottom: 0;
     background-color: #f1f1f1;
+  }
+  .mainlog{
+    margin-bottom: 30px;
   }
   .block-open-close li {
     padding: 9px 18px 9px 13px;
@@ -4852,7 +4858,6 @@ overflow-x: hidden;
   color: #221638;
 }
 .login-form form button {
-  margin-top: 57px;
   border: none;
   display: block;
   text-align: center;

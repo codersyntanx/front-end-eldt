@@ -23,23 +23,39 @@ import {
   setWishList,
 } from "../../store/UserActions";
 import { useCookies } from "react-cookie";
-
+import logomain from "./Logo (2).svg"
+import axios from "axios";
 export default function LoginForm() {
   const [cookies, setCookie] = useCookies();
  const[forget, setForget]=useState(true)
   const languageState = useSelector((state) => state.language);
-  
-  const INITIAL_USER = {
-    email: "",
-    password: "",
-  };
+  const [email, setEmail]=useState("")
+ const [password, setPassword]=useState("")
+  const navigate = useNavigate()
 
-  const [user, setUser] = useState(INITIAL_USER);
+ const handleLogin = (e) => {
+  e.preventDefault();
+  try {
+    axios.post("http://localhost:3003/api/login", {
+      Email: email,
+      password,
+    })
+    .then(res => {
+      if (res.data.status === "true") {
+        localStorage.setItem("userId", res.data.token);
+        navigate("/studentdash")
+      }
+    });
+  } catch (error) {
+    // Handle the error here
+    console.error("Error during login:", error);
+  }
+};
+
+ 
+
   useEffect(() => {}, []);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser((prevState) => ({ ...prevState, [name]: value }));
-  };
+  
 
   const [disabled, setDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -48,6 +64,7 @@ export default function LoginForm() {
  const handleforget =()=>{
   setForget(false)
  }
+ 
   return (
     <>
       <Translator
@@ -55,6 +72,9 @@ export default function LoginForm() {
         to={languageState?.language?.value || "en"}
         googleApiKey={import.meta.env.VITE_GOOGLE_TRANSLATE_KEY}
       >
+        <div className="mainlog">
+          <img src={logomain} alt="web-logo"/>
+        </div>
         {
           forget ?(
             <>
@@ -63,66 +83,10 @@ export default function LoginForm() {
             <Translate>Welcome back</Translate>
           </span>
           <h2>
-            <Translate>Log in to your account</Translate>
+            <Translate>Connect your account</Translate>
           </h2>
 
-          <form
-            onSubmit={async (e) => {
-              setLoading(true);
-
-              e.preventDefault();
-
-              const result = await loginStudent(user.email, user.password);
-              if (result.success) {
-                const expirationDate = new Date();
-                expirationDate.setDate(expirationDate.getDate() + 7); // Expires in 1 week
-
-                Swal.fire("Login Successfully");
-                const {
-                  _id,
-                  userName,
-                  email,
-                  typeOfUser = USER_TYPE.STUDENT,
-                } = result.user;
-
-                const token = result.token;
-                setCookie("user", token, { expires: expirationDate });
-
-                dispatch(LoginUser(_id, email, userName, typeOfUser));
-                const wishListResult = await getWishListOnly(_id, token);
-                if (wishListResult.success) {
-                  dispatch(setWishList(wishListResult.courses));
-                }
-                const purchasedResult = await getPurchasedCourses(_id, token);
-
-                if (purchasedResult.success) {
-                  // alert(JSON.stringify(purchasedResult.courses));
-                  // alert(JSON.stringify(purchasedResult))
-                  // alert(JSON.stringify(purchasedResult));
-                  dispatch(setPurchasedCourses(purchasedResult.courses));
-                }
-                // const getCompletedListCourses = getCompletedListCourses(_id, token);
-                // if (getCompletedListCourses.success) {
-                //   dispatch(setPurchasedCourses(getCompletedListCourses.courses));
-                // }
-
-                const completedResult = await getCompletedListCourses(
-                  _id,
-                  token
-                );
-                if (completedResult.success) {
-                  dispatch(setCompletedCourses(completedResult.courses));
-                }
-                router("/student/my-courses/");
-              } else {
-                Swal.fire({
-                  title: "Error while Login",
-                  text: result.message,
-                });
-              }
-              setLoading(false);
-            }}
-          >
+          <form>
             <div className="form-group email">
               <label>
                 <Translate>Email</Translate>
@@ -132,8 +96,8 @@ export default function LoginForm() {
                 className="form-control"
                 placeholder="Ex. myemail@email.com"
                 name="email"
-                value={user.email}
-                onChange={handleChange}
+                value={email}
+                onChange={(e)=>{setEmail(e.target.value)}}
               />
             </div>
 
@@ -146,23 +110,14 @@ export default function LoginForm() {
                 className="form-control"
                 placeholder="Ex. United2023@"
                 name="password"
-                value={user.password}
-                onChange={handleChange}
+                value={password}
+                onChange={(e)=>{setPassword(e.target.value)}}
               />
             </div>
 
-            <div className="">
-              <div className="login-receive-email">
-                <span>Didn't receive a confirmation email?</span>
-                <Link to="/send-confirmation-email">
-                  <a className="login-lost-password">
-                    <Translate>Resend email</Translate>
-                  </a>
-                </Link>
-              </div>
-            </div>
 
-            <motion.button type="submit" whileTap={{ scale: 0.9 }}>
+
+            <motion.button type="submit" onClick={handleLogin}>
               <Translate>Log In</Translate>
             </motion.button>
             <div className="tw-my-3">{loading ? <GeneralLoader /> : ""}</div>
