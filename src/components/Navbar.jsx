@@ -214,8 +214,9 @@ export default function Navbar({ className = "is-home" }, ...props) {
                           active
                           className="active"
                         >
+                          
                            <ScrollLink onClick={handleClick} to="targetSection" smooth={true} duration={500}  className="nav-link">
-                            <Translate>Courses</Translate>
+                           <Link to="/"> <Translate>Courses</Translate></Link>
                           </ScrollLink>
                         </Link>
                       </motion.li>
