@@ -3,6 +3,8 @@ import { Translator, Translate } from "react-auto-translate";
 import { useSelector } from "react-redux";
 import { Carousel } from 'antd';
 import "./feed.css"
+
+
 export default function FeedbackSliderWithFunFacts({ language }) {
   const languageState = useSelector((state) => state.language);
 
@@ -16,7 +18,6 @@ export default function FeedbackSliderWithFunFacts({ language }) {
         <div className="feedback-area">
           <div
             className="container lg:tw-px-4 tw-px-0 "
-            style={{ paddingBottom: "150px" }}
           >
             <div className="feedback-content flex f-direction-row justify-between">
               <div className="left-block">
@@ -34,7 +35,8 @@ export default function FeedbackSliderWithFunFacts({ language }) {
                   </Translate>
                 </p>
               </div>
-              <div className="svgcontain">
+              <div className="right_side">
+                  <div className="svgcontain">
               <svg xmlns="http://www.w3.org/2000/svg" width="68" height="69" viewBox="0 0 68 69" fill="none">
   <g filter="url(#filter0_d_2593_51706)">
     <circle cx="33.9996" cy="34.3512" r="13.1364" fill="url(#paint0_linear_2593_51706)"/>
@@ -75,7 +77,10 @@ export default function FeedbackSliderWithFunFacts({ language }) {
     </linearGradient>
   </defs>
 </svg></div>
-              <div className="right-block">
+
+           <Carousel autoplay>
+    <div >
+  <div className="right-block">
                 <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
                   <div style={{ lineHeight: "160%", marginTop: "20px" }}>
                     Initially, I was skeptical about online CDL endorsement
@@ -97,8 +102,83 @@ export default function FeedbackSliderWithFunFacts({ language }) {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="svgcontainafter">
+              </div>          </div>
+    <div >
+      <div className="right-block">
+                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
+                  <div style={{ lineHeight: "160%", marginTop: "20px" }}>
+                    Initially, I was skeptical about online CDL endorsement
+                    platforms, but this one proved me wrong. The content was
+                    up-to-date and relevant, and the interactive quizzes helped
+                    me retain the information effectively. Thank you for
+                    providing such a valuable resource!
+                  </div>
+                  <div className="tw-flex tw-my-5 tw-mt-20 ">
+                    <img
+                      className="tw-w-16 tw-h-16 tw-rounded-full"
+                      src="https://api.dicebear.com/7.x/initials/svg?seed=Bella"
+                    />
+                    <div className="tw-flex tw-flex-col tw-ml-5">
+                      <div className="tw-text-yellow-300 tw-font-bold tw-text-lg">
+                        David Johnson
+                      </div>
+                      <div>Motorista de ônibus escolar</div>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+    </div>
+    <div >
+    <div className="right-block">
+                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
+                  <div style={{ lineHeight: "160%", marginTop: "20px" }}>
+                    Initially, I was skeptical about online CDL endorsement
+                    platforms, but this one proved me wrong. The content was
+                    up-to-date and relevant, and the interactive quizzes helped
+                    me retain the information effectively. Thank you for
+                    providing such a valuable resource!
+                  </div>
+                  <div className="tw-flex tw-my-5 tw-mt-20 ">
+                    <img
+                      className="tw-w-16 tw-h-16 tw-rounded-full"
+                      src="https://api.dicebear.com/7.x/initials/svg?seed=Bella"
+                    />
+                    <div className="tw-flex tw-flex-col tw-ml-5">
+                      <div className="tw-text-yellow-300 tw-font-bold tw-text-lg">
+                        David Johnson
+                      </div>
+                      <div>Motorista de ônibus escolar</div>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+    </div>
+    <div >
+    <div className="right-block">
+                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
+                  <div style={{ lineHeight: "160%", marginTop: "20px" }}>
+                    Initially, I was skeptical about online CDL endorsement
+                    platforms, but this one proved me wrong. The content was
+                    up-to-date and relevant, and the interactive quizzes helped
+                    me retain the information effectively. Thank you for
+                    providing such a valuable resource!
+                  </div>
+                  <div className="tw-flex tw-my-5 tw-mt-20 ">
+                    <img
+                      className="tw-w-16 tw-h-16 tw-rounded-full"
+                      src="https://api.dicebear.com/7.x/initials/svg?seed=Bella"
+                    />
+                    <div className="tw-flex tw-flex-col tw-ml-5">
+                      <div className="tw-text-yellow-300 tw-font-bold tw-text-lg">
+                        David Johnson
+                      </div>
+                      <div>Motorista de ônibus escolar</div>
+                    </div>
+                  </div>
+                </div>
+              </div>      </div>
+  </Carousel>
+  <div className="svgcontainafter">
               <svg xmlns="http://www.w3.org/2000/svg" width="55" height="56" viewBox="0 0 55 56" fill="none">
   <g filter="url(#filter0_d_2593_51711)">
     <circle cx="27.5" cy="27.8516" r="10.625" fill="url(#paint0_linear_2593_51711)"/>
@@ -138,10 +218,15 @@ export default function FeedbackSliderWithFunFacts({ language }) {
       <stop offset="1" stop-color="#B48622"/>
     </linearGradient>
   </defs>
-</svg></div>
+</svg>
+</div>             
+              </div>
+            
             </div>
           </div>
         </div>
+       
+       
       </Translator>
     </>
   );

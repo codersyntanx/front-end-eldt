@@ -1,12 +1,34 @@
 .svgcontain{
     position: relative;
     top: 244px;
+    right: 80px;
 }
-.svgcontainafter{
-    position: relative;
-    top: 180px;
+.svgcontainafter {
+   
+    position: absolute;
+    right: 5%;
+    top: 187px;
 }
+.slick-dots {
+    bottom: 264px; /* Adjust this value as needed */
+  }
+  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots-bottom{
+    bottom: 264px; /* Adjust this value as needed */
 
+  }
+/* .review_contain{
+    background-color: white;
+    width: 553px;
+    height: 403px;
+} */
+.right_side{
+    width: 45%;
+}
+@media screen and (max-width: 996px) {
+    .right_side{
+        width: 100%;
+    }
+}
 @media screen and (max-width: 1440px) {
     .svgcontain{
         right: 50px;
@@ -14,6 +36,7 @@
     .svgcontainafter{
         display: none;
     }
+
 }
 @media screen and (max-width: 1200px) {
     .svgcontain{
@@ -22,5 +45,8 @@
     .feedback-content .title{
         font-size: 32px;
     }
- 
+    
+ .svgcontainafter {
+   display: none;
+}
 }
