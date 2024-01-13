@@ -35,7 +35,7 @@ const languageOptions = [
   { value: 'Arabic', label: 'Arabic', image: "https://img.icons8.com/color/24/palestine-circular.png" },
   { value: 'Indian', label: 'Indian', image: "https://img.icons8.com/fluency/24/india-circular.png" },
   { value: 'French', label: 'French', image: "https://img.icons8.com/color/24/france-circular.png" },
-  { value: 'Urdu', label: 'Urdu', image: "https://img.icons8.com/color/48/pakistan-circular.png" },
+  { value: 'Urdu', label: 'Urdu', image: "https://img.icons8.com/color/24/pakistan-circular.png" },
 ];
 
 
@@ -386,7 +386,10 @@ export default function PopularCourses({ language }) {
   styles={{
     option: (provided, state) => ({
       ...provided,
-      width: '300px', // Set the desired width for the options
+    }),
+    menuPortal: (provided) => ({
+      ...provided,
+      height: "400px", // Adjust the z-index as needed
     }),
   }}
   components={{ DropdownIndicator: CustomDropdownIndicator }}
