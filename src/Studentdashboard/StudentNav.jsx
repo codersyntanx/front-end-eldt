@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Lesson from "./Lesson";
 function StudentNav (){
-    const [selectedPage, setSelectedPage] = useState('myaccount');
+    const [selectedPage, setSelectedPage] = useState('courses');
     const handleNavigationClick = (page) => {
       setSelectedPage(page);
     };

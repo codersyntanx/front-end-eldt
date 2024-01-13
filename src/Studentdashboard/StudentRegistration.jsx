@@ -113,9 +113,11 @@ function StudentRegistration() {
             />
             {errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>}
           </form>
-          <button className="btn-warning" onClick={handleSave}>
+          <div className='buttonsave'>
+              <button className="btn-warning" onClick={handleSave}>
             Save
           </button>
+          </div>
         </div>
       </div>
     </>

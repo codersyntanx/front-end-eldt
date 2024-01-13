@@ -387,10 +387,7 @@ export default function PopularCourses({ language }) {
     option: (provided, state) => ({
       ...provided,
     }),
-    menuPortal: (provided) => ({
-      ...provided,
-      height: "400px", // Adjust the z-index as needed
-    }),
+  
   }}
   components={{ DropdownIndicator: CustomDropdownIndicator }}
 />

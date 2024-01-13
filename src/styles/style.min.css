@@ -6977,3 +6977,36 @@ align-items: center;
     width: 100%;
   }
 }
+
+
+
+.dateob{
+  width: 30%;
+}
+.dobs{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dpbtn{
+  width: 100%;
+  border: 2px solid #2c292a40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dpbtn:hover{
+  border: 2px solid #2c292a40;
+}
+.fomlbl{
+  color: #2C292A;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    display: block;
+    margin-top: 10px;
+}
+
+
