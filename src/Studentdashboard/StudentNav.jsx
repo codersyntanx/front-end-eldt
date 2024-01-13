@@ -4,6 +4,7 @@ import StudentRegistration from "./StudentRegistration";
 import Progre from "./Progre";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Lesson from "./Lesson";
 function StudentNav (){
     const [selectedPage, setSelectedPage] = useState('myaccount');
     const handleNavigationClick = (page) => {
@@ -21,6 +22,8 @@ function StudentNav (){
           return <StudentRegistration />;
         case 'homepage':
           return <Homepage />;
+          case 'googledoc':
+            return <Lesson />;
         default:
           return null;
       }
@@ -62,6 +65,13 @@ function StudentNav (){
   <path d="M8.125 17.4751H3.75C3.58424 17.4751 3.42527 17.4093 3.30806 17.292C3.19085 17.1748 3.125 17.0159 3.125 16.8501V4.3501C3.125 4.18434 3.19085 4.02537 3.30806 3.90816C3.42527 3.79095 3.58424 3.7251 3.75 3.7251H8.125" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>   Logout
         </li></Link>
+        <li className={` mainlink ${selectedPage === 'googledoc' ? 'activateding' : ''}`}  onClick={() => handleNavigationClick('googledoc')}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+  <path d="M13.5938 7.31885L16.875 10.6001L13.5938 13.8813" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.125 10.6001H16.875" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.125 17.4751H3.75C3.58424 17.4751 3.42527 17.4093 3.30806 17.292C3.19085 17.1748 3.125 17.0159 3.125 16.8501V4.3501C3.125 4.18434 3.19085 4.02537 3.30806 3.90816C3.42527 3.79095 3.58424 3.7251 3.75 3.7251H8.125" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>   Logout
+        </li>
 
     </ul>
 </div>
