@@ -146,16 +146,21 @@ export default function PopularCourses({ language }) {
         'http://localhost:3003/api/create-payment-intents',
         {
           amount: purchase.price,
-          courseId: purchase._id,
+          courseEnrollments: [
+            {
+              courseId: purchase._id,
+              lessonIndex: 0,
+            },
+          ],
           fullName: cardholderName,
           Email: email,
-          price:  purchase.price,
-          address : billingAddress,
-          zip : zip,
-          language : coulan
+          price: purchase.price,
+          address: billingAddress,
+          zip: zip,
+          language: coulan,
         }
       );
-
+      
       if (response.status === 200) {
         const confirmPayment = await stripe.confirmCardPayment(response.data.clientSecret, {
           payment_method: {

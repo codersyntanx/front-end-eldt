@@ -3842,6 +3842,7 @@ textarea.form-control {
   position: relative;
   z-index: 1;
   padding: 78px 0 0;
+  height: 600px;
 }
 .video-area .video-content #react-doc-viewer {
   border-radius: 16px;
@@ -6213,9 +6214,13 @@ align-items: center;
     max-width: initial;
     min-width: initial;
   }
+  .feedback-area{
+    height: fit-content;
+  }
   .feedback-area .left-block {
     width: 100%;
     padding: 0;
+
   }
   .feedback-area .right-block {
     width: 100%;
