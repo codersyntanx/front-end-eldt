@@ -70,12 +70,13 @@ const DivHeroRight = styled("div")({
   // height: `auto`,
 });
 const MainImage = styled("img")(({ theme }) => ({
-  width: "100%", // Default to 100% width
+  width: "80%", 
 
-  [theme.breakpoints.up("lg")]: {
-    width: "100%", // Set to 80% width for large screens (lg and above)
+  [theme.breakpoints.up("xl")]: {
+    width: "100%", // Set to 100% width for extra-large screens (xl and above)
   },
 }));
+
 
 const DivHeroRightContent = styled("div")({
   display: `flex`,
