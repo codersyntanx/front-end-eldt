@@ -27,27 +27,20 @@ import {
   PaymentRequestButtonElement
 } from '@stripe/react-stripe-js';
 
-const languageOptions = [
-  { value: 'English', label: 'English', image: "https://img.icons8.com/color/24/usa-circular.png" },
-  { value: 'Spanish', label: 'Spanish', image: "https://img.icons8.com/color/24/spain2-circular.png" },
-  { value: 'Portuguese', label: 'Portuguese', image: "https://img.icons8.com/color/24/portugal-circular.png" },
-  { value: 'Russian', label: 'Russian', image: "https://img.icons8.com/color/24/russian-federation-circular.png" },
-  { value: 'Arabic', label: 'Arabic', image: "https://img.icons8.com/color/24/palestine-circular.png" },
-  { value: 'Indian', label: 'Indian', image: "https://img.icons8.com/fluency/24/india-circular.png" },
-  { value: 'French', label: 'French', image: "https://img.icons8.com/color/24/france-circular.png" },
-  { value: 'Urdu', label: 'Urdu', image: "https://img.icons8.com/color/24/pakistan-circular.png" },
-];
+
 
 const customStyles = {
   menu: (provided, state) => ({
     ...provided,
-    height: '330px',
+    height: '300px',
     background:"white",
-    overflowY:"hidden"
 
   }),
   option: (provided, state) => ({
     ...provided,
+    overflowY:"hidden",
+    height:"35px"
+
   }),
 };
 function SampleNextArrow(props) {
@@ -106,6 +99,18 @@ export default function PopularCourses({ language }) {
   const [err, setErr]=useState(false)
   const [coulan, setCoulan]=useState("English")
 
+
+
+  const languageOptions = [
+  { value: 'English', label: 'English', image: "https://img.icons8.com/color/24/usa-circular.png",planId: null },
+  { value: 'Spanish', label: 'Spanish', image: "https://img.icons8.com/color/24/spain2-circular.png",planId: null },
+  { value: 'Portuguese', label: 'Portuguese', image: "https://img.icons8.com/color/24/portugal-circular.png",planId: null },
+  { value: 'Russian', label: 'Russian', image: "https://img.icons8.com/color/24/russian-federation-circular.png",planId: null },
+  { value: 'Arabic', label: 'Arabic', image: "https://img.icons8.com/color/24/palestine-circular.png",planId: null },
+  { value: 'Indian', label: 'Indian', image: "https://img.icons8.com/fluency/24/india-circular.png",planId: null },
+  { value: 'French', label: 'French', image: "https://img.icons8.com/color/24/france-circular.png",planId: null },
+  { value: 'Urdu', label: 'Urdu', image: "https://img.icons8.com/color/24/pakistan-circular.png",planId: null },
+];
   const visibleModal = () => {
     setSucc(true)
   }
@@ -117,6 +122,8 @@ export default function PopularCourses({ language }) {
   }
   const errhideModal = () => {
     setErr(false)
+    setModalVisible(true);
+
   }
 
   const showModal = async(courseId) => {
@@ -191,16 +198,58 @@ export default function PopularCourses({ language }) {
       }
     } catch (error) {
       console.error('Payment error:', error.message);
+
       errModal()
+      setModalVisible(false)
         } finally {
       setLoading(true);
     }
   };
 
-
-  const handleLanguageChange = (selectedOption) => {
-    setCoulan(selectedOption.value)
+  const handleLanguageChange = (selectedOption, planId) => {
+    setCoulan(selectedOption.value);
+  
+    // Update languageOptions with the selected planId
+    const updatedLanguageOptions = languageOptions.map(option => ({
+      ...option,
+      planId: option.value === selectedOption.value ? planId : option.planId,
+    }));
+  
+    // setLanguageOptions(updatedLanguageOptions);
+  
+    // Check if the selected planId matches the specific plan you want to modify
+    if (planId === "6575df568a262c6b6a5e154e") {
+      // Check if the selected language is French or Urdu
+      if (selectedOption.value === 'French' || selectedOption.value === 'Urdu') {
+        // Update the price of the plan with the specified index
+        const updatedPlans = plans.map((plan, index) => {
+          if (index === 0) {
+            // Change the price to 5000 for French or Urdu
+            return { ...plan, price: 5000 };
+          }
+          return plan;
+        });
+  
+        // Update the state with the modified plans
+        setPlans(updatedPlans);
+      }else{
+        const updatedPlans = plans.map((plan, index) => {
+          if (index === 0) {
+            // Change the price to 5000 for French or Urdu
+            return { ...plan, price: 3000 };
+          }
+          return plan;
+        });
+  
+        // Update the state with the modified plans
+        setPlans(updatedPlans);
+      }
+    }
+  
+    console.log(planId);
   };
+  
+  
 
   const [plans, setPlans] = useState([]);
 
@@ -393,7 +442,7 @@ export default function PopularCourses({ language }) {
   options={languageOptions}
   className="mt-1"
   isSearchable={false}
-  onChange={handleLanguageChange}
+  onChange={(selectedOption) => handleLanguageChange(selectedOption, plan._id)}
   defaultValue={languageOptions.find((option) => option.value === 'English')}
   getOptionLabel={(option) => (
     <div className="d-flex align-items-center">
@@ -404,6 +453,7 @@ export default function PopularCourses({ language }) {
   styles={customStyles}
   components={{ DropdownIndicator: CustomDropdownIndicator }}
 />
+
 
                   </div>
                   <div className="mt-4 Acesso">
@@ -598,7 +648,7 @@ export default function PopularCourses({ language }) {
   <img src={errir} alt="success"/>
   </div>
   <span className="message" style={{marginTop:"24px"}}>Error processing payment</span><br></br>
-  <span className="exp">Please try again. If the issue persists, contact your card issuer or try using another card.</span>
+  <span className="exp" >Please try again. If the issue persists, contact your card issuer or try using another card.</span>
   <button className="buybtn" onClick={errhideModal}>To try again</button>
 </div>
        </Modal>
