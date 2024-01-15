@@ -52,7 +52,7 @@ function SampleNextArrow(props) {
         borderRadius: "50px",
         height: "50px",
         position: "absolute",
-        top: "50%",
+        top: "33%",
         right:"-94px",
         right: 0,
         transform: "translateY(-50%)",

@@ -18,12 +18,11 @@ export default function CallToPhone({ language }) {
             <div className="right-content">
               <div className="text-block">
                 <h3>
-                  <Translate>Have access to classes in our app</Translate>
+                  <Translate>Get to know our app</Translate>
                 </h3>
                 <p>
                   <Translate>
-                    Enjoy high level learning methods with our app, study where
-                    you want
+                  Enjoy high-level learning methods with our app; study from wherever you want
                   </Translate>
                 </p>
               </div>
