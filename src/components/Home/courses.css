@@ -7,10 +7,16 @@ font-weight: 500;
 line-height: 120%; /* 28.8px */
 letter-spacing: 1.2px;
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
 .slick-list{
     overflow-x: hidden;
     overflow-y: auto;
-    height: 700px;
+    height: fit-content;
 }
 .slick-list::-webkit-scrollbar {
     width: 0px; /* Set the width of the scrollbar */
@@ -441,8 +447,9 @@ cursor: pointer;
     display: flex;
     width: 90%;
     margin: auto;
-    height: 780px;
+height: auto;
     direction: ltr;
+    margin-bottom: 150px;
 }
 .card-content{
     width: 95% !important;
@@ -484,7 +491,9 @@ margin-top: 24px;
         display: flex;
         width: 90%;
         margin: auto;
-        height: 780px;
+        height: auto;
+        margin-bottom: 150px;
+
     }
     .card-content{
         width: 95% !important;
@@ -495,7 +504,9 @@ margin-top: 24px;
         display: flex;
         width: 90%;
         margin: auto;
-        height: 567px;
+        height: auto;
+        margin-bottom: 150px;
+
     }
     .slick-prev {
         left: -50px;
@@ -532,6 +543,9 @@ margin-top: 24px;
         display: flex;
         width: 90%;
         margin: auto;
+        height: auto;
+        margin-bottom: 150px;
+
     }
     .categoria{
         font-size: 16px;
@@ -562,12 +576,15 @@ margin-top: 24px;
         width: 100%;
     }
 }
-
+/* 
   .css-1u9des2-indicatorSeparator{
     display: none;
-  }
+  } */
   
-
+.css-dqi1yh-menu{
+    height: auto !important;
+    overflow: hidden;
+}
 
  
   

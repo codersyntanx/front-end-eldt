@@ -32,17 +32,20 @@ import {
 const customStyles = {
   menu: (provided, state) => ({
     ...provided,
-    height: '300px',
-    background:"white",
-
+    position: 'absolute !important', // Set position to absolute
+    zIndex: '1 !important',
+    overflow: 'visible !important', // Change from 'hidden' to 'visible'
+    height:"fit-content !important"
   }),
   option: (provided, state) => ({
     ...provided,
-    overflowY:"hidden",
-    height:"35px"
+    height: '35px !important',
+    overflow: 'visible !important', 
 
   }),
 };
+
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -205,8 +208,15 @@ export default function PopularCourses({ language }) {
       setLoading(true);
     }
   };
+  const godown =()=>{
+    window.scrollTo({
+      top: window.scrollY + 150,
+      behavior: "smooth",
+    });
+  }
 
   const handleLanguageChange = (selectedOption, planId) => {
+    
     setCoulan(selectedOption.value);
   
     // Update languageOptions with the selected planId
@@ -443,21 +453,24 @@ export default function PopularCourses({ language }) {
                     <Select
   options={languageOptions}
   className="mt-1"
+  onClick={() => godown()}
   isSearchable={false}
   onChange={(selectedOption) => handleLanguageChange(selectedOption, plan._id)}
   defaultValue={languageOptions.find((option) => option.value === 'English')}
   getOptionLabel={(option) => (
-    <div className="d-flex align-items-center">
+    <div className="d-flex align-items-center" style={{height:"fit-content"}}>
       <img src={option.image} alt={option.label} className="language-image" />
       &nbsp; &nbsp; {option.label}
     </div>
   )}
-  styles={customStyles}
-  components={{ DropdownIndicator: CustomDropdownIndicator }}
+   styles={customStyles}
+ components={{ DropdownIndicator: CustomDropdownIndicator }}
 />
 
 
+
                   </div>
+                  
                   <div className="mt-4 Acesso">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
