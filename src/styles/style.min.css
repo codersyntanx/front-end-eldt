@@ -37,6 +37,10 @@ background: rgba(255, 236, 195, 0.50);
   background-color: #FBB723;
   height: 10px;
 }
+:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots libutton{
+  width: 25%;
+  height: 10px;
+}
 :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active button::before{
   display: none;
 }
@@ -53,7 +57,9 @@ height: 10px;
   width: 100%;
  
 }
-
+:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li{
+  width: 100%;
+}
 
 .getitbtnboldtext{
   font-size: 16px;

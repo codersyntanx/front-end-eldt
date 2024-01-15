@@ -41,7 +41,7 @@ const languageOptions = [
 const customStyles = {
   menu: (provided, state) => ({
     ...provided,
-    height: '330px', // Adjust the height as needed
+    height: '330px',
     background:"white",
     overflowY:"hidden"
 
@@ -210,6 +210,8 @@ export default function PopularCourses({ language }) {
       setPlans(res.data);
     });
   }, []);
+  const priceadjust =()=>{
+  }
   const [activeDot, setActiveDot] = useState(0);
   const propsSpring = useSpring({
     opacity: 1,
