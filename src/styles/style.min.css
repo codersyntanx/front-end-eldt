@@ -58,39 +58,40 @@ background: rgba(255, 236, 195, 0.50);
   background-color: #FBB723;
 
 } */
-:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active button{
+
+:where(.css-dkbvqv).ant-carousel .slick-dots li.slick-active button{
   width: 86%;
   background-color: #FBB723;
   height: 10px;
 }
-:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots libutton{
+:where(.css-dkbvqv).ant-carousel .slick-dots libutton{
   width: 25%;
   height: 10px;
 }
-:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active button::before{
+:where(.css-dkbvqv).ant-carousel .slick-dots li.slick-active button::before{
   display: none;
 }
-:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li button::before{
+:where(.css-dkbvqv).ant-carousel .slick-dots li button::before{
   display: none;
 }
-:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li button{
+:where(.css-dkbvqv).ant-carousel .slick-dots li button{
   width: 81%;
   border-radius: 14px;
 background: rgba(255, 236, 195, 0.50);
 height: 10px;
 }
-:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-initialized .slick-slide{
+:where(.css-dkbvqv).ant-carousel .slick-initialized .slick-slide{
   padding: 2px;
 }
 
-:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li{
+:where(.css-dkbvqv).ant-carousel .slick-dots li{
   width: 30% !important;
 }
-:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active {
+:where(.css-dkbvqv).ant-carousel .slick-dots li.slick-active {
   width: 81%;
  
 }
-:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li{
+:where(.css-dkbvqv).ant-carousel .slick-dots li{
   width: 100%;
 }
 
@@ -6234,14 +6235,14 @@ padding-bottom: 150px;
     margin: auto;
   }
  
-  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li button{
+  :where(.css-dkbvqv).ant-carousel .slick-dots li button{
 width: 95%;
   }
  
-  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active button{
+  :where(.css-dkbvqv).ant-carousel .slick-dots li.slick-active button{
     width: 100%;
   }
-  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li{
+  :where(.css-dkbvqv).ant-carousel .slick-dots li{
     width: 33% !important;
   }
 }
