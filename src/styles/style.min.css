@@ -22,6 +22,9 @@ font-style: normal;
 font-weight: 700;
 line-height: 32px; /* 160% */
 }
+.mediumcreenhero{
+  display: none;
+}
 .successcontent{
   display: flex!important;
   justify-content: center;
@@ -56,7 +59,7 @@ background: rgba(255, 236, 195, 0.50);
 
 } */
 :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active button{
-  width: 100%;
+  width: 86%;
   background-color: #FBB723;
   height: 10px;
 }
@@ -71,16 +74,20 @@ background: rgba(255, 236, 195, 0.50);
   display: none;
 }
 :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li button{
-  width: 100%;
+  width: 81%;
   border-radius: 14px;
 background: rgba(255, 236, 195, 0.50);
 height: 10px;
 }
+:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-initialized .slick-slide{
+  padding: 2px;
+}
+
 :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li{
-  width: 33% !important;
+  width: 30% !important;
 }
 :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active {
-  width: 100%;
+  width: 81%;
  
 }
 :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li{
@@ -6225,6 +6232,16 @@ padding-bottom: 150px;
   .contact-area-content .right-side{
     width: 1240px;
     margin: auto;
+  }
+  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li button{
+width: 95%;
+  }
+ 
+  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active button{
+    width: 100%;
+  }
+  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li{
+    width: 33% !important;
   }
 }
 @media (max-width: 1380px) {

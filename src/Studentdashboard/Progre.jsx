@@ -67,7 +67,7 @@ const formonth =(day)=>{
       errors.state = 'State is required';
     }
     if (Object.keys(errors).length === 0) {
-      axios.put(`http://localhost:3003/api/putstudent/${userId}`,{
+      axios.put(`https://server-of-united-eldt.vercel.app/api/putstudent/${userId}`,{
         firstName,
         middleName,
         lastName,

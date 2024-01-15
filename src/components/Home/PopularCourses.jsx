@@ -131,16 +131,10 @@ export default function PopularCourses({ language }) {
 
   const showModal = async(courseId) => {
     setModalVisible(true);
-    try {
-     await axios.get(`https://serverforstripe.vercel.app/api/mainplansed/${courseId}`)
-      .then(res=>{
-        setpurchase(res.data)
+    
+        setpurchase(courseId)
 
-      })
-    } catch (error) {
-      setModalVisible(false);
-      openNotification("error", "Something Went Wrong Please Try Again Later")
-    }
+   
     
   };
   const handleCancel = () => {
@@ -164,7 +158,7 @@ export default function PopularCourses({ language }) {
       setLoading(false);
 
       const response = await axios.post(
-        'http://localhost:3003/api/create-payment-intents',
+        'https://server-of-united-eldt.vercel.app/api/create-payment-intents',
         {
           amount: purchase.price,
           courseEnrollments: [
@@ -265,12 +259,11 @@ export default function PopularCourses({ language }) {
 
   
   useEffect(() => {
-    axios.get("https://serverforstripe.vercel.app/api/mainplans").then((res) => {
+    axios.get("https://server-of-united-eldt.vercel.app/api/mainplans").then((res) => {
       setPlans(res.data);
     });
   }, []);
-  const priceadjust =()=>{
-  }
+ 
   const [activeDot, setActiveDot] = useState(0);
   const propsSpring = useSpring({
     opacity: 1,
@@ -460,7 +453,7 @@ export default function PopularCourses({ language }) {
   getOptionLabel={(option) => (
     <div className="d-flex align-items-center" style={{height:"fit-content"}}>
       <img src={option.image} alt={option.label} className="language-image" />
-      &nbsp; &nbsp; {option.label}
+      &nbsp; {option.label}
     </div>
   )}
    styles={customStyles}
@@ -531,7 +524,7 @@ export default function PopularCourses({ language }) {
                     <button
                       className=" buy-button"
                       style={{marginTop:"24px"}}
-                      onClick={()=>{showModal(plan._id)}}
+                      onClick={()=>{showModal(plan)}}
                     >
                       <Translate>Buy Now</Translate>
                     </button>

@@ -5,7 +5,7 @@ const CourseList = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3003/courses')
+    axios.get('https://server-of-united-eldt.vercel.app/courses')
       .then(response => setCourses(response.data))
       .catch(error => console.error('Error fetching courses:', error));
   }, []);

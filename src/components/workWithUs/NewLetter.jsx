@@ -21,7 +21,7 @@ export default function NewsLetter() {
       return;
     }
 
-    const response = await axios.post("http://localhost:3003/api/sennews", {
+    const response = await axios.post("https://server-of-united-eldt.vercel.app/api/sennews", {
       Email: email,
     });
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 
 import { Translator, Translate } from "react-auto-translate";
@@ -6,6 +6,8 @@ import LeftHeroContent from "./LeftHeroContent";
 import { useSelector } from "react-redux";
 // import useHero1 from './Hero1/useHero1';
 import heroimg from "./images/Group 1171278588.png"
+import heroimg2 from "./Group 117127858823.png"
+
 const HeroBanner = styled("div")({
   display: `flex`,
   position: `relative`,
@@ -67,6 +69,13 @@ const DivHeroRight = styled("div")({
   flexWrap: "nowrap",
   // height: `auto`,
 });
+const MainImage = styled("img")(({ theme }) => ({
+  width: "100%", // Default to 100% width
+
+  [theme.breakpoints.up("lg")]: {
+    width: "100%", // Set to 80% width for large screens (lg and above)
+  },
+}));
 
 const DivHeroRightContent = styled("div")({
   display: `flex`,
@@ -78,14 +87,32 @@ const DivHeroRightContent = styled("div")({
   boxSizing: `border-box`,
   flex: `1`,
   width: `974px`,
-  height: `100vh`,
   flexWrap: "wrap",
   
 });
 
 function Banner(...props) {
   const languageState = useSelector((state) => state.language);
+  const [largeScreenImage, setLargeScreenImage] = useState(heroimg);
 
+  useEffect(() => {
+    const handleResize = () => {
+      // Check if the screen width is greater than or equal to 1440 pixels
+      const newImage = window.innerWidth <= 1440 ? heroimg2 : heroimg;
+      setLargeScreenImage(newImage);
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Call handleResize on component mount
+    handleResize();
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <Translator
       from="en"
@@ -97,11 +124,11 @@ function Banner(...props) {
           <DivHeroLeft className="main-left-content">
             <LeftHeroContentDiv language={props.language} />
           </DivHeroLeft>
-          <DivHeroRight className="main-right-content rightimagecontent">
+          <DivHeroRight className="rightimagecontent">
             <DivHeroRightContent imgcontent>
-              <div className="main-image desktop">
-                <img src={heroimg}  alt="" />
-              </div>
+            <DivHeroRightContent imgcontent>
+              <MainImage src={largeScreenImage} alt="" className="main-image desktop largescreenhero" />
+            </DivHeroRightContent>
             </DivHeroRightContent>
             <div className="maincover">
               <div className="main-image mobile">

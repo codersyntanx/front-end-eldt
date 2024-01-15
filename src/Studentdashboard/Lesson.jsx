@@ -52,7 +52,7 @@ const Lesson = () => {
 
   useEffect(() => {
     // Fetch the binary content from the backend API running on port 3003
-    fetch('http://localhost:3003/getDocxContent')
+    fetch('https://server-of-united-eldt.vercel.app/getDocxContent')
       .then(response => response.arrayBuffer())
       .then(binaryContent => {
         // Convert the binary content to a Blob

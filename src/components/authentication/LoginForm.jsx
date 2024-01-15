@@ -45,7 +45,7 @@ const [process, setProcess]=useState(true)
  const handleLogin = (e) => {
   e.preventDefault();
   try {
-    axios.post("http://localhost:3003/api/login", {
+    axios.post("https://server-of-united-eldt.vercel.app/api/login", {
       Email: email,
       password,
     })
@@ -67,7 +67,7 @@ const recoverEmail = async (e) => {
   setSuccess(false);
 
   try {
-    const res = await axios.get(`http://localhost:3003/studentbyemail/${emailrecover}`);
+    const res = await axios.get(`https://server-of-united-eldt.vercel.app/api/studentbyemail/${emailrecover}`);
 
     if (res.data.status === false) {
       setError(true);
