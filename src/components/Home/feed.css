@@ -16,6 +16,10 @@
     bottom: 264px; /* Adjust this value as needed */
 
   }
+  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel{
+    width: 90%;
+    margin-left: auto;
+  }
 /* .review_contain{
     background-color: white;
     width: 553px;

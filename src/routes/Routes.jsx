@@ -44,6 +44,7 @@ import MyCourseProgress from "../pages/Student/MyCourseProgress";
 import LessonDataEditor from "../pages/Instrcutor/LessonDataEditor.jsx";
 import CreateLessonUpdated from "../pages/Instrcutor/Lesson/CreateLessonUpdated";
 import Homepage from "../Studentdashboard/Homepage";
+import AddLessonForm from "./AddLessonForm";
 
 const AppRoutes = () => {
   return (
@@ -64,7 +65,12 @@ const AppRoutes = () => {
               </HeaderFooter>
             }
           />
-
+ <Route
+            path="/addlesson"
+            element={
+             <AddLessonForm/>
+            }
+          />
           <Route
             path="/"
             element={

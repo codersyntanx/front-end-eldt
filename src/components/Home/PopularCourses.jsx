@@ -38,7 +38,18 @@ const languageOptions = [
   { value: 'Urdu', label: 'Urdu', image: "https://img.icons8.com/color/24/pakistan-circular.png" },
 ];
 
+const customStyles = {
+  menu: (provided, state) => ({
+    ...provided,
+    height: '330px', // Adjust the height as needed
+    background:"white",
+    overflowY:"hidden"
 
+  }),
+  option: (provided, state) => ({
+    ...provided,
+  }),
+};
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -388,12 +399,7 @@ export default function PopularCourses({ language }) {
       &nbsp; &nbsp; {option.label}
     </div>
   )}
-  styles={{
-    option: (provided, state) => ({
-      ...provided,
-    }),
-  
-  }}
+  styles={customStyles}
   components={{ DropdownIndicator: CustomDropdownIndicator }}
 />
 

@@ -5,9 +5,16 @@ import { Carousel } from 'antd';
 import "./feed.css"
 
 
+ 
 export default function FeedbackSliderWithFunFacts({ language }) {
   const languageState = useSelector((state) => state.language);
-
+  const settings = {
+    // Other carousel settings...
+    dotStyle: {
+      bottom: '10px', // Adjust the position as needed
+    },
+    dotsClass: 'slick-dots slick-dots-bottom', // Custom class for styling
+  };
   return (
     <>
       <Translator
@@ -78,32 +85,9 @@ export default function FeedbackSliderWithFunFacts({ language }) {
   </defs>
 </svg></div>
 
-           <Carousel autoplay>
-    <div >
-  <div className="right-block">
-                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
-                  <div style={{ lineHeight: "160%", marginTop: "20px" }}>
-                    Initially, I was skeptical about online CDL endorsement
-                    platforms, but this one proved me wrong. The content was
-                    up-to-date and relevant, and the interactive quizzes helped
-                    me retain the information effectively. Thank you for
-                    providing such a valuable resource!
-                  </div>
-                  <div className="tw-flex tw-my-5 tw-mt-20 ">
-                    <img
-                      className="tw-w-16 tw-h-16 tw-rounded-full"
-                      src="https://api.dicebear.com/7.x/initials/svg?seed=Bella"
-                    />
-                    <div className="tw-flex tw-flex-col tw-ml-5">
-                      <div className="tw-text-yellow-300 tw-font-bold tw-text-lg">
-                        David Johnson
-                      </div>
-                      <div>Motorista de ônibus escolar</div>
-                    </div>
-                  </div>
-                </div>
-              </div>          </div>
-    <div >
+           <Carousel >
+   
+    <div className="carousel_cover">
       <div className="right-block">
                 <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
                   <div style={{ lineHeight: "160%", marginTop: "20px" }}>
@@ -128,7 +112,8 @@ export default function FeedbackSliderWithFunFacts({ language }) {
                 </div>
               </div>  
     </div>
-    <div >
+       <div className="carousel_cover">
+
     <div className="right-block">
                 <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
                   <div style={{ lineHeight: "160%", marginTop: "20px" }}>
@@ -153,7 +138,7 @@ export default function FeedbackSliderWithFunFacts({ language }) {
                 </div>
               </div>  
     </div>
-    <div >
+    <div className="carousel_cover">
     <div className="right-block">
                 <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
                   <div style={{ lineHeight: "160%", marginTop: "20px" }}>

@@ -17,6 +17,21 @@ p {
   line-height: 18px;
   margin: 0px;
 }
+.slick-dots.slick-dots-bottom {
+  width: 100%;
+}
+
+/* Additional styling for individual dots if needed */
+:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li {
+  width: 25%;
+  border-radius: 7.416px;
+background: rgba(255, 236, 195, 0.50);
+}
+:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active{
+  width: 25%;
+  background-color: #FBB723;
+
+}
 .getitbtnboldtext{
   font-size: 16px;
   font-weight: 700;
