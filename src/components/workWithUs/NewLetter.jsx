@@ -2,29 +2,61 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Translator, Translate } from "react-auto-translate";
 import { useSelector } from "react-redux";
-import { Modal, Button, } from 'antd';
-
-export default function NewsLetter({ language }) {
+import { Modal, Button } from 'antd';
+import axios from "axios";
+import done from "./Group 6674.png"
+export default function NewsLetter() {
   const [email, setEmail] = useState("");
-  const languageState = useSelector((state) => state.language);
-  const [modalVisible, setModalVisible] = useState(false);
-  const showModal = () => {
-    setModalVisible(true);
-    
+  const [error, setError] = useState("");
+  const { language } = useSelector((state) => state.language);
+ const [mailsent , setMailsent]=useState(true)
+ const [loading ,setLoading]=useState(true)
+ const sendEmail = async () => {
+  setLoading(false);
+
+  try {
+    // Validate email
+    if (!email || !isValidEmail(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    const response = await axios.post("http://localhost:3003/api/sennews", {
+      Email: email,
+    });
+
+    if (response.data.message === 'Email sent successfully') {
+      setMailsent(false);
+    }
+
+    // Clear error and reset email field after successful submission
+    setError("");
+    setEmail("");
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(true);
   };
-  const handleCancel = () => {
-    setModalVisible(false);
+};
+
+
+  const isValidEmail = (email) => {
+    // You can use a regex or a more sophisticated validation library
+    // This is a simple example using a regex for a basic email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
+
   return (
     <Translator
       from="en"
-      to={languageState?.language?.value || "en"}
+      to={language?.value || "en"}
       googleApiKey={import.meta.env.VITE_GOOGLE_TRANSLATE_KEY}
     >
       <div className="subscribe-area">
-        <div className="container ">
+        <div className="container">
           <div className="subscribe-content">
-            <span className="sub-title" onClick={showModal}>
+            <span className="sub-title">
               <Translate>Go At Your Own Pace</Translate>
             </span>
             <h2 className="title">
@@ -32,33 +64,48 @@ export default function NewsLetter({ language }) {
             </h2>
             <p>
               <Translate>
-                Stay ahead of the competition with United ELDTs comprehensive
+                Stay ahead of the competition with United ELDT's comprehensive
                 online Entry Level Driving Training course. Subscribe to our
                 newsletter for exclusive updates and industry insights.
               </Translate>
             </p>
+{
+  mailsent ?(<>
+  
+  <form className={`newsletter-form ${error ? 'error-border' : ''}`} onSubmit={(e) => { e.preventDefault(); sendEmail(); }}>
+  <input
+    type="email"
+    className='input-newsletter'
+    placeholder="Enter your email address"
+    name="email"
+    value={email}
+    onChange={(e) => { setEmail(e.target.value); setError(''); }}
+    required
+  />
 
-            <form className="newsletter-form" onSubmit={() => {}}>
-              <input
-                type="email"
-                className="input-newsletter"
-                placeholder="Enter your email address"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+  <motion.button type="button" className="default-btn" onClick={sendEmail}>
+  {
+  loading ? (
+    <Translate>Sign up now</Translate>
+  ) : (
+    <Translate>Sending...</Translate>
+  )
+}
 
-              <motion.button type="submit" className="default-btn">
-                <Translate>Subscribe</Translate>
-              </motion.button>
-            </form>
+  </motion.button>
+</form>
+
+            {error && <p className="error-message">{error}</p>}
+
+  </>):(<>
+  <div className=" successcontent d-flex">
+    <img src={done} alt="success"/><span className="emailsent">Email registered successfully</span>
+  </div>
+  </>)
+}
           </div>
         </div>
       </div>
-      <Modal title="Payment Modal" open={modalVisible} onCancel={handleCancel}></Modal>
-
     </Translator>
-    
   );
 }

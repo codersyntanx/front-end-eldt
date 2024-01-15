@@ -21,10 +21,11 @@ export default function Navbar({ className = "is-home" }, ...props) {
   const handleClick = () => {
     console.log("pushed");
     window.scrollTo({
-      top: window.scrollY + 1000,
-      behavior: "smooth",
+        top: 1000,
+        behavior: "smooth",
     });
-  };
+};
+
   const [openUser, setOpenUser] = useState(false);
 
   const userState = useSelector((state) => state.user);

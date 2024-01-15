@@ -1,24 +1,79 @@
 import React from "react";
-import TailwindLoader from "../../utils/tailwindLoader";
 import { Translator, Translate } from "react-auto-translate";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import  axios  from "axios";
-import successi from "./Group 6674.png"
+import axios from "axios";
+import successi from "./Group 6674.png";
+
 export default function ContactForm({ language }) {
-const [name,setName]=useState("");
-const [email,setEmail]=useState("");
-const [phone,setPhone]=useState("");
-const [message,setMessage]=useState("");
-const [subject, setSubject]=useState("");
-const [sent, setSent]=useState(true)
-  const [disabled, setDisabled] = useState(true);
+  // State variables for form fields
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [subject, setSubject] = useState("");
+
+  // State variables for form status
+  const [sent, setSent] = useState(true);
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // Validation function for email
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Validation function for the entire form
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Validate name
+    if (!name.trim()) {
+      newErrors.name = true;
+    }
+
+    // Validate email
+    if (!email.trim() || !isValidEmail(email)) {
+      newErrors.email = true;
+    }
+
+    // Validate phone
+    if (!phone.trim()) {
+      newErrors.phone = true;
+    }
+
+    // Validate subject
+    if (!subject.trim()) {
+      newErrors.subject = true;
+    }
+
+    // Validate message
+    if (!message.trim()) {
+      newErrors.message = true;
+    }
+
+    // Set the errors state
+    setErrors(newErrors);
+
+    // Return true if there are no errors
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Function to handle form submission
   const sendEmail = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    // Validate the form
+    if (!validateForm()) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // Set loading state to true while sending the email
     setLoading(true);
-  
+
     try {
+      // Send email using axios
       const response = await axios.post("http://localhost:3003/api/contactusemail", {
         name,
         email,
@@ -26,20 +81,18 @@ const [sent, setSent]=useState(true)
         message,
         subject,
       });
-  
-    if(response.data.message === "Email sent successfully"){
-setSent(false)
-    }
-  
+
+      // Check the response and update state accordingly
+      if (response.data.message === "Email sent successfully") {
+        setSent(false);
+      }
     } catch (error) {
       console.error(error);
     } finally {
+      // Set loading state to false after sending the email
       setLoading(false);
     }
   };
-  
-  
-
   return (
     <>
       <Translator

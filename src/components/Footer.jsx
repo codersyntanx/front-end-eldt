@@ -46,11 +46,6 @@ export default function Footer() {
                   <Translate>
                     Welcome to United ELDT, your premier destination for Entry
                     Level Driving Training (ELDT) courses online.
-                  </Translate>{" "}
-                </p>
-                <p>
-                  <Translate>
-                    {" "}
                     Our comprehensive program is designed to equip aspiring
                     drivers with the skills and knowledge needed to embark on a
                     successful career in the transportation industry.{" "}

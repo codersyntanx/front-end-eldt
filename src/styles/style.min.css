@@ -9,6 +9,29 @@ body,
 p {
   font-size: 16px;
 }
+.error-message {
+  color: red !important;
+  margin-top: 5px;
+}
+.emailsent{
+  color: #0A0A0A;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 32px; /* 160% */
+}
+.successcontent{
+  display: flex!important;
+  justify-content: center;
+  column-gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+.error-border{
+  border: 1px solid red !important;
+}
 .getitbtns{
   color: black;
   text-align: left;
@@ -5246,6 +5269,18 @@ overflow-x: hidden;
   line-height: 18.9px;
   letter-spacing: -0.18px;
 }
+@media (max-width: 1080px) {
+  .footer-content .title-bottom{
+   text-align: center;
+  }
+  .footer-content .item:nth-child(2){
+    margin-top: 40px;
+    max-width: 60% !important;
+  }
+  .footer-content{
+    justify-content: space-between;
+  }
+}
 
 .footer-content .email-bottom p {
   max-width: 276px;
@@ -5282,6 +5317,14 @@ overflow-x: hidden;
   display: block;
   margin-bottom: 24px;
 }
+@media (max-width: 1080px) {
+  .footer-content .item:nth-child(2) .logo {
+    display: block;
+    margin-bottom: 24px;
+    text-align: -webkit-center;
+  }
+}
+
 .footer-content .item p {
   text-align: left;
   color: #2c292a;
@@ -6175,6 +6218,8 @@ font-weight: 700;
 line-height: 32px; /* 160% */
 justify-content: center;
 align-items: center;
+padding-top: 150px;
+padding-bottom: 150px;
 }
 @media (max-width: 1442px) {
   .contact-area-content .right-side{

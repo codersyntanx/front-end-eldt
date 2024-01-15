@@ -56,7 +56,7 @@ function SampleNextArrow(props) {
         borderRadius: "50px",
         height: "50px",
         position: "absolute",
-        top: "33%",
+        top: "50%",
         right:"-94px",
         right: 0,
         transform: "translateY(-50%)",
@@ -291,6 +291,8 @@ export default function PopularCourses({ language }) {
         key={i}
         onClick={() => setActiveDot(i)}
         style={{
+          position:"relative",
+          bottom:"0px",
           width: "20px",
           height: "20px",
           background: i === activeDot ? "#FFD87F" : "#999",

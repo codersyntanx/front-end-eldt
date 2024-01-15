@@ -9,9 +9,7 @@
     right: 5%;
     top: 187px;
 }
-.slick-dots {
-    bottom: 264px; /* Adjust this value as needed */
-  }
+
   :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots-bottom{
     bottom: 264px; /* Adjust this value as needed */
 
