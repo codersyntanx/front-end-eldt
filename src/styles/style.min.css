@@ -53,6 +53,9 @@ background: rgba(255, 236, 195, 0.50);
 background: rgba(255, 236, 195, 0.50);
 height: 10px;
 }
+:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li{
+  width: 33% !important;
+}
 :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots li.slick-active {
   width: 100%;
  
@@ -945,6 +948,9 @@ textarea.form-control {
   .container-wider {
     padding: 0 33px;
   }
+  .callphone-block{
+    height: auto !important;
+  }
   .section-title {
     text-align: left;
     margin-bottom: 40px;
@@ -1013,6 +1019,14 @@ textarea.form-control {
     font-size: 18px;
     line-height: 28.8px;
     display: block;
+  }
+  .subscribe-content .newsletter-form .input-newsletter{
+    border: 2px solid #f4f4f4 !important;
+    margin-bottom: 0px !important;
+  }
+  .subscribe-content .newsletter-form{
+    border: none !important;
+    flex-direction: column;
   }
   .section-title .tab-title,
   .section-title h2 {
@@ -3690,8 +3704,11 @@ textarea.form-control {
   font-weight: 400;
   letter-spacing: 0.8px;
 }
-.feedback-area .left-block {
-  padding-top: 60px;
+:where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots-bottom{
+  bottom: 30px !important;
+}
+.feedback-content{
+  align-items: center;
 }
 .feedback-area .right-block {
   max-width: 554px;
@@ -3709,13 +3726,14 @@ textarea.form-control {
   line-height: 32px;
   font-size: 20px;
   font-weight: 500;
+  padding-top: 80px;
 }
 .feedback-content .title {
   font-size: 40px;
   line-height: 48px;
   font-weight: 800;
   letter-spacing: 2px;
-  max-width: 744px;
+  max-width: 550px;
 }
 .feedback-content .sub,
 .single-feedback-item p {
@@ -3880,13 +3898,17 @@ textarea.form-control {
   bottom: -30px;
   z-index: -2;
 }
+.slick-list{
+  height: auto !important;
+}
 .feedback-area {
   background: url("/images/hero-background.png") center no-repeat;
   color: #fff;
   position: relative;
   z-index: 1;
-  padding: 78px 0 0;
-  height: 600px;
+  padding: 50px 0px;
+  height: auto;
+  padding-top: 0px;
 }
 .video-area .video-content #react-doc-viewer {
   border-radius: 16px;
@@ -4392,15 +4414,23 @@ textarea.form-control {
   position: relative;
   max-width: 879px;
   margin: 30px auto auto;
+  border-radius: 8px;
+    border: 2px solid #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+    background-color: #ffffff;
 }
 .subscribe-content .newsletter-form .input-newsletter {
   display: block;
   width: 100%;
   border: none;
-  background-color: #eaeaea;
+  background-color: #ffffff;
   color: #221638;
   height: 69px;
-  padding: 6px 6px 6px 18px;
+  /* padding: 6px 6px 6px 18px; */
+  margin: 0px;
   font-size: 16px;
   font-weight: 400;
   border-radius: 8px;
@@ -4419,11 +4449,10 @@ textarea.form-control {
   margin-top: 15px;
 }
 .subscribe-content .newsletter-form .default-btn {
-  position: absolute;
-  right: 6px;
-  top: 6px;
+  position: relative;
   border-radius: 8px;
   height: 56px;
+  width: 257px;
 }
 .checkout-area,
 .faq-area {
@@ -6264,7 +6293,7 @@ align-items: center;
   .feedback-area .left-block {
     width: 100%;
     padding: 0;
-
+    /* padding-top: 80px !important; */
   }
   .feedback-area .right-block {
     width: 100%;
@@ -7058,4 +7087,10 @@ align-items: center;
     margin-top: 10px;
 }
 
+
+@media (max-width: 360px){
+  .feedback-area{
+    padding-bottom: 80px;
+  }
+}
 
