@@ -220,7 +220,7 @@ export default function PopularCourses({ language }) {
     // Check if the selected planId matches the specific plan you want to modify
     if (planId === "6575df568a262c6b6a5e154e") {
       // Check if the selected language is French or Urdu
-      if (selectedOption.value === 'French' || selectedOption.value === 'Urdu') {
+      if (selectedOption.value === 'French' || selectedOption.value === 'Urdu' || selectedOption.value === 'Arabic' || selectedOption.value === 'Indian') {
         // Update the price of the plan with the specified index
         const updatedPlans = plans.map((plan, index) => {
           if (index === 0) {

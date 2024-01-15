@@ -66,7 +66,6 @@ const formonth =(day)=>{
     if (!state.trim()) {
       errors.state = 'State is required';
     }
-    console.log(Object.keys(errors).length)
     if (Object.keys(errors).length === 0) {
       axios.put(`http://localhost:3003/api/putstudent/${userId}`,{
         firstName,

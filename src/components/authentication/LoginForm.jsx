@@ -25,12 +25,21 @@ import {
 import { useCookies } from "react-cookie";
 import logomain from "./Logo (2).svg"
 import axios from "axios";
+import successmsg from "./Group 6674.png"
+import errormsg from "./Group 6674 (2).png"
+
 export default function LoginForm() {
   const [cookies, setCookie] = useCookies();
  const[forget, setForget]=useState(true)
   const languageState = useSelector((state) => state.language);
   const [email, setEmail]=useState("")
+  const [emailrecover, setEmailrecover]=useState("")
+ const [result, setResult]=useState(false)
  const [password, setPassword]=useState("")
+ const [success, setSuccess] = useState(false);
+ const [error, setError] = useState(false);
+const [process, setProcess]=useState(true)
+
   const navigate = useNavigate()
 
  const handleLogin = (e) => {
@@ -51,8 +60,29 @@ export default function LoginForm() {
     console.error("Error during login:", error);
   }
 };
+const recoverEmail = async (e) => {
+  e.preventDefault();
+  setProcess(false);
+  setError(false);
+  setSuccess(false);
 
- 
+  try {
+    const res = await axios.get(`http://localhost:3003/studentbyemail/${emailrecover}`);
+
+    if (res.data.status === false) {
+      setError(true);
+    } else {
+      setSuccess(true);
+    }
+  } catch (error) {
+    alert("An error occurred during email recovery");
+    // Handle other errors if needed
+  } finally {
+    setProcess(true);
+  }
+};
+
+
 
   useEffect(() => {}, []);
   
@@ -135,8 +165,31 @@ export default function LoginForm() {
           </form>
         </div>
             </>
+          ): success ?(
+            <>
+            <div className="mainbody">
+  <div className="imgalign">
+ 
+  <img src={successmsg} alt="success"/>
+  </div>
+  <span className="message" style={{marginTop:"24px"}}>Your password has been successfully sent to your email.</span><br></br>
+  <span className="exp" >Please enter your email inbox and access the password reset email we sent you. With this, you will be able to change your password.</span>
+</div>
+            </>
+          ):error?(
+            <>
+              <div className="mainbody">
+  <div className="imgalign">
+ 
+  <img src={errormsg} alt="success"/>
+  </div>
+  <span className="message" style={{marginTop:"24px"}}>This Email is not been registered</span><br></br>
+  <span className="exp" >Please enter the valid email to recover your account</span>
+</div>
+            </>
           ):(
-            <>    
+            <>  
+
             <h2>
             <Translate>I forgot my password</Translate>
           </h2>
@@ -149,10 +202,22 @@ export default function LoginForm() {
                 type="text"
                 className="form-control"
                 placeholder="Ex. myemail@email.com"
+                value={emailrecover}
+                onChange={(e)=>{setEmailrecover(e.target.value)}}
               />
             </div>
-            <button type="submit" whileTap={{ scale: 0.9 }}>
-              <Translate>Password Recovery</Translate>
+            <button type="submit" onClick={recoverEmail} whileTap={{ scale: 0.9 }}>
+              {
+                process ?(<>
+                              <Translate>Password Recovery</Translate>
+
+                </>):(
+                  <>
+                                                <Translate>Verifying....</Translate>
+
+                  </>
+                )
+              }
             </button>
             </form>
             </>
@@ -160,6 +225,8 @@ export default function LoginForm() {
         }
        
       </Translator>
+    
+
     </>
   );
 }

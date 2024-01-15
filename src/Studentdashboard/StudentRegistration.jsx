@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Register.css';
-
+import { jwtDecode } from "jwt-decode";
+import axios from 'axios';
 function StudentRegistration() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -8,27 +9,38 @@ function StudentRegistration() {
   const [existingPassword, setExistingPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [userId, setUserId]=useState("")
+  const [student, setStudent]=useState("")
 
   const [errors, setErrors] = useState({});
+
+
+  useEffect(() => {
+    const personId = localStorage.getItem("userId");
+    if (personId) {
+      const decoded = jwtDecode(personId);
+      setUserId(decoded.id);
+      fetchUserInfo();
+    }
+  }, [userId]);
+  
+  const fetchUserInfo = () => {
+    axios.get(`http://localhost:3003/studentbyid/${userId}`)
+      .then(res => {
+        if (res.data.status === true) {
+          setStudent(res.data.student);
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching user info:", error);
+      });
+  };
+  
 
   const handleSave = () => {
     const errors = {};
 
-    if (!firstName.trim()) {
-      errors.firstName = 'First name is required';
-    }
-
-    if (!lastName.trim()) {
-      errors.lastName = 'Last name is required';
-    }
-
-    if (!email.trim()) {
-      errors.email = 'Email is required';
-    }
-
-    if (!existingPassword.trim()) {
-      errors.existingPassword = 'Existing password is required';
-    }
+   
 
     if (!newPassword.trim()) {
       errors.newPassword = 'New password is required';
@@ -39,8 +51,14 @@ function StudentRegistration() {
     }
 
     if (Object.keys(errors).length === 0) {
-      // Perform save operation or API call here
-      console.log('Form is valid. Perform save operation.');
+      console.log(Object.keys(errors).length)
+      if (Object.keys(errors).length === 0) {
+        axios.put(`http://localhost:3003/api/putstudent/${userId}`,{
+        password :newPassword
+        })
+      } else {
+        setErrors(errors);
+      }      console.log('Form is valid. Perform save operation.');
     } else {
       // Update the state with validation errors
       setErrors(errors);
@@ -55,43 +73,40 @@ function StudentRegistration() {
           <form>
             <label className="foam-label">First name</label>
             <input
-              className={`registinput ${errors.firstName ? 'error-border' : ''}`}
+              className="registinput"
               type="text"
               placeholder="Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={student.firstName}
+              readOnly
             />
-            {errors.firstName && <div className="error-message">{errors.firstName}</div>}
 
             <label className="foam-label">Last name</label>
             <input
-              className={`registinput ${errors.lastName ? 'error-border' : ''}`}
+              className='registinput'
               type="text"
               placeholder="Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={student.lastName}
+              readOnly
             />
-            {errors.lastName && <div className="error-message">{errors.lastName}</div>}
 
             <label className="foam-label">Email</label>
             <input
-              className={`registinput ${errors.email ? 'error-border' : ''}`}
+              className='registinput'
               type="email"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={student.Email}
+              readOnly
             />
-            {errors.email && <div className="error-message">{errors.email}</div>}
 
             <label className="foam-label">Existing password</label>
             <input
-              className={`registinput ${errors.existingPassword ? 'error-border' : ''}`}
+              className='registinput'
               type="text"
               placeholder="Existing Password"
-              value={existingPassword}
+              value={student.password}
               onChange={(e) => setExistingPassword(e.target.value)}
+              readOnly
             />
-            {errors.existingPassword && <div className="error-message">{errors.existingPassword}</div>}
 
             <label className="foam-label">New password</label>
             <input

@@ -7110,6 +7110,15 @@ padding-bottom: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 60%;
+}
+@media (max-width : 1000px) {
+  .dobs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 }
 .dpbtn{
   width: 100%;
