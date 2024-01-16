@@ -165,6 +165,7 @@ export default function PopularCourses({ language }) {
             {
               courseId: purchase._id,
               lessonIndex: 0,
+              language:coulan
             },
           ],
           fullName: cardholderName,
@@ -172,7 +173,6 @@ export default function PopularCourses({ language }) {
           price: purchase.price,
           address: billingAddress,
           zip: zip,
-          language: coulan,
         }
       );
       

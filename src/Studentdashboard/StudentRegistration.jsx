@@ -53,7 +53,7 @@ function StudentRegistration() {
     if (Object.keys(errors).length === 0) {
       console.log(Object.keys(errors).length)
       if (Object.keys(errors).length === 0) {
-        axios.put(`https://server-of-united-eldt.vercel.app/api/putstudent/${userId}`,{
+        axios.put(`http://localhost:3003/api/putstudent/${userId}`,{
         password :newPassword
         })
       } else {
