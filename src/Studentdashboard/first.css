@@ -1,0 +1,14 @@
+.mainlabel{
+    padding: 8px;
+    color: #2C292A;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 160%; /* 25.6px */
+letter-spacing: 0.8px;
+}
+.accordion-button:not(.collapsed){
+    background-color: #F5F5F5 !important;
+    color: black !important;
+}

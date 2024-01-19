@@ -68,7 +68,7 @@ function StudentRegistration() {
   return (
     <>
       <div className="main-contain-regist">
-        <div className="card-head">My Account</div>
+        <div className="card-head">My courses</div>
         <div className="card-body">
           <form>
             <label className="foam-label">First name</label>

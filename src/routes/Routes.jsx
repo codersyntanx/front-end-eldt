@@ -45,8 +45,22 @@ import LessonDataEditor from "../pages/Instrcutor/LessonDataEditor.jsx";
 import CreateLessonUpdated from "../pages/Instrcutor/Lesson/CreateLessonUpdated";
 import Homepage from "../Studentdashboard/Homepage";
 import AddLessonForm from "./AddLessonForm";
+import { jwtDecode } from "jwt-decode";
+import { useEffect, useState } from "react";
+import Studypage from "../Studentdashboard/Studypage.jsx";
+import Quize from "./Quiz.jsx";
+import QuizLesson from "../Studentdashboard/QuizLessons.jsx";
 
 const AppRoutes = () => {
+  const [userId, setUserId]=useState(null)
+
+  useEffect(() => {
+    const personId = localStorage.getItem("userId");
+    if (personId) {
+      const decoded = jwtDecode(personId);
+      setUserId(decoded);
+    }
+  }, []);
   return (
     <Router>
       <div
@@ -71,6 +85,18 @@ const AppRoutes = () => {
              <AddLessonForm/>
             }
           />
+        {
+  userId !== null ? (
+    <Route
+      path="/quiz/:id"
+      element={
+        <QuizLesson />
+      }
+    />
+  ) : (
+    <></>
+  )
+}
           <Route
             path="/"
             element={
@@ -85,7 +111,12 @@ const AppRoutes = () => {
                 <AuthenticationStudent />
             }
           />
-
+<Route
+            path="/quiz"
+            element={
+                <Quize />
+            }
+          />
           <Route
             path="/authentication/instructor"
             element={
@@ -94,6 +125,18 @@ const AppRoutes = () => {
               </HeaderFooter>
             }
           />
+{
+  userId !== null ? (
+    <Route
+      path="/StudentLesson/:id"
+      element={
+        <Studypage />
+      }
+    />
+  ) : (
+    <></>
+  )
+}
 
           <Route
             path="/authentication/admin"

@@ -172,8 +172,8 @@ const recoverEmail = async (e) => {
  
   <img src={successmsg} alt="success"/>
   </div>
-  <span className="message" style={{marginTop:"24px"}}>Your password has been successfully sent to your email.</span><br></br>
-  <span className="exp" >Please enter your email inbox and access the password reset email we sent you. With this, you will be able to change your password.</span>
+  <span className="message" style={{marginTop:"24px"}}> <Translate>Your password has been successfully sent to your email. </Translate></span><br></br>
+  <span className="exp" > <Translate>Please enter your email inbox and access the password reset email we sent you. With this, you will be able to change your password.</Translate></span>
 </div>
             </>
           ):error?(
@@ -183,8 +183,8 @@ const recoverEmail = async (e) => {
  
   <img src={errormsg} alt="success"/>
   </div>
-  <span className="message" style={{marginTop:"24px"}}>This Email is not been registered</span><br></br>
-  <span className="exp" >Please enter the valid email to recover your account</span>
+  <span className="message" style={{marginTop:"24px"}}> <Translate>This Email is not been registered </Translate></span><br></br>
+  <span className="exp" > <Translate>Please enter the valid email to recover your account </Translate></span>
 </div>
             </>
           ):(

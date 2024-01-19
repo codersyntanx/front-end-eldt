@@ -101,6 +101,7 @@ export default function PopularCourses({ language }) {
   const [succ, setSucc]=useState(false)
   const [err, setErr]=useState(false)
   const [coulan, setCoulan]=useState("English")
+  const [plans, setPlans] = useState([]);
 
 
 
@@ -143,7 +144,7 @@ export default function PopularCourses({ language }) {
   const stripe = useStripe();
   const elements = useElements();
 
-  const openNotification = (type, message, description) => {
+  const openNotification = (type, message) => {
     notification[type]({
       message,
       description,
@@ -156,37 +157,43 @@ export default function PopularCourses({ language }) {
   const handlePayment = async () => {
     try {
       setLoading(false);
-
+  
+      // Basic validation
+      if (!cardholderName || !email || !billingAddress || !zip) {
+        openNotification("error", 'Please fill in all required fields.');
+        return;
+      }
+  
       const response = await axios.post(
-        'https://server-of-united-eldt.vercel.app/api/create-payment-intents',
+        'http://localhost:3003/api/create-payment-intents',
         {
           amount: purchase.price,
           courseEnrollments: [
             {
               courseId: purchase._id,
               lessonIndex: 0,
-              language:coulan
+              language: purchase.language,
             },
           ],
           fullName: cardholderName,
-          Email: email,
+          Email: email, 
           price: purchase.price,
           address: billingAddress,
           zip: zip,
         }
       );
-      
+  
       if (response.status === 200) {
         const confirmPayment = await stripe.confirmCardPayment(response.data.clientSecret, {
           payment_method: {
             card: elements.getElement(CardNumberElement),
           },
         });
-
+  
         if (confirmPayment.paymentIntent.status === 'succeeded') {
           console.log('Payment confirmed');
           setModalVisible(false);
-          visibleModal()
+          visibleModal();
         } else {
           throw new Error('Payment failed. Please try again.');
         }
@@ -195,13 +202,14 @@ export default function PopularCourses({ language }) {
       }
     } catch (error) {
       console.error('Payment error:', error.message);
-
-      errModal()
-      setModalVisible(false)
-        } finally {
+  
+      errModal();
+      setModalVisible(false);
+    } finally {
       setLoading(true);
     }
   };
+  
   const godown =()=>{
     window.scrollTo({
       top: window.scrollY + 150,
@@ -210,56 +218,41 @@ export default function PopularCourses({ language }) {
   }
 
   const handleLanguageChange = (selectedOption, planId) => {
-    
+    // Update language in state
     setCoulan(selectedOption.value);
   
-    // Update languageOptions with the selected planId
-    const updatedLanguageOptions = languageOptions.map(option => ({
-      ...option,
-      planId: option.value === selectedOption.value ? planId : option.planId,
-    }));
+    // Find the index of the plan with the specified planId
+    const planIndex = plans.findIndex(plan => plan._id === planId);
   
-    // setLanguageOptions(updatedLanguageOptions);
+    if (planIndex !== -1) {
+      // Create a copy of the plans array to avoid mutating state directly
+      const updatedPlans = [...plans];
   
-    // Check if the selected planId matches the specific plan you want to modify
-    if (planId === "6575df568a262c6b6a5e154e") {
-      // Check if the selected language is French or Urdu
-      if (selectedOption.value === 'French' || selectedOption.value === 'Urdu' || selectedOption.value === 'Arabic' || selectedOption.value === 'Indian') {
-        // Update the price of the plan with the specified index
-        const updatedPlans = plans.map((plan, index) => {
-          if (index === 0) {
-            // Change the price to 5000 for French or Urdu
-            return { ...plan, price: 5000 };
-          }
-          return plan;
-        });
-  
-        // Update the state with the modified plans
-        setPlans(updatedPlans);
-      }else{
-        const updatedPlans = plans.map((plan, index) => {
-          if (index === 0) {
-            // Change the price to 5000 for French or Urdu
-            return { ...plan, price: 3000 };
-          }
-          return plan;
-        });
-  
-        // Update the state with the modified plans
-        setPlans(updatedPlans);
+      // If language property doesn't exist in the plan, add it
+      if (!updatedPlans[planIndex].language) {
+        updatedPlans[planIndex].language = selectedOption.value;
+      } else {
+        // Update the language of the plan with the specified planId
+        updatedPlans[planIndex] = {
+          ...updatedPlans[planIndex],
+          language: selectedOption.value,
+        };
       }
-    }
   
-    console.log(planId);
+      // Update the state with the modified plans
+      setPlans(updatedPlans);
+      console.log(updatedPlans);
+    }
   };
   
   
+  
+  
 
-  const [plans, setPlans] = useState([]);
 
   
   useEffect(() => {
-    axios.get("https://server-of-united-eldt.vercel.app/api/mainplans").then((res) => {
+    axios.get("http://localhost:3003/api/courses").then((res) => {
       setPlans(res.data);
     });
   }, []);

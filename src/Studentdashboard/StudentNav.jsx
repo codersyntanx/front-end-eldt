@@ -2,16 +2,49 @@ import "./studentdashcss.css"
 import logo from "./Logo (2).svg"
 import StudentRegistration from "./StudentRegistration";
 import Progre from "./Progre";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState,useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Lesson from "./Lesson";
 import CourseList from "./CourseList";
+import Coursedetail from "./Coursedetail";
+import { jwtDecode } from "jwt-decode";
+import axios from 'axios';
 function StudentNav (){
-    const [selectedPage, setSelectedPage] = useState('courses');
+    const [selectedPage, setSelectedPage] = useState("");
+    const [loca, setLoca]=useState("")
+    const navigate = useNavigate()
     const handleNavigationClick = (page) => {
       setSelectedPage(page);
     };
-  
+
+    const [userId, setUserId]=useState("")
+
+  useEffect(() => {
+    const personId = localStorage.getItem("userId");
+    if (personId) {
+      const decoded = jwtDecode(personId);
+      setUserId(decoded.id);
+    }else{
+      navigate("/")
+    }
+  }, [userId]);
+    useEffect(()=>{
+      axios.get(`http://localhost:3003/studentbyid/${userId}`)
+      .then(res => {
+        if (res.data.status === true) {
+          if (!res.data.student.firstName){
+            setSelectedPage("courses")
+            setLoca("courses")
+          }else{
+            setSelectedPage("information")
+            setLoca("information")
+          }
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching user info:", error);
+      });
+    },[userId])
     const renderPage = () => {
       switch (selectedPage) {
 
@@ -19,6 +52,8 @@ function StudentNav (){
           return <CourseList/>;
         case 'courses':
           return <Progre />;
+          case 'information':
+          return <Coursedetail />;
         case 'myaccount':
           return <StudentRegistration />;
         case 'homepage':
@@ -37,7 +72,7 @@ function StudentNav (){
 </div>
 <div className="Navbar_Links">
     <ul>
-        <li className={`mainlink ${selectedPage === 'courses' ? 'activateding' : ''}`} onClick={() => handleNavigationClick('courses')}>
+        <li className={`mainlink ${selectedPage === 'courses' ? 'activateding' : ''}`} onClick={() => handleNavigationClick(loca)}>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
   <path d="M2.5 5.6001V11.8501" stroke="#696969" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M4.23438 17.4751C4.85974 16.5159 5.71451 15.7279 6.72128 15.1824C7.72804 14.637 8.85497 14.3513 10 14.3513C11.145 14.3513 12.272 14.637 13.2787 15.1824C14.2855 15.7279 15.1403 16.5159 15.7656 17.4751" stroke="#696969" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
