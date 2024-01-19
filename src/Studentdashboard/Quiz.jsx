@@ -39,7 +39,7 @@ console.log(chap)
         console.error('Error fetching questions:', error);
       }
     };
-
+// new lesson work
     fetchQuestions();
   };
 
