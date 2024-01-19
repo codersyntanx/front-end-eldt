@@ -21,6 +21,25 @@
     margin: auto;
     margin-top: 35px;
 }
+.quiz-head{
+    border-radius: 16px 16px 0px 0px;
+    display: flex;
+    padding: 12px 32px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    color: black;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    letter-spacing: 1px;
+    width: 80%;
+    margin: auto;
+    margin-top: 35px;
+background: #F5F5F5;   
+}
 .card-body{
     width: 80%;
     margin: auto;
@@ -68,4 +87,16 @@ margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.endbtn{
+    width: 100%;
+    border-radius: 8px;
+    background: #FBB723;
+    display: flex;
+    /* width: 1080px; */
+    height: 56px;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }

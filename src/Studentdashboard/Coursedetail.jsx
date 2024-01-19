@@ -150,7 +150,7 @@ function Coursedetail() {
                         <div className="progress-bar-container mainlabel d-flex align-items-center">
                          {course.studentProgress}
                           {course.courseName}
-                          <Link to={`/StudentLesson/${course.courseNameid}`}>
+                          <Link to={`/quiz/${course.courseNameid}`}>
                           <button className="btn btn-warning">Open</button></Link>
 
                         </div>

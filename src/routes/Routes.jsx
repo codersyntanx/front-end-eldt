@@ -48,7 +48,7 @@ import AddLessonForm from "./AddLessonForm";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import Studypage from "../Studentdashboard/Studypage.jsx";
-import Quize from "./Quiz.jsx";
+import Quize from "../Studentdashboard/Quiz.jsx";
 import QuizLesson from "../Studentdashboard/QuizLessons.jsx";
 
 const AppRoutes = () => {
@@ -97,6 +97,18 @@ const AppRoutes = () => {
     <></>
   )
 }
+{
+  userId !== null ? (
+    <Route
+      path="/test/:index/:chap"
+      element={
+        <Quize />
+      }
+    />
+  ) : (
+    <></>
+  )
+}
           <Route
             path="/"
             element={
@@ -111,12 +123,7 @@ const AppRoutes = () => {
                 <AuthenticationStudent />
             }
           />
-<Route
-            path="/quiz"
-            element={
-                <Quize />
-            }
-          />
+
           <Route
             path="/authentication/instructor"
             element={
