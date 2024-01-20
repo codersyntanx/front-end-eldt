@@ -28,15 +28,7 @@ function Coursedetail() {
         console.error("Error fetching user info:", error);
       });
   };
-  const chartData = {
-    datasets: [
-      {
-        data: uncomp.map(course => course.completedChapters),
-        backgroundColor: ['yellow', 'lightgrey', 'lightgrey', 'lightgrey', 'lightgrey'], // Add more colors as needed
-      },
-    ],
-    labels: uncomp.map(course => course.courseName),
-  };
+
   return (
     <div>
       <style>
@@ -108,11 +100,18 @@ function Coursedetail() {
                 <div class="accordion-body">
                   <span>
                     {uncomp.map((course) => (
+                     
                       <>
+                      
                         <div className="progress-bar-container mainlabel d-flex align-items-center">
-                         {course.studentProgress}
+                          <div className="graph"><div className="progressrange"
+                        style={{
+                          width: `${course.studentProgress}`
+                        }}
+                          ></div></div>
+                        
                           {course.courseName}
-                          <Link to={`/StudentLesson/${course.courseNameid}`}>
+                          <Link to={`/Alllessons/${course.courseNameid}`}>
                           <button className="btn btn-warning">Open</button></Link>
 
                         </div>

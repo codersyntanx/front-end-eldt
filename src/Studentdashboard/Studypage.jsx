@@ -14,9 +14,11 @@ function Studypage() {
   const [studentprogress, setStudentprogress] = useState([]);
   const [chapti, setChapti] = useState("Select Lesson");
   const { id } = useParams();
+  const {index}=useParams()
+
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const [chapterIndex, setChapterIndex] = useState(2);
+  const [chapterIndex, setChapterIndex] = useState(index);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const handleChapterClick = (index, title) => {

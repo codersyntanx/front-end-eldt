@@ -50,6 +50,7 @@ import { useEffect, useState } from "react";
 import Studypage from "../Studentdashboard/Studypage.jsx";
 import Quize from "../Studentdashboard/Quiz.jsx";
 import QuizLesson from "../Studentdashboard/QuizLessons.jsx";
+import Allchap from "../Studentdashboard/Allchap.jsx";
 
 const AppRoutes = () => {
   const [userId, setUserId]=useState(null)
@@ -109,6 +110,18 @@ const AppRoutes = () => {
     <></>
   )
 }
+{
+  userId !== null ? (
+    <Route
+      path="/Alllessons/:id"
+      element={
+        <Allchap/>
+      }
+    />
+  ) : (
+    <></>
+  )
+}
           <Route
             path="/"
             element={
@@ -135,7 +148,7 @@ const AppRoutes = () => {
 {
   userId !== null ? (
     <Route
-      path="/StudentLesson/:id"
+      path="/StudentLesson/:id/:index"
       element={
         <Studypage />
       }

@@ -4,15 +4,15 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import Navba from "./Navba";
 import "./quizles.css"
-function QuizLesson(){
+function Allchap(){
     const { id } = useParams();
     const [chaptertitles, setChaptertitles] = useState([]);
     const [userId, setUserId] = useState("");
     const [studentprogress, setStudentprogress] = useState([]);
     const [coursename, setCoursename] = useState([]);
     const navigate = useNavigate()
-    const changepage =(index,chap)=>{
-navigate(`/test/${id}/${index}`)
+    const changepage =(index)=>{
+navigate(`/StudentLesson/${id}/${index}`)
     }
     useEffect(() => {
       const personId = localStorage.getItem("userId");
@@ -103,4 +103,4 @@ navigate(`/test/${id}/${index}`)
         </>
     )
 }
-export default QuizLesson
+export default Allchap

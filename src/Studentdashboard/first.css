@@ -12,3 +12,18 @@ letter-spacing: 0.8px;
     background-color: #F5F5F5 !important;
     color: black !important;
 }
+.graph{
+    width: 63px;
+    height: 63px;
+    background-color: grey;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.progressrange{
+   
+    background-color: yellow;
+   
+    
+}
