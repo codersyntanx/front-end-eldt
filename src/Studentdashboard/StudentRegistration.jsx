@@ -25,7 +25,7 @@ function StudentRegistration() {
   }, [userId]);
   
   const fetchUserInfo = () => {
-    axios.get(`http://localhost:3003/studentbyid/${userId}`)
+    axios.get(`https://server-of-united-eldt.vercel.app/api/studentbyid/${userId}`)
       .then(res => {
         if (res.data.status === true) {
           setStudent(res.data.student);
@@ -53,7 +53,7 @@ function StudentRegistration() {
     if (Object.keys(errors).length === 0) {
       console.log(Object.keys(errors).length)
       if (Object.keys(errors).length === 0) {
-        axios.put(`http://localhost:3003/api/putstudent/${userId}`,{
+        axios.put(`https://server-of-united-eldt.vercel.app/api/putstudent/${userId}`,{
         password :newPassword
         })
       } else {

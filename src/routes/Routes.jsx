@@ -166,6 +166,7 @@ const AppRoutes = () => {
               </HeaderFooter>
             }
           />
+          
 
           <Route
             path="/forgot-password"

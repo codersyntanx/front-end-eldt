@@ -165,7 +165,7 @@ export default function PopularCourses({ language }) {
       }
   
       const response = await axios.post(
-        'http://localhost:3003/api/create-payment-intents',
+        'https://server-of-united-eldt.vercel.app/api/create-payment-intents',
         {
           amount: purchase.price,
           courseEnrollments: [
@@ -252,7 +252,7 @@ export default function PopularCourses({ language }) {
 
   
   useEffect(() => {
-    axios.get("http://localhost:3003/api/courses").then((res) => {
+    axios.get("https://server-of-united-eldt.vercel.app/api/courses").then((res) => {
       setPlans(res.data);
     });
   }, []);

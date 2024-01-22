@@ -3,6 +3,7 @@ import "./first.css";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import DoughnutChart from "./DoughnutChart"
 function Coursedetail() {
   const [userId, setUserId] = useState("");
   const [comp, setComp] = useState([]);
@@ -19,7 +20,7 @@ function Coursedetail() {
 
   const fetchUserInfo = () => {
     axios
-      .get(`http://localhost:3003/api/student/${userId}/courses`)
+      .get(`https://server-of-united-eldt.vercel.app/api/student/${userId}/courses`)
       .then((res) => {
         setComp(res.data.completedCourses);
         setUncomp(res.data.uncompletedCourses);
@@ -43,6 +44,10 @@ function Coursedetail() {
             border-radius: 16px;
             background: #F5F5F5;
           }
+          .accordion-body{
+            border-top: 1px solid #DBDBDB;
+
+          }
           .accordion-item{
             border-radius: 16px;
             border:none;
@@ -56,7 +61,7 @@ function Coursedetail() {
           .progress-bar-container {
             display: flex;
             align-items: center;
-            overflow: hidden;
+            justify-content:space-between;
           }
           .progress-bar {
             height: 20px;
@@ -99,20 +104,17 @@ function Coursedetail() {
               >
                 <div class="accordion-body">
                   <span>
-                    {uncomp.map((course) => (
+                
+                    {uncomp.map((course,index) => (
                      
                       <>
                       
                         <div className="progress-bar-container mainlabel d-flex align-items-center">
-                          <div className="graph"><div className="progressrange"
-                        style={{
-                          width: `${course.studentProgress}`
-                        }}
-                          ></div></div>
-                        
-                          {course.courseName}
+
+                                                {course.courseName}
+
                           <Link to={`/Alllessons/${course.courseNameid}`}>
-                          <button className="btn btn-warning">Open</button></Link>
+                          <div className="warning">Open</div></Link>
 
                         </div>
                       </>
@@ -133,7 +135,7 @@ function Coursedetail() {
                   aria-expanded="true"
                   aria-controls="collapsetwo"
                 >
-                  <label className="mainlabel">Courses - Actives</label>
+                  <label className="mainlabel">Practice Tests</label>
                 </button>
               </h2>
               <div
@@ -149,9 +151,47 @@ function Coursedetail() {
                         <div className="progress-bar-container mainlabel d-flex align-items-center">
                          {course.studentProgress}
                           {course.courseName}
+                          
                           <Link to={`/quiz/${course.courseNameid}`}>
-                          <button className="btn btn-warning">Open</button></Link>
-
+                          <div className="warning">Open</div></Link>
+                        </div>
+                      </>
+                    ))}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingthree">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapsethree"
+                  aria-expanded="true"
+                  aria-controls="collapsethree"
+                >
+                  <label className="mainlabel">Courses - Completed</label>
+                </button>
+              </h2>
+              <div
+                id="collapsethree"
+                class="accordion-collapse collapse"
+                aria-labelledby="collapsethree"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <span>
+                    {comp.map((course) => (
+                      <>
+                        <div className="progress-bar-container mainlabel d-flex align-items-center">
+                         {course.studentProgress}
+                          {course.courseName}
+                          
+                          <Link to={`/quiz/${course.courseNameid}`}>
+                          <div className="warning">Certificate</div></Link>
                         </div>
                       </>
                     ))}

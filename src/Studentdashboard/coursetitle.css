@@ -17,6 +17,11 @@ font-weight: 700;
 line-height: 120%; /* 24px */
 letter-spacing: 1px;
 display: flex;
+align-items: center;
+
+    }
+    .titles .pagelen{
+        margin: auto;
     }
     .main-contain- {
         width: 90%;
@@ -64,12 +69,40 @@ background: #F5F5F5;
     }
     .nextbtn{
     position: absolute;
-    right: 20px;
+    right: 0px;
     top: 300px;
+    cursor: pointer;
 }
 .prebtn{
     position: absolute;
     /* top: 50%; */
     top: 300px;
     left: 0px;
+    cursor: pointer;
 }
+.mainbarcover {
+    height: 10px;
+    border-radius: 10px;
+    background: #c9c8c5;
+    width: 400px;
+    overflow: hidden; /* Ensures the child element doesn't overflow */
+  }
+  
+  .bari {
+    border-radius: 10px;
+    background-color: #fbb723;
+    height: 100%;
+  }
+  /* CSS */
+.volume-control {
+    margin-top: 10px; /* Adjust the margin as needed */
+    display: flex;
+    align-items: center;
+  }
+  
+  .volume-control label {
+    margin-right: 10px;
+  }
+  .contentdiv{
+    padding: 40px;
+  }

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import "./coursetitle.css";
-import { Switch, Slider } from 'antd';
+import { Switch, Slider, Progress, Modal } from 'antd';
 import Navba from "./Navba";
 
 function Studypage() {
@@ -13,6 +13,9 @@ function Studypage() {
   const [chaptertitles, setChaptertitles] = useState([]);
   const [studentprogress, setStudentprogress] = useState([]);
   const [chapti, setChapti] = useState("Select Lesson");
+  const [autoSpeakingProgress, setAutoSpeakingProgress] = useState(0);
+  const [volume, setVolume] = useState(1); 
+
   const { id } = useParams();
   const {index}=useParams()
 
@@ -20,6 +23,7 @@ function Studypage() {
   const [totalPages, setTotalPages] = useState(0);
   const [chapterIndex, setChapterIndex] = useState(index);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleChapterClick = (index, title) => {
     setChapterIndex(index);
@@ -31,12 +35,13 @@ function Studypage() {
 
   const handleNextPageClick = () => {
     stopSpeaking();
-
+  
     if (currentPageIndex < totalPages - 1) {
       setCurrentPageIndex((prevIndex) => prevIndex + 1);
       setPage(chapters[chapterIndex].pages[currentPageIndex + 1]);
-    }
+    } 
   };
+  
 
   const handlePreviousPageClick = () => {
     stopSpeaking();
@@ -58,7 +63,7 @@ function Studypage() {
       if (userId) {
       const fetchData = async () => {
         try {
-          const response = await axios.get(`http://localhost:3003/getCourseChapters/${userId}/${id}`);
+          const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getCourseChapters/${userId}/${id}`);
           setChapters(response.data.chapters);
           setStudentprogress(response.data.studentProgress);
           fetchChaptersTitles();
@@ -89,17 +94,27 @@ function Studypage() {
   const speakText = () => {
     const speechSynthesis = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(page.description);
-
-    // Optional: Set additional properties for the utterance, e.g., rate, pitch, etc.
-    // utterance.rate = 1.0;
-
+  
+    utterance.onend = () => {
+      setIsSpeaking(false);
+      setAutoSpeakingProgress(100);
+    };
+  
+    utterance.onboundary = (event) => {
+      const progressPercentage = (event.charIndex / page.description.length) * 100;
+      setAutoSpeakingProgress(progressPercentage);
+    };
+  
     speechSynthesis.speak(utterance);
     setIsSpeaking(true);
   };
+  
   const stopSpeaking = () => {
     window.speechSynthesis.cancel();
     setIsSpeaking(false);
+    setAutoSpeakingProgress(0);
   };
+  
 
   useEffect(() => {
     return () => {
@@ -108,7 +123,7 @@ function Studypage() {
   }, []);
   const fetchChaptersTitles = async () => {
     try {
-      const response = await axios.get(`http://localhost:3003/getChapterTitles/${userId}/${id}`);
+      const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getChapterTitles/${userId}/${id}`);
       setChaptertitles(response.data.chapters);
       if (response.data.chapters.length > 0) {
         setChapti(response.data.chapters[chapterIndex].title);
@@ -126,16 +141,31 @@ function Studypage() {
   <span>Progress: {studentprogress.progressPercentage}%</span>
 </div>
 <button className="prebtn" onClick={handlePreviousPageClick} disabled={currentPageIndex === 0}>
-              Previous
+              <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86" viewBox="0 0 86 86" fill="none">
+  <path d="M53.75 69.875L26.875 43L53.75 16.125" stroke="#2C292A" stroke-width="9.55556" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
             </button>
         <div className="main-contain-">
-          <div className="card-head">Registration <Switch
+          <div className="card-head">Read along<Switch
   checked={isSpeaking}
   onChange={handleToggleSpeech}
   checkedChildren=""
   unCheckedChildren=""
+  style={{ background: isSpeaking ? '#FBB723' : '#FFFFFF', border: isSpeaking ? '#FBB723' : '#C9C8C5' }}
 />
 
+Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_2606_46918)">
+    <path d="M20.3546 11.01C20.8248 11.333 20.8248 12.0271 20.3546 12.3501L8.37728 20.5777C7.83786 20.9483 7.10404 20.5621 7.10404 19.9076L7.10403 11.6801L7.10404 3.45247C7.10404 2.79804 7.83787 2.41185 8.37728 2.78239L20.3546 11.01Z" fill="white"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_2606_46918">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg> <div className="mainbarcover">
+  <div className="bari" style={{ width: `${autoSpeakingProgress}%` }}></div>
+</div>
 </div>
           <div className="card-con">
             <div className="titles">
@@ -180,27 +210,42 @@ function Studypage() {
                 ))}
               </div>
             </div>  
-            <div className="mx-auto d-flex align-items-center gap-2">
+            <div className="pagelen d-flex align-items-center gap-2">
                   <span className="activepage">{currentPageIndex + 1}</span>  of <span className="totalpage">{totalPages}</span>
       
             </div>
           
             </div>
-          
-            <div className="p-3" dangerouslySetInnerHTML={{ __html: page.description }} />
-            <div className="page-navigation">
-          
-            <button onClick={handleToggleSpeech}>
-          {isSpeaking ? "Stop Speaking" : "Start Speaking"}
-        </button>
-           
+          <div className="contentdiv d-flex">
+   <div className="p-3" dangerouslySetInnerHTML={{ __html: page.description }} />
+   {page.image !== "" ? (
+  <img src={page.image} alt="explainimage" style={{ width: '100%', height: '100%' }} />
+) : (
+  <></>
+)}
+
+
           </div>
+         
+
           </div>
         </div>
         <button className="nextbtn" onClick={handleNextPageClick} disabled={currentPageIndex === totalPages - 1}>
-              Next
+              <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86" viewBox="0 0 86 86" fill="none">
+  <path d="M32.25 16.125L59.125 43L32.25 69.875" stroke="#2C292A" stroke-width="9.55556" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
             </button>
+            <Modal
+  title="Information"
+  open={modalVisible}
+  onOk={() => setModalVisible(false)}
+  onCancel={() => setModalVisible(false)}
+  footer={null}
+>
+ hello this chapter is been completed
+</Modal>
       </div>
+      
     );
   }
   

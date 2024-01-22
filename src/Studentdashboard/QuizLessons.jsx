@@ -24,7 +24,7 @@ navigate(`/test/${id}/${index}`)
         const fetchData = async () => {
           try {
 
-            const response = await axios.get(`http://localhost:3003/getCourseChapters/${userId}/${id}`);
+            const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getCourseChapters/${userId}/${id}`);
             setStudentprogress(response.data.studentProgress);
             setCoursename(response.data.courseName);
             fetchChaptersTitles();
@@ -40,7 +40,7 @@ navigate(`/test/${id}/${index}`)
     }, [userId]);
         const fetchChaptersTitles = async () => {
             try {
-              const response = await axios.get(`http://localhost:3003/getChapterTitles/${userId}/${id}`);
+              const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getChapterTitles/${userId}/${id}`);
               setChaptertitles(response.data.chapters);
              
             } catch (error) {
@@ -51,9 +51,9 @@ navigate(`/test/${id}/${index}`)
         <>
         <div className="main-body">
           <Navba/>
-          <div className="progressgra d-flex" style={{color:"grey"}}>
+          <div className="progressgra d-flex text-center" style={{color:"black",background: "#C9C8C5"}}>
   <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}></div>
-  <span>Progress: {studentprogress.progressPercentage}%</span>
+  <span> {studentprogress.progressPercentage}%</span>
 </div>
 <div className="card-hea">My courses</div>
         <div className="card-body">
@@ -65,6 +65,7 @@ navigate(`/test/${id}/${index}`)
   <div className="circlepro">
   <span >{studentprogress.progressPercentage}%</span></div>
 </div>
+<div className="wraperofitems">
           {chaptertitles.map((chapter, index) => (
               <div
               key={index}
@@ -98,7 +99,7 @@ navigate(`/test/${id}/${index}`)
                     )}
                   </div>
                 ))}
-             </div>
+             </div></div>
              </div> 
         </>
     )

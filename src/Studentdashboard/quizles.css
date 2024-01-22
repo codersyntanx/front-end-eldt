@@ -65,6 +65,7 @@ padding-top: 35px;
     align-items: center;
     height: 65px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 .lastsvg{
     margin-right: 10px;
@@ -87,6 +88,9 @@ margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    bottom: 16px;
+    right: 5px;
 }
 .endbtn{
     width: 100%;
@@ -99,4 +103,71 @@ margin-bottom: 20px;
     justify-content: center;
     align-items: center;
     gap: 8px;
+}
+.wraperofitems{
+    height: 380px;
+    overflow-y:auto ;
+}
+.wraperofitems::-webkit-scrollbar {
+    width: 0px; /* Set the width of the scrollbar */
+  }
+  
+  .wraperofitems::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Set the color of the scrollbar thumb (scroll handle) */
+    border-radius: 6px; /* Optional: Set the border radius for a rounded thumb */
+  }
+  
+  .wraperofitems::-webkit-scrollbar-track {
+    background-color: transparent; /* Set the color of the scrollbar track (the area behind the thumb) */
+  }
+  .modal-content-center{
+    text-align: center;
+   margin: auto;
+   padding: 50px;
+
+  }
+  .modal-content-center svg{
+    margin: auto;
+    padding-top: 20px;
+
+  }
+
+  .bold-content{
+    color: #0A0A0A;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 140%; /* 28px */
+  }
+  .light-content{
+    color: #696969;
+text-align: center;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 142.857% */
+padding-top: 20px;
+
+  }
+  .download-button{
+    display: flex;
+height: 56px;
+padding: 24px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-radius: 8px;
+background: #FBB723;
+color: #2C292A;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 150% */
+letter-spacing: 0.32px;
+margin: auto;
+padding-top: 20px;
 }

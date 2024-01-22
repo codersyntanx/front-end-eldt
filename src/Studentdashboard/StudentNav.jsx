@@ -29,7 +29,7 @@ function StudentNav (){
     }
   }, [userId]);
     useEffect(()=>{
-      axios.get(`http://localhost:3003/studentbyid/${userId}`)
+      axios.get(`https://server-of-united-eldt.vercel.app/api/studentbyid/${userId}`)
       .then(res => {
         if (res.data.status === true) {
           if (!res.data.student.firstName){
@@ -65,14 +65,14 @@ function StudentNav (){
       }
     };
   return(
-    <div className="d-flex">
+    <div className="d-flex mainstudentdiv">
     <div className="main-nav">
         <div className="logo_wraper">
 <img src={logo} alt="complogo"/>
 </div>
 <div className="Navbar_Links">
     <ul>
-        <li className={`mainlink ${selectedPage === 'courses' ? 'activateding' : ''}`} onClick={() => handleNavigationClick(loca)}>
+        <li className={`mainlink ${selectedPage === 'courses' || selectedPage === 'information' ? 'activateding' : ''}`} onClick={() => handleNavigationClick(loca)}>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
   <path d="M2.5 5.6001V11.8501" stroke="#696969" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M4.23438 17.4751C4.85974 16.5159 5.71451 15.7279 6.72128 15.1824C7.72804 14.637 8.85497 14.3513 10 14.3513C11.145 14.3513 12.272 14.637 13.2787 15.1824C14.2855 15.7279 15.1403 16.5159 15.7656 17.4751" stroke="#696969" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
@@ -101,20 +101,7 @@ function StudentNav (){
   <path d="M8.125 17.4751H3.75C3.58424 17.4751 3.42527 17.4093 3.30806 17.292C3.19085 17.1748 3.125 17.0159 3.125 16.8501V4.3501C3.125 4.18434 3.19085 4.02537 3.30806 3.90816C3.42527 3.79095 3.58424 3.7251 3.75 3.7251H8.125" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>   Logout
         </li></Link>
-        <li className={` mainlink ${selectedPage === 'googledoc' ? 'activateding' : ''}`}  onClick={() => handleNavigationClick('googledoc')}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-  <path d="M13.5938 7.31885L16.875 10.6001L13.5938 13.8813" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M8.125 10.6001H16.875" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M8.125 17.4751H3.75C3.58424 17.4751 3.42527 17.4093 3.30806 17.292C3.19085 17.1748 3.125 17.0159 3.125 16.8501V4.3501C3.125 4.18434 3.19085 4.02537 3.30806 3.90816C3.42527 3.79095 3.58424 3.7251 3.75 3.7251H8.125" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>   Word docx
-        </li>
-        <li className={` mainlink ${selectedPage === 'googledoc' ? 'activateding' : ''}`}  onClick={() => handleNavigationClick('courselist')}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-  <path d="M13.5938 7.31885L16.875 10.6001L13.5938 13.8813" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M8.125 10.6001H16.875" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M8.125 17.4751H3.75C3.58424 17.4751 3.42527 17.4093 3.30806 17.292C3.19085 17.1748 3.125 17.0159 3.125 16.8501V4.3501C3.125 4.18434 3.19085 4.02537 3.30806 3.90816C3.42527 3.79095 3.58424 3.7251 3.75 3.7251H8.125" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>   Word docx
-        </li>
+        
 
     </ul>
 </div>
