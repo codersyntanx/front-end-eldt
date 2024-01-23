@@ -125,7 +125,7 @@ function Coursedetail() {
 </Space>
 
 
-                                                {course.courseName}
+                                            <span className="mx-3">{course.courseName}</span>    
                                                 </div>
                           <Link to={`/Alllessons/${course.courseNameid}`}>
                           <div className="warning">Open</div></Link>
@@ -173,7 +173,7 @@ function Coursedetail() {
     format={() => null}
   />
 </Space>
-                          {course.courseName}
+<span className="mx-3">{course.courseName}</span>    
                           </div>   
                           <Link to={`/quiz/${course.courseNameid}`}>
                           <div className="warning">Open</div></Link>
@@ -220,7 +220,7 @@ function Coursedetail() {
     format={() => null}
   />
 </Space>
-                          {course.courseName}
+<span className="mx-3">{course.courseName}</span>    
                           </div> 
                           <Link to={`/quiz/${course.courseNameid}`}>
                           <div className="warning">Certificate</div></Link>
