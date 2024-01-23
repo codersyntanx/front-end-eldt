@@ -48,9 +48,6 @@ const formonth =(day)=>{
       errors.firstName = 'First name is required';
     }
 
-    if (!middleName.trim()) {
-      errors.middleName = 'Middle name is required';
-    }
 
     if (!lastName.trim()) {
       errors.lastName = 'Last name is required';

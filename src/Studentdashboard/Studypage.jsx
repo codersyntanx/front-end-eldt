@@ -27,6 +27,8 @@ function Studypage() {
 
   const handleChapterClick = (index, title) => {
     setChapterIndex(index);
+    localStorage.setItem("chapindex", chapterIndex)
+    localStorage.setItem("lessonid", id)
     setChapti(title);
     setPage(chapters[index].pages[0]);
     setTotalPages(chapters[index].pages.length);

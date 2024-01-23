@@ -125,7 +125,7 @@ function Coursedetail() {
 </Space>
 
 
-                                            <span className="mx-3">{course.courseName}</span>    
+                                            <span className="mx-3">{course.courseName} - {course.courselangugae}</span>  
                                                 </div>
                           <Link to={`/Alllessons/${course.courseNameid}`}>
                           <div className="warning">Open</div></Link>
@@ -149,7 +149,7 @@ function Coursedetail() {
                   aria-expanded="true"
                   aria-controls="collapsetwo"
                 >
-                  <label className="mainlabel">Practice Tests</label>
+                  <label className="mainlabel">Quizzes</label>
                 </button>
               </h2>
               <div
@@ -173,7 +173,9 @@ function Coursedetail() {
     format={() => null}
   />
 </Space>
-<span className="mx-3">{course.courseName}</span>    
+<span className="mx-3">{course.courseName} - {course.courselangugae}</span>  
+
+
                           </div>   
                           <Link to={`/quiz/${course.courseNameid}`}>
                           <div className="warning">Open</div></Link>
@@ -220,7 +222,9 @@ function Coursedetail() {
     format={() => null}
   />
 </Space>
-<span className="mx-3">{course.courseName}</span>    
+<span className="mx-3">{course.courseName} - {course.courselangugae}</span>  
+   
+
                           </div> 
                           <Link to={`/quiz/${course.courseNameid}`}>
                           <div className="warning">Certificate</div></Link>

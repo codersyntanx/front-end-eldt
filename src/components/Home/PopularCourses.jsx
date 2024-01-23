@@ -547,7 +547,17 @@ export default function PopularCourses({ language }) {
       >
         <div className="mainblack">
           <span className="pricetxt">${purchase.price / 100}.00</span><br></br>
-          <span className="description"><span className="categoryi">{purchase.courseName} </span>- ELDT Theory certificate + 30-Day<br></br> Idiom English Prep (Monthly Subscription)</span>
+          <span className="description"><span className="categoryi">{purchase.courseName} </span>- 
+          {
+  purchase.language ? (
+    <> {purchase.language} </>
+  ) : (
+    <>English</>
+  )
+}
+
+          ELDT Theory certificate 
+          </span>
         </div>
         <div className="main-content">
           {/* Your payment form and input fields */}

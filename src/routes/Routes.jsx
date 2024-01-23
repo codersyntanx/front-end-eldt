@@ -86,42 +86,30 @@ const AppRoutes = () => {
              <AddLessonForm/>
             }
           />
-        {
-  userId !== null ? (
+     
     <Route
       path="/quiz/:id"
       element={
         <QuizLesson />
       }
     />
-  ) : (
-    <></>
-  )
-}
-{
-  userId !== null ? (
+  
+
     <Route
       path="/test/:index/:chap"
       element={
         <Quize />
       }
     />
-  ) : (
-    <></>
-  )
-}
-{
-  userId !== null ? (
+  
+
     <Route
       path="/Alllessons/:id"
       element={
         <Allchap/>
       }
     />
-  ) : (
-    <></>
-  )
-}
+  
           <Route
             path="/"
             element={
@@ -145,18 +133,14 @@ const AppRoutes = () => {
               </HeaderFooter>
             }
           />
-{
-  userId !== null ? (
+
     <Route
       path="/StudentLesson/:id/:index"
       element={
         <Studypage />
       }
     />
-  ) : (
-    <></>
-  )
-}
+  
 
           <Route
             path="/authentication/admin"

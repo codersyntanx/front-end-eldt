@@ -7,6 +7,9 @@ import { jwtDecode } from "jwt-decode";
 import { Modal } from 'antd';
 import jsPDF from 'jspdf';
 import certificateim from "./certificateimage.png"
+import errorimage from "./Group 6674 (2).png"
+import successimage from "./Group 6674.png"
+
 const Quize = () => {
   const [questions, setQuestions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -14,7 +17,10 @@ const Quize = () => {
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [error, setError] = useState(false);
   const [lessonId, setLessonId] = useState("");
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [successmodal, setSuccessmodal] = useState(false);
+  const [errormodal, setErrormodal] = useState(false);
+
   const [userId, setUserId] = useState("");
   const [title,setTitle]=useState("")
   const [userName, setUserName] = useState('');
@@ -29,7 +35,10 @@ const Quize = () => {
     }},[userId])
      const { index } = useParams();
   const { chap } = useParams();
- 
+  
+ const handlelesson = ()=>{
+
+ }
   const fetchquestions=()=> {
     const fetchQuestions = async () => {
       try {
@@ -122,7 +131,11 @@ const Quize = () => {
       const correctCount = results.filter(result => result.isCorrect).length;
       const totalQuestions = results.length;
       const percentage = (correctCount / totalQuestions) * 100;
-  
+  if(percentage < 79){
+    setErrormodal(true)
+  }else{
+    setSuccessmodal(true)
+  }
       // Send results to the backend
       const response = await axios.post('https://server-of-united-eldt.vercel.app/api/saveResult', {
         studentId: userId,  // Assuming userId is available in your component state
@@ -249,6 +262,37 @@ Congratulations, you have completed the Class A course.
 </span><br></br>
 <span className='light-content'>Congratulations! Now you can download your certificate or print it right away.</span><br></br>
 <button className='download-button' onClick={generateCertificate}>Download certificate</button>
+</div></Modal>
+<Modal
+  open={successmodal}
+  onOk={() => setSuccessmodal(false)}
+  onCancel={() => setSuccessmodal(false)}
+  footer={null}
+  header={null}
+>
+<div className='modal-content-center'>
+<img src={successimage} alt='done'/>
+<span className='bold-content'>
+Congratulations, you have completed this lesson.
+</span><br></br>
+<span className='light-content'>Congratulations!</span><br></br>
+<button className='download-button' onClick={handlelesson}>Go to dashboard</button>
+</div></Modal>
+<Modal
+  open={errormodal}
+  onOk={() => setErrormodal(false)}
+  onCancel={() => setErrormodal(false)}
+  footer={null}
+  header={null}
+>
+<div className='modal-content-center'>
+<img src={errorimage} alt='done'/>
+
+<span className='bold-content'>
+Sorry,Please Try again
+</span><br></br>
+<span className='light-content'>Sorry, you did not score 80% or higher on the quiz</span><br></br>
+<button className='download-button' >Try again</button>
 </div></Modal>
     </div>
   );
