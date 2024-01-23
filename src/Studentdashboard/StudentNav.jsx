@@ -51,7 +51,7 @@ function StudentNav (){
         case 'courselist':
           return <CourseList/>;
         case 'courses':
-          return <Progre />;
+          return <Progre  handleNavigationClick={handleNavigationClick}/>;
           case 'information':
           return <Coursedetail />;
         case 'myaccount':

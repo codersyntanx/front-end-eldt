@@ -2,7 +2,8 @@ import { Modal } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { jwtDecode } from "jwt-decode";
-function Progre() {
+import Successi from "./Group 6674.png"
+function Progre({handleNavigationClick}) {
   const [firstName, setFirstName] = useState('');
   const [middleName, setMiddleName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -75,6 +76,11 @@ const formonth =(day)=>{
         licenseNumber,
         state
       })
+      .then(res=>{
+        if(res.data.status === true){
+          setModalvisible(true)
+        }
+      })
       console.log('Form is valid. Perform save operation.');
     } else {
       setErrors(errors);
@@ -136,18 +142,72 @@ const formonth =(day)=>{
   <button class="btn dpbtn registinput dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     1994 
   </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">1995</a></li>
-    <li><a class="dropdown-item" href="#">1996</a></li>
-    <li><a class="dropdown-item" href="#">1997</a></li>
-    <li><a class="dropdown-item" href="#">1998</a></li>
-    <li><a class="dropdown-item" href="#">1999</a></li>
-    <li><a class="dropdown-item" href="#">2000</a></li>
-    <li><a class="dropdown-item" href="#">2001</a></li>
-    <li><a class="dropdown-item" href="#">2002</a></li>
-    <li><a class="dropdown-item" href="#">2003</a></li>
-    <li><a class="dropdown-item" href="#">2004</a></li>
-    <li><a class="dropdown-item" href="#">2005</a></li>
+  <ul class="dropdown-menu yeardropdown">
+  <li><a class="dropdown-item" onClick={()=>{foryear("2023")}}>2023</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2022")}}>2022</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2021")}}>2021</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2020")}}>2020</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2019")}}>2019</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2018")}}>2018</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2017")}}>2017</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2016")}}>2016</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2015")}}>2015</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2014")}}>2014</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2013")}}>2013</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2012")}}>2012</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2011")}}>2011</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2010")}}>2010</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2009")}}>2009</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2008")}}>2008</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2007")}}>2007</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2006")}}>2006</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2005")}}>2005</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2004")}}>2004</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2003")}}>2003</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2002")}}>2002</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2001")}}>2001</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("2000")}}>2000</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1999")}}>1999</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1998")}}>1998</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1997")}}>1997</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1996")}}>1996</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1995")}}>1995</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1994")}}>1994</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1993")}}>1993</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1992")}}>1992</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1991")}}>1991</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1990")}}>1990</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1989")}}>1989</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1988")}}>1988</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1987")}}>1987</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1986")}}>1986</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1985")}}>1985</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1984")}}>1984</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1983")}}>1983</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1982")}}>1982</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1981")}}>1981</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1980")}}>1980</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1979")}}>1979</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1978")}}>1978</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1977")}}>1977</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1976")}}>1976</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1975")}}>1975</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1974")}}>1974</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1973")}}>1973</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1972")}}>1972</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1971")}}>1971</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1970")}}>1970</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1969")}}>1969</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1968")}}>1968</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1967")}}>1967</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1966")}}>1966</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1965")}}>1965</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1964")}}>1964</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1963")}}>1963</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1962")}}>1962</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1961")}}>1961</a></li>
+  <li><a class="dropdown-item" onClick={()=>{foryear("1960")}}>1960</a></li>
+ 
   </ul>
 </div>
 </div>
@@ -157,7 +217,7 @@ const formonth =(day)=>{
   <button class="btn registinput dpbtn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     {month}
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu yeardropdown">
   <li><a class="dropdown-item" onClick={()=>{formonth("January")}}>January</a></li>
     <li><a class="dropdown-item" onClick={()=>{formonth("February")}}>February</a></li>
     <li><a class="dropdown-item" onClick={()=>{formonth("March")}}>March</a></li>
@@ -179,7 +239,7 @@ const formonth =(day)=>{
   <button class="btn dpbtn registinput dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     {day}
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu yeardropdown">
     <li><a class="dropdown-item" onClick={()=>{forday("2")}}>2</a></li>
     <li><a class="dropdown-item"  onClick={()=>{forday("3")}}>3</a></li>
     <li><a class="dropdown-item" onClick={()=>{forday("4")}}>4</a></li>
@@ -256,14 +316,22 @@ const formonth =(day)=>{
         </div>
       </div>
       {/* <button className='btn btn-danger' onClick={show}>Show modal</button> */}
-      {/* <Modal
-        title="Title"
+      
+      <Modal
         open={modalvisible}
         onCancel={hided}
-        footer={null}
-      >
-        <p>this text</p>
-      </Modal> */}
+        closeIcon={null}
+        footer={null} 
+       >
+<div className="mainbody">
+  <div className="imgalign">
+    <img src={Successi} alt="success"/>
+  </div>
+  <span className="message">Information sent successfully</span><br></br>
+  <span className="exp">Now you can start your course</span>
+<button className="buybtn" onClick={()=>{handleNavigationClick("information")}}>Start now</button>
+</div>
+       </Modal>
     </>
   );
 }

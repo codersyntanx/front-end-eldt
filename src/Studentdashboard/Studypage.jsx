@@ -146,13 +146,17 @@ function Studypage() {
 </svg>
             </button>
         <div className="main-contain-">
-          <div className="card-head">Read along<Switch
+          <div className="card-head headertwo">
+            <div>
+            Read along<Switch
   checked={isSpeaking}
   onChange={handleToggleSpeech}
   checkedChildren=""
   unCheckedChildren=""
   style={{ background: isSpeaking ? '#FBB723' : '#FFFFFF', border: isSpeaking ? '#FBB723' : '#C9C8C5' }}
 />
+</div>
+<div className="d-flex align-items-center gap-2">
 
 Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_2606_46918)">
@@ -165,21 +169,24 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
   </defs>
 </svg> <div className="mainbarcover">
   <div className="bari" style={{ width: `${autoSpeakingProgress}%` }}></div>
-</div>
+</div></div>
 </div>
           <div className="card-con">
             <div className="titles">
             <div className="dropdown">
-              <span
-                className=" dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {chapti}
-              </span>
+            <span
+  className="dropdown-toggle"
+  type="button"
+  id="dropdownMenuButton"
+  data-bs-toggle="dropdown"
+  aria-haspopup="true"
+  aria-expanded="false"
+>
+  
+  {chapti}
+  
+</span>
+
               <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" onClick={stopSpeaking}>
                 {chaptertitles.map((chapter, index) => (
                   <div
@@ -244,6 +251,10 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
 >
  hello this chapter is been completed
 </Modal>
+
+{/* <div className="footerforstudy">
+Copyright 2024, United ELDT
+</div> */}
       </div>
       
     );

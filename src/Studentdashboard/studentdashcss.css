@@ -92,3 +92,7 @@ letter-spacing: 0.7px;
 
   }
   
+  .yeardropdown{
+    height: 300px;
+    overflow-y: auto;
+  }
