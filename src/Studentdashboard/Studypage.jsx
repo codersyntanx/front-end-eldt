@@ -138,7 +138,7 @@ function Studypage() {
         <Navba/>
       <div className="progressgra d-flex">
   <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}></div>
-  <span>Progress: {studentprogress.progressPercentage}%</span>
+  <span>{Math.round(studentprogress.progressPercentage)}%</span>
 </div>
 <button className="prebtn" onClick={handlePreviousPageClick} disabled={currentPageIndex === 0}>
               <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86" viewBox="0 0 86 86" fill="none">

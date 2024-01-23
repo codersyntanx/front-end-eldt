@@ -53,7 +53,7 @@ navigate(`/test/${id}/${index}`)
           <Navba/>
           <div className="progressgra d-flex text-center" style={{color:"black",background: "#C9C8C5"}}>
   <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}></div>
-  <span> {studentprogress.progressPercentage}%</span>
+  <span> {Math.round(studentprogress.progressPercentage)}%</span>
 </div>
 <div className="card-hea">My courses</div>
         <div className="card-body">
@@ -61,9 +61,9 @@ navigate(`/test/${id}/${index}`)
           <span className="stu">Your progress {studentprogress.lessonIndex} of {studentprogress.totalChapters} complete. <b>Get certificate after complete</b></span>
 
           <div className="progreque d-flex" >
-  <div className="displayquiz" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}></div>
+  <div className="displayquiz" style={{ width: `${Math.round(studentprogress.progressPercentage)}%`, backgroundColor: '#FBB723',height:"100%" }}></div>
   <div className="circlepro">
-  <span >{studentprogress.progressPercentage}%</span></div>
+  <span >{Math.round(studentprogress.progressPercentage)}%</span></div>
 </div>
 <div className="wraperofitems">
           {chaptertitles.map((chapter, index) => (
