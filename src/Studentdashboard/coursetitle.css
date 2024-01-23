@@ -70,13 +70,13 @@ background: #F5F5F5;
     .nextbtn{
     position: absolute;
     right: 0px;
-    top: 300px;
+    top: 60%;
     cursor: pointer;
 }
 .prebtn{
     position: absolute;
     /* top: 50%; */
-    top: 300px;
+    top: 60%;
     left: 0px;
     cursor: pointer;
 }

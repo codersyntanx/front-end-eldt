@@ -1,104 +1,141 @@
+// Import necessary libraries
 import React, { useState } from 'react';
-import axios from 'axios';
-import "./chapter.css"
-const AddChapterForm = ({ courseId }) => {
-  const [chapterData, setChapterData] = useState({
-    pages: [
-      {
-        description: '',
-        image: '',
-        language: 'English', // Default language for the page
-      },
-    ],
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // Import the styles for ReactQuill
+
+const AddLessonForm = () => {
+  // State to hold form data
+  const [lessonData, setLessonData] = useState({
+    lessonTitle: '',
+    language: '',
+    pages: [],
   });
 
-  const handleInputChange = (e, index) => {
+  // Handle form input changes
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setChapterData((prevData) => {
-      const updatedPages = [...prevData.pages];
-      updatedPages[index] = {
-        ...updatedPages[index],
-        [name]: value,
-      };
-      return { ...prevData, pages: updatedPages };
+    setLessonData({
+      ...lessonData,
+      [name]: value,
     });
   };
 
-  const handleAddPage = () => {
-    setChapterData((prevData) => ({
-      ...prevData,
-      pages: [
-        ...prevData.pages,
-        {
-          description: '',
-          image: '',
-          language: 'English',
-        },
-      ],
-    }));
+  // Handle adding a new page to the lesson
+  const addPage = () => {
+    setLessonData({
+      ...lessonData,
+      pages: [...lessonData.pages, { description: '', image: '' }],
+    });
   };
 
+  // Handle page description changes using ReactQuill
+  const setDesc = (value, index) => {
+    const updatedPages = [...lessonData.pages];
+    updatedPages[index] = {
+      ...updatedPages[index],
+      description: value,
+    };
+    setLessonData({
+      ...lessonData,
+      pages: updatedPages,
+    });
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        'http://localhost:3003/addChapter/65a4c6f18da1c1e2cb7621ac',
-        {
-          pages: chapterData.pages,
-        }
-      );
+    // Make a PUT request to add the lesson
+    const courseId = 'your_course_id'; // Replace with the actual course ID
+    const response = await fetch(`/api/addLesson/${courseId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(lessonData),
+    });
 
-      alert('Chapter added successfully');
-      console.log('Chapter added successfully:', response.data);
-      // You can redirect or perform additional actions after successful chapter addition
-    } catch (error) {
-      console.error('Error adding chapter:', error);
+    if (response.ok) {
+      // Lesson added successfully
+      console.log('Lesson added successfully');
+    } else {
+      // Handle errors
+      const errorData = await response.json();
+      console.error('Error adding lesson:', errorData.error);
     }
   };
 
+  // Define Quill toolbar options
+  const quillToolbarOptions = [
+    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+    ['blockquote', 'code-block'],
+
+    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+    [{ 'direction': 'rtl' }],                          // text direction
+
+    [{ 'size': ['small', false, 'large', 'huge'] }],   // custom dropdown
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+    [{ 'font': [] }],
+    [{ 'align': [] }],
+
+    ['clean'],                                         // remove formatting button
+  ];
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Add Chapter</h3>
-      {chapterData.pages.map((page, index) => (
-        <div key={index}>
-          <label>
-            Description:
-            <textarea
-              name="description"
-              value={page.description}
-              onChange={(e) => handleInputChange(e, index)}
-            />
-          </label>
-          <label>
-            Image:
-            <input
-              type="text"
-              name="image"
-              value={page.image}
-              onChange={(e) => handleInputChange(e, index)}
-            />
-          </label>
-          <label>
-            Language:
-            <select
-              name="language"
-              value={page.language}
-              onChange={(e) => handleInputChange(e, index)}
-            >
-              {/* Options for languages */}
-              <option value="English">English</option>
-              {/* Add other languages as needed */}
-            </select>
-          </label>
-        </div>
-      ))}
-      <button type="button" onClick={handleAddPage}>
-        Add Page
-      </button>
-      <button type="submit">Add Chapter</button>
-    </form>
+    <div>
+      <h2>Add Lesson</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Lesson Title:
+          <input
+            type="text"
+            name="lessonTitle"
+            value={lessonData.lessonTitle}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Language:
+          <input
+            type="text"
+            name="language"
+            value={lessonData.language}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+        <br />
+        <h3>Pages</h3>
+        {lessonData.pages.map((page, index) => (
+          <div key={index}>
+            {/* Other input fields */}
+            <label>
+              Description:
+              <ReactQuill
+                theme="snow"
+                value={page.description}
+                onChange={(value) => setDesc(value, index)}
+                modules={{ toolbar: quillToolbarOptions }}
+                required
+              />
+            </label>
+            <br />
+          </div>
+        ))}
+        <button type="button" onClick={addPage}>
+          Add Page
+        </button>
+        <br />
+        <button type="submit">Add Lesson</button>
+      </form>
+    </div>
   );
 };
 
-export default AddChapterForm;
+export default AddLessonForm;

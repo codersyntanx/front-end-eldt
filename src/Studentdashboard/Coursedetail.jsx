@@ -4,6 +4,8 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DoughnutChart from "./DoughnutChart"
+import { Progress, Space } from 'antd';
+
 function Coursedetail() {
   const [userId, setUserId] = useState("");
   const [comp, setComp] = useState([]);
@@ -110,9 +112,21 @@ function Coursedetail() {
                       <>
                       
                         <div className="progress-bar-container mainlabel d-flex align-items-center">
+<div>
+<Space wrap>
+  <Progress
+    type="circle"
+    percent={parseFloat(course.studentProgress)}
+    size={80}
+    strokeColor="#FBB723"  // Change color to #FBB723
+    strokeWidth={20}       // Increase thickness to 10 (you can adjust this value)
+    format={() => null}
+  />
+</Space>
+
 
                                                 {course.courseName}
-
+                                                </div>
                           <Link to={`/Alllessons/${course.courseNameid}`}>
                           <div className="warning">Open</div></Link>
 
@@ -149,9 +163,18 @@ function Coursedetail() {
                     {uncomp.map((course) => (
                       <>
                         <div className="progress-bar-container mainlabel d-flex align-items-center">
-                         {course.studentProgress}
+                <div>     <Space wrap>
+  <Progress
+    type="circle"
+    percent={parseFloat(course.studentProgress)}
+    size={80}
+    strokeColor="#FBB723"  // Change color to #FBB723
+    strokeWidth={20}       // Increase thickness to 10 (you can adjust this value)
+    format={() => null}
+  />
+</Space>
                           {course.courseName}
-                          
+                          </div>   
                           <Link to={`/quiz/${course.courseNameid}`}>
                           <div className="warning">Open</div></Link>
                         </div>
@@ -187,9 +210,18 @@ function Coursedetail() {
                     {comp.map((course) => (
                       <>
                         <div className="progress-bar-container mainlabel d-flex align-items-center">
-                         {course.studentProgress}
+                     <div>  <Space wrap>
+  <Progress
+    type="circle"
+    percent={parseFloat(course.studentProgress)}
+    size={80}
+    strokeColor="#FBB723"  // Change color to #FBB723
+    strokeWidth={20}       // Increase thickness to 10 (you can adjust this value)
+    format={() => null}
+  />
+</Space>
                           {course.courseName}
-                          
+                          </div> 
                           <Link to={`/quiz/${course.courseNameid}`}>
                           <div className="warning">Certificate</div></Link>
                         </div>

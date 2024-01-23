@@ -39,10 +39,11 @@ export default function LoginForm() {
  const [success, setSuccess] = useState(false);
  const [error, setError] = useState(false);
 const [process, setProcess]=useState(true)
-
+const [loginatm, setLoginatm]=useState(true)
   const navigate = useNavigate()
 
  const handleLogin = (e) => {
+  setLoginatm(false)
   e.preventDefault();
   try {
     axios.post("https://server-of-united-eldt.vercel.app/api/login", {
@@ -58,6 +59,8 @@ const [process, setProcess]=useState(true)
   } catch (error) {
     // Handle the error here
     console.error("Error during login:", error);
+  }finally{
+    setLoginatm(true)
   }
 };
 const recoverEmail = async (e) => {
@@ -148,7 +151,10 @@ const recoverEmail = async (e) => {
 
 
             <motion.button type="submit" onClick={handleLogin}>
-              <Translate>Log In</Translate>
+              {
+                setLoginatm?(<> <Translate>Log In</Translate></>):(<>Please Wait...</>)
+              }
+             
             </motion.button>
             <div className="tw-my-3">{loading ? <GeneralLoader /> : ""}</div>
 
