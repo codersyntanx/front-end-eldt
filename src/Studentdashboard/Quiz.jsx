@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Navba from './Navba';
 import "./quizles.css";
 import { jwtDecode } from "jwt-decode";
@@ -35,9 +35,9 @@ const Quize = () => {
     }},[userId])
      const { index } = useParams();
   const { chap } = useParams();
-  
+  const navigate =useNavigate()
  const handlelesson = ()=>{
-
+navigate(`/StudentLesson/${index}/${chap}`)
  }
   const fetchquestions=()=> {
     const fetchQuestions = async () => {
