@@ -219,7 +219,7 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
           <div className="contentdiv d-flex">
    <div className="p-3" dangerouslySetInnerHTML={{ __html: page.description }} />
    {page.image !== "" ? (
-  <img src={page.image} alt="explainimage" style={{ width: '100%', height: '100%' }} />
+  <img src={page.image} alt="explainimage" className="descimage"/>
 ) : (
   <></>
 )}

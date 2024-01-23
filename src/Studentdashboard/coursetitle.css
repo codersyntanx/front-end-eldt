@@ -1,4 +1,8 @@
-
+.descimage{
+   width: 100%;
+   height: 100%;
+   max-width: 600px;
+}
 .learning{
     background-image: url(./studenbg.jpg);
     background-size: cover;
