@@ -139,8 +139,8 @@ function Studypage() {
       <div className="learning">
         <Navba/>
       <div className="progressgra d-flex">
-  <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}></div>
-  <span>{Math.round(studentprogress.progressPercentage)}%</span>
+  <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}><span style={{display:"flex", margin:"auto", textAlign:"center", alignItems:"center",justifyContent:"center"}} className="percentshow">{Math.round(studentprogress.progressPercentage)}%</span></div>
+  
 </div>
 <button className="prebtn" onClick={handlePreviousPageClick} disabled={currentPageIndex === 0}>
               <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86" viewBox="0 0 86 86" fill="none">
@@ -189,7 +189,7 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
   
 </span>
 
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" onClick={stopSpeaking}>
+              <div style={{overflowY:"scroll", height:"500px"}} className="dropdown-menu" aria-labelledby="dropdownMenuButton" onClick={stopSpeaking}>
                 {chaptertitles.map((chapter, index) => (
                   <div
                     key={index}
@@ -254,13 +254,37 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
  hello this chapter is been completed
 </Modal>
 
-{/* <div className="footerforstudy">
+<div className="footerforstudy">
 Copyright 2024, United ELDT
-</div> */}
+</div>
       </div>
       
     );
   }
   
   export default Studypage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   

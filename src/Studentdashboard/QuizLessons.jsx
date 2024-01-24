@@ -52,8 +52,8 @@ navigate(`/test/${id}/${index}`)
         <div className="main-body">
           <Navba/>
           <div className="progressgra d-flex text-center" style={{color:"black",background: "#C9C8C5"}}>
-  <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}></div>
-  <span> {Math.round(studentprogress.progressPercentage)}%</span>
+  <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}> <span style={{display:"flex", margin:"auto", textAlign:"center", alignItems:"center",justifyContent:"center"}}> {Math.round(studentprogress.progressPercentage)}%</span></div>
+ 
 </div>
 <div className="card-hea">My courses</div>
         <div className="card-body">
