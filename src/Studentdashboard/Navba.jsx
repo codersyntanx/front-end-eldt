@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import logo from "./Logo (2).svg";
 import "./quizles.css"
 import { Link, useNavigate } from "react-router-dom";
-function Navba (){
+function Navba ({page,chapterid}){
   const [chapter, setChapter]=useState("")
   const [lesson, setLesson]=useState("")
 const navigate = useNavigate()
@@ -15,6 +15,16 @@ if(chapter != ""){
 }
 
   },[])
+  const gotochapterlist=()=>{
+    if(chapterid != null){
+      if(page === "Alllessons"){
+        navigate(`/Alllessons/${chapterid}`)
+      }else{
+        navigate(`/quiz/${chapterid}`)
+    }
+      
+    }
+    }
   const gotolastchap=()=>{
     if(chapter != ""){
       navigate(`/StudentLesson/${lesson}/${chapter}`)
@@ -50,7 +60,7 @@ if(chapter != ""){
 </svg> My courses
           </Link>
         </li>
-        <li className="nav-item ">
+        <li className="nav-item " onClick={gotochapterlist}>
           <Link className="nav-link  d-flex">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
   <path d="M6.875 5.1001H16.875" stroke="#696969" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
@@ -62,14 +72,7 @@ if(chapter != ""){
 </svg> Contents
           </Link>
         </li>
-        <li className="nav-item ">
-          <a className="nav-link  d-flex" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-  <path d="M10 12.6001C12.7614 12.6001 15 10.3615 15 7.6001C15 4.83867 12.7614 2.6001 10 2.6001C7.23858 2.6001 5 4.83867 5 7.6001C5 10.3615 7.23858 12.6001 10 12.6001Z" stroke="#696969" stroke-width="1.5" stroke-miterlimit="10"/>
-  <path d="M2.42188 16.9751C3.18979 15.6447 4.2944 14.5399 5.62465 13.7718C6.9549 13.0037 8.46392 12.5994 10 12.5994C11.5361 12.5994 13.0451 13.0037 14.3753 13.7718C15.7056 14.5399 16.8102 15.6447 17.5781 16.9751" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> Registration
-          </a>
-        </li>
+        
         <li className="nav-item " onClick={gotolastchap}>
         <a className="nav-link  d-flex" href="#"> 
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">

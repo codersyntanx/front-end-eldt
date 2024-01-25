@@ -33,6 +33,7 @@ const Quize = () => {
     setSelectedOptions({});
     setError(false);
   };
+
   useEffect(() => {
     const personId = localStorage.getItem("userId");
     if (personId) {
@@ -40,12 +41,14 @@ const Quize = () => {
       setUserId(decoded.id);
       setUserName(decoded.Name)
       fetchquestions()
+      
     }},[userId])
      const { index } = useParams();
   const { chap } = useParams();
   const navigate =useNavigate()
  const handlelesson = ()=>{
-navigate(`/StudentLesson/${index}/${chap}`)
+
+navigate(`/StudentLesson/${index}/${Number(chap) + 1}`)
  }
   const fetchquestions=()=> {
     const fetchQuestions = async () => {
@@ -164,7 +167,7 @@ navigate(`/StudentLesson/${index}/${chap}`)
   
   return (
     <div className="main-body">
-      <Navba />
+     <Navba page={"quiz"} chapterid={index}/>
       <div className="quiz-head">{title}</div>
       <div className="card-body">
         <div className="p-5">
@@ -285,7 +288,7 @@ Congratulations, you have completed the Class A course.
 Congratulations, you have completed this lesson.
 </span><br></br>
 <span className='light-content'>Congratulations!</span><br></br>
-<button className='download-button' onClick={handlelesson}>Go to dashboard</button>
+<button className='download-button' onClick={handlelesson}>Go to Next Lesson</button>
 </div></Modal>
 <Modal
   open={errormodal}
@@ -301,7 +304,7 @@ Congratulations, you have completed this lesson.
 Sorry,Please Try again
 </span><br></br>
 <span className='light-content'>Sorry, you did not score 80% or higher on the quiz</span><br></br>
-<button className='download-button' onClick={()=>{setErrormodal(false)}}>Try again</button>
+<button className='download-button' onClick={()=>{setErrormodal(false)}}>Review</button>
 </div></Modal>
     </div>
   );

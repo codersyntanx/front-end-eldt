@@ -44,7 +44,7 @@ const navigate = useNavigate()
       setPage(chapters[chapterIndex].pages[currentPageIndex + 1]);
     } else {
       // Navigate to "/students" if there is no next page
-      navigate(`/test/${id}/${index}`);
+      navigate(`/test/${id}/${chapterIndex}`);
      
     }
   };
@@ -142,7 +142,7 @@ const navigate = useNavigate()
 
     return (
       <div className="learning">
-        <Navba/>
+        <Navba page={"Alllessons"} chapterid={id}/>
       <div className="progressgra d-flex">
   <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}><span style={{display:"flex", margin:"auto", textAlign:"center", alignItems:"center",justifyContent:"center"}} className="percentshow">{Math.round(studentprogress.progressPercentage)}%</span></div>
   
