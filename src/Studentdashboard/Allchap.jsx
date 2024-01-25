@@ -10,6 +10,7 @@ function Allchap(){
     const [userId, setUserId] = useState("");
     const [studentprogress, setStudentprogress] = useState([]);
     const [coursename, setCoursename] = useState([]);
+    const [courselanguage, setCourselanguage] = useState("");
     const navigate = useNavigate()
     const changepage =(index)=>{
 navigate(`/StudentLesson/${id}/${index}`)
@@ -27,6 +28,7 @@ navigate(`/StudentLesson/${id}/${index}`)
             const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getCourseChapters/${userId}/${id}`);
             setStudentprogress(response.data.studentProgress);
             setCoursename(response.data.courseName);
+            setCourselanguage(response.data.language)
             fetchChaptersTitles();
        
           } catch (error) {
@@ -57,7 +59,7 @@ navigate(`/StudentLesson/${id}/${index}`)
 </div>
 <div className="card-hea">My courses</div>
         <div className="card-body maincardbody ">
-          <p className="course-Name">{coursename}</p>
+          <p className="course-Name">{coursename}-{courselanguage}</p>
           <span className="stu">Your progress {studentprogress.lessonIndex} of {studentprogress.totalChapters} complete. <b>Get certificate after complete</b></span>
 
           <div className="progreque d-flex" >
