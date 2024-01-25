@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import logo from "./Logo (2).svg";
 
 function Navba (){
-  useEffect(()=>{
-const chapter = localStorage.getItem("chapindex")
-const lesson = localStorage.getItem("lessonid")
-console.log(chapter)
-console.log(lesson)
-  },[])
+//   useEffect(()=>{
+// const chapter = localStorage.getItem("chapindex")
+// const lesson = localStorage.getItem("lessonid")
+// console.log(chapter)
+// console.log(lesson)
+//   },[])
     return(
         <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">

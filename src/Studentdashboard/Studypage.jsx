@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import "./coursetitle.css";
@@ -15,7 +15,7 @@ function Studypage() {
   const [chapti, setChapti] = useState("Select Lesson");
   const [autoSpeakingProgress, setAutoSpeakingProgress] = useState(0);
   const [volume, setVolume] = useState(1); 
-
+const navigate = useNavigate()
   const { id } = useParams();
   const {index}=useParams()
 
@@ -38,10 +38,15 @@ function Studypage() {
   const handleNextPageClick = () => {
     stopSpeaking();
   
+
     if (currentPageIndex < totalPages - 1) {
       setCurrentPageIndex((prevIndex) => prevIndex + 1);
       setPage(chapters[chapterIndex].pages[currentPageIndex + 1]);
-    } 
+    } else {
+      // Navigate to "/students" if there is no next page
+      navigate(`/test/${id}/${index}`);
+     
+    }
   };
   
 
@@ -239,7 +244,7 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
 
           </div>
         </div>
-        <button className="nextbtn" onClick={handleNextPageClick} disabled={currentPageIndex === totalPages - 1}>
+        <button className="nextbtn" onClick={handleNextPageClick} >
               <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86" viewBox="0 0 86 86" fill="none">
   <path d="M32.25 16.125L59.125 43L32.25 69.875" stroke="#2C292A" stroke-width="9.55556" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
@@ -254,9 +259,9 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
  hello this chapter is been completed
 </Modal>
 
-<div className="footerforstudy">
+{/* <div className="footerforstudy">
 Copyright 2024, United ELDT
-</div>
+</div> */}
       </div>
       
     );

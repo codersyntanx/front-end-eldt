@@ -137,7 +137,7 @@ const formonth =(day)=>{
 <label className="fomlbl">Year</label>
 <div class="dropdown">
   <button class="btn dpbtn registinput dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    1994 
+    {year} 
   </button>
   <ul class="dropdown-menu yeardropdown">
   <li><a class="dropdown-item" onClick={()=>{foryear("2023")}}>2023</a></li>

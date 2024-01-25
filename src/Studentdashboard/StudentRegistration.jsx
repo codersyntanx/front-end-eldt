@@ -78,6 +78,7 @@ function StudentRegistration() {
               placeholder="Name"
               value={student.firstName}
               readOnly
+              style={{backgroundColor:"#F0F0F0"}}
             />
 
             <label className="foam-label">Last name</label>
@@ -87,6 +88,7 @@ function StudentRegistration() {
               placeholder="Name"
               value={student.lastName}
               readOnly
+              style={{backgroundColor:"#F0F0F0"}}
             />
 
             <label className="foam-label">Email</label>
@@ -96,6 +98,7 @@ function StudentRegistration() {
               placeholder="Email"
               value={student.Email}
               readOnly
+              style={{backgroundColor:"#F0F0F0"}}
             />
 
             <label className="foam-label">Existing password</label>

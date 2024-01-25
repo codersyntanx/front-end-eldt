@@ -19,12 +19,20 @@ const Quize = () => {
   const [lessonId, setLessonId] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [successmodal, setSuccessmodal] = useState(false);
-  const [errormodal, setErrormodal] = useState(false);
+  const [errormodal, setErrormodal] = useState(true);
 
   const [userId, setUserId] = useState("");
   const [title,setTitle]=useState("")
   const [userName, setUserName] = useState('');
 
+
+  const resetQuiz = () => {
+    // Reset relevant state variables
+    setSubmitAttempted(false);
+    setResults([]);
+    setSelectedOptions({});
+    setError(false);
+  };
   useEffect(() => {
     const personId = localStorage.getItem("userId");
     if (personId) {
@@ -222,9 +230,10 @@ navigate(`/StudentLesson/${index}/${chap}`)
               </div>
             );
           })}
-          <button className="endbtn" onClick={handleSave}>
-            Save
-          </button>
+               <button className="endbtn" onClick={submitAttempted ? resetQuiz : handleSave}>
+        {submitAttempted ? "Try again" : "Save"}
+      </button>
+
           {error && Object.keys(selectedOptions).length !== questions.length && (
             <div style={{ color: 'red', marginTop: '10px' }}>
               Please answer all questions before submitting.
@@ -271,7 +280,7 @@ Congratulations, you have completed the Class A course.
   header={null}
 >
 <div className='modal-content-center'>
-<img src={successimage} alt='done'/>
+<img className='mx-auto' src={successimage} alt='done'/>
 <span className='bold-content'>
 Congratulations, you have completed this lesson.
 </span><br></br>
@@ -286,13 +295,13 @@ Congratulations, you have completed this lesson.
   header={null}
 >
 <div className='modal-content-center'>
-<img src={errorimage} alt='done'/>
+<img className='mx-auto' src={errorimage} alt='done'/>
 
 <span className='bold-content'>
 Sorry,Please Try again
 </span><br></br>
 <span className='light-content'>Sorry, you did not score 80% or higher on the quiz</span><br></br>
-<button className='download-button' >Try again</button>
+<button className='download-button' onClick={()=>{setErrormodal(false)}}>Try again</button>
 </div></Modal>
     </div>
   );
