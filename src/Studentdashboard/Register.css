@@ -35,6 +35,15 @@ letter-spacing: 1px;
     padding-top: 0px !important;
     padding: 32px;
 }
+@media (max-width:786px) {
+    .card-body{
+        padding-top: 0px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        padding-bottom: 30px !important;
+
+    }  
+}
 .foam-label{
     color: #2C292A;
 font-family: Inter;

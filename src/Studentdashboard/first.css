@@ -8,6 +8,11 @@ font-weight: 700;
 line-height: 160%; /* 25.6px */
 letter-spacing: 0.8px;
 }
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+  }
 .accordion-button:not(.collapsed){
     background-color: #F5F5F5 !important;
     color: black !important;
@@ -38,4 +43,12 @@ letter-spacing: 0.8px;
     gap: 8px;
     border-radius: 8px;
     background: #FBB723;
+}
+@media (max-width:786px) {
+    .progress-bar-container{
+        display: contents;
+    }
+    .warning{
+        margin-top: 20px;
+    }
 }

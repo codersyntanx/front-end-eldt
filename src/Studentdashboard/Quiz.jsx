@@ -19,7 +19,7 @@ const Quize = () => {
   const [lessonId, setLessonId] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [successmodal, setSuccessmodal] = useState(false);
-  const [errormodal, setErrormodal] = useState(true);
+  const [errormodal, setErrormodal] = useState(false);
 
   const [userId, setUserId] = useState("");
   const [title,setTitle]=useState("")

@@ -3,7 +3,6 @@ import "./first.css";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import DoughnutChart from "./DoughnutChart"
 import { Progress, Space } from 'antd';
 
 function Coursedetail() {
@@ -60,11 +59,7 @@ function Coursedetail() {
             border:none;
             margin-top:35px
           }
-          .progress-bar-container {
-            display: flex;
-            align-items: center;
-            justify-content:space-between;
-          }
+         
           .progress-bar {
             height: 20px;
             border-radius: 10px;
@@ -111,7 +106,7 @@ function Coursedetail() {
                      
                       <>
                       
-                        <div className="progress-bar-container mainlabel d-flex align-items-center">
+                        <div className="progress-bar-container mainlabel ">
 <div>
 <Space wrap>
   <Progress
@@ -162,7 +157,7 @@ function Coursedetail() {
                   <span>
                     {uncomp.map((course) => (
                       <>
-                        <div className="progress-bar-container mainlabel d-flex align-items-center">
+                        <div className="progress-bar-container mainlabel">
                 <div>     <Space wrap>
   <Progress
     type="circle"
@@ -211,7 +206,7 @@ function Coursedetail() {
                   <span>
                     {comp.map((course) => (
                       <>
-                        <div className="progress-bar-container mainlabel d-flex align-items-center">
+                        <div className="progress-bar-container mainlabel ">
                      <div>  <Space wrap>
   <Progress
     type="circle"

@@ -1,6 +1,7 @@
 .main-body{
     background-image: url(./studenbg.jpg);
     background-size: cover;
+    min-height: 100vh;
 }
 .card-hea{
     border-radius: 16px 16px 0px 0px;
@@ -197,4 +198,12 @@ padding-top: 20px;
     align-items: center;
     margin: auto;
     overflow: hidden;
+}
+@media (max-width:786px) {
+    .maincardbody{
+        padding: 20px !important;
+    }
+    .navbar-nav{
+        margin-top: 30px;
+    }
 }

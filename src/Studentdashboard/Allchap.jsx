@@ -56,7 +56,7 @@ navigate(`/StudentLesson/${id}/${index}`)
  
 </div>
 <div className="card-hea">My courses</div>
-        <div className="card-body">
+        <div className="card-body maincardbody ">
           <p className="course-Name">{coursename}</p>
           <span className="stu">Your progress {studentprogress.lessonIndex} of {studentprogress.totalChapters} complete. <b>Get certificate after complete</b></span>
 

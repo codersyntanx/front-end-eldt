@@ -160,10 +160,10 @@ const navigate = useNavigate()
   onChange={handleToggleSpeech}
   checkedChildren=""
   unCheckedChildren=""
-  style={{ background: isSpeaking ? '#FBB723' : '#FFFFFF', border: isSpeaking ? '#FBB723' : '#C9C8C5' }}
+  style={{ background: isSpeaking ? '#FBB723' : '#FFFFFF', border: isSpeaking ? '#FBB723' : '#C9C8C5' ,marginLeft:"10px"}}
 />
 </div>
-<div className="d-flex align-items-center gap-2">
+<div className="d-flex mainpro align-items-center gap-2">
 
 Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_2606_46918)">
@@ -230,15 +230,17 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
             </div>
           
             </div>
-          <div className="contentdiv d-flex">
+          <div className="contentdiv ">
    <div className="p-3" dangerouslySetInnerHTML={{ __html: page.description }} />
    {page.image !== "" ? (
   <img src={page.image} alt="explainimage" className="descimage"/>
 ) : (
   <></>
 )}
-
-
+<div className="pagebuttons">
+  <button className="previousbutton"  onClick={handlePreviousPageClick}><i class="fa-solid fa-angle-left"></i>Previous</button>
+<button className="previousbutton" onClick={handleNextPageClick}>Next<i class="fa-solid fa-angle-right"></i></button>
+</div>
           </div>
          
 
@@ -259,9 +261,9 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
  hello this chapter is been completed
 </Modal>
 
-{/* <div className="footerforstudy">
+<div className="footerforstudy">
 Copyright 2024, United ELDT
-</div> */}
+</div>
       </div>
       
     );

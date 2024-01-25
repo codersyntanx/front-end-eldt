@@ -3,7 +3,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { jwtDecode } from "jwt-decode";
 import Successi from "./Group 6674.png"
+import Select from 'react-select';
+
 function Progre({handleNavigationClick}) {
+
   const [firstName, setFirstName] = useState('');
   const [middleName, setMiddleName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -15,6 +18,62 @@ function Progre({handleNavigationClick}) {
   const [errors, setErrors] = useState({});
  const [day, setDay]=useState(1)
  const [year, setYear]=useState("1928")
+ const stateOptions = [
+  { value: 'AL', label: 'Alabama' },
+  { value: 'AK', label: 'Alaska' },
+  { value: 'AZ', label: 'Arizona' },
+  { value: 'AR', label: 'Arkansas' },
+  { value: 'CA', label: 'California' },
+  { value: 'CO', label: 'Colorado' },
+  { value: 'CT', label: 'Connecticut' },
+  { value: 'DE', label: 'Delaware' },
+  { value: 'FL', label: 'Florida' },
+  { value: 'GA', label: 'Georgia' },
+  { value: 'HI', label: 'Hawaii' },
+  { value: 'ID', label: 'Idaho' },
+  { value: 'IL', label: 'Illinois' },
+  { value: 'IN', label: 'Indiana' },
+  { value: 'IA', label: 'Iowa' },
+  { value: 'KS', label: 'Kansas' },
+  { value: 'KY', label: 'Kentucky' },
+  { value: 'LA', label: 'Louisiana' },
+  { value: 'ME', label: 'Maine' },
+  { value: 'MD', label: 'Maryland' },
+  { value: 'MA', label: 'Massachusetts' },
+  { value: 'MI', label: 'Michigan' },
+  { value: 'MN', label: 'Minnesota' },
+  { value: 'MS', label: 'Mississippi' },
+  { value: 'MO', label: 'Missouri' },
+  { value: 'MT', label: 'Montana' },
+  { value: 'NE', label: 'Nebraska' },
+  { value: 'NV', label: 'Nevada' },
+  { value: 'NH', label: 'New Hampshire' },
+  { value: 'NJ', label: 'New Jersey' },
+  { value: 'NM', label: 'New Mexico' },
+  { value: 'NY', label: 'New York' },
+  { value: 'NC', label: 'North Carolina' },
+  { value: 'ND', label: 'North Dakota' },
+  { value: 'OH', label: 'Ohio' },
+  { value: 'OK', label: 'Oklahoma' },
+  { value: 'OR', label: 'Oregon' },
+  { value: 'PA', label: 'Pennsylvania' },
+  { value: 'RI', label: 'Rhode Island' },
+  { value: 'SC', label: 'South Carolina' },
+  { value: 'SD', label: 'South Dakota' },
+  { value: 'TN', label: 'Tennessee' },
+  { value: 'TX', label: 'Texas' },
+  { value: 'UT', label: 'Utah' },
+  { value: 'VT', label: 'Vermont' },
+  { value: 'VA', label: 'Virginia' },
+  { value: 'WA', label: 'Washington' },
+  { value: 'WV', label: 'West Virginia' },
+  { value: 'WI', label: 'Wisconsin' },
+  { value: 'WY', label: 'Wyoming' },
+];
+
+const handleStateChange = (selectedOption) => {
+  setState(selectedOption.label);
+};
 useEffect(()=>{
   const personId = localStorage.getItem("userId")
   if(personId){
@@ -22,7 +81,6 @@ useEffect(()=>{
     setUserId(decoded.id)
   }
 },[])
-console.log(userId)
  const [month, setMonth]=useState("Januarry")
 
 const hided =()=>{
@@ -290,13 +348,24 @@ const formonth =(day)=>{
 </svg>{errors.licenseNumber}</div>}
 
             <label className="foam-label">State</label>
-            <input
-              className={`registinput ${errors.state ? 'error-border' : ''}`}
-              type="text"
-              placeholder="State"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-            />
+            <Select
+  options={stateOptions}
+  value={stateOptions.find((option) => option.value === state)} // Ensure correct display of selected state
+  onChange={handleStateChange}
+  placeholder="Select State"
+  className={`registinput ${errors.licenseNumber ? 'error-border' : ''}`}
+  styles={{
+    control: (provided) => ({
+      ...provided,
+      border: 'none',
+      width: '100%',
+      outline: 'none', // Remove blue border on focus
+      boxShadow: 'none', // Remove box shadow on focus
+    }),
+  }}
+/>
+
+
             {errors.state && <div className="error-message">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 <path d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z" stroke="#FE2727" stroke-width="1.5" stroke-miterlimit="10"/>
