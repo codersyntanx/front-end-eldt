@@ -27,6 +27,7 @@ import logomain from "./Logo (2).svg"
 import axios from "axios";
 import successmsg from "./Group 6674.png"
 import errormsg from "./Group 6674 (2).png"
+import { Modal } from "antd";
 
 export default function LoginForm() {
   const [cookies, setCookie] = useCookies();
@@ -36,33 +37,48 @@ export default function LoginForm() {
   const [emailrecover, setEmailrecover]=useState("")
  const [result, setResult]=useState(false)
  const [password, setPassword]=useState("")
+ const [failedlogin, setFailedlogin]=useState(false)
+ const [successmodal, setSuccessmodal]=useState(false)
  const [success, setSuccess] = useState(false);
  const [error, setError] = useState(false);
 const [process, setProcess]=useState(true)
 const [loginatm, setLoginatm]=useState(true)
   const navigate = useNavigate()
-
- const handleLogin = (e) => {
-  setLoginatm(false)
-  e.preventDefault();
-  try {
-    axios.post("https://server-of-united-eldt.vercel.app/api/login", {
-      Email: email,
-      password,
-    })
-    .then(res => {
-      if (res.data.status === "true") {
-        localStorage.setItem("userId", res.data.token);
-        navigate("/studentdash")
+const failedclose = ()=>{
+  setFailedlogin(false)
+}
+const successclose = ()=>{
+  setSuccessmodal(false)
+}
+const gotodash =()=>{
+  navigate("/studentdash");
+}
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginatm(false); 
+  
+    try {
+      const response = await axios.post("https://server-of-united-eldt.vercel.app/api/login", {
+        Email: email,
+        password,
+      });
+  
+      if (response.data.status === "true") {
+        localStorage.setItem("userId", response.data.token);
+        setSuccessmodal(true)
+        // navigate("/studentdash");
+      } else {
+        setFailedlogin(true)
       }
-    });
-  } catch (error) {
-    // Handle the error here
-    console.error("Error during login:", error);
-  }finally{
-    setLoginatm(true)
-  }
-};
+    } catch (error) {
+      // Handle the error here
+      console.error("Error during login:", error);
+    } finally {
+      // Set loginatm back to true after handling the response
+      setLoginatm(true);
+    }
+  };
+  
 const recoverEmail = async (e) => {
   e.preventDefault();
   setProcess(false);
@@ -152,11 +168,10 @@ const recoverEmail = async (e) => {
 
             <motion.button type="submit" onClick={handleLogin}>
               {
-                setLoginatm?(<> <Translate>Log In</Translate></>):(<>Please Wait...</>)
+                loginatm?(<> <Translate>Log In</Translate></>):(<>Please Wait...</>)
               }
              
             </motion.button>
-            <div className="tw-my-3">{loading ? <GeneralLoader /> : ""}</div>
 
             <div className="row align-items-center">
               <div className="login-forgot-password">
@@ -232,7 +247,35 @@ const recoverEmail = async (e) => {
        
       </Translator>
     
-
+      <Modal
+        open={failedlogin}
+        onCancel={failedclose}
+        closeIcon={null}
+        footer={null} 
+       >
+<div className="mainbody">
+  <div className="imgalign">
+    <img src={errormsg} alt="success"/>
+  </div>
+  <span className="message">Something Went Wrong Please Check your Email or password</span><br></br>
+<button className="buybtn" onClick={failedclose}>Try again</button>
+</div>
+       </Modal>
+       <Modal
+        open={successmodal}
+        onCancel={successclose}
+        closeIcon={null}
+        footer={null} 
+       >
+<div className="mainbody">
+  <div className="imgalign">
+    <img src={successmsg} alt="success"/>
+  </div>
+  <span className="message">Congratulations your are successfully login</span><br></br>
+  <span className="exp">Now you can start your course</span>
+<button className="buybtn" onClick={gotodash}>Go to Dashboard</button>
+</div>
+       </Modal>
     </>
   );
 }
