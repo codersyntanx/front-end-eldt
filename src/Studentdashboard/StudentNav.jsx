@@ -9,6 +9,7 @@ import CourseList from "./CourseList";
 import Coursedetail from "./Coursedetail";
 import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
+import Buyanother from "./Buyanother";
 function StudentNav (){
     const [selectedPage, setSelectedPage] = useState("");
     const [loca, setLoca]=useState("")
@@ -60,6 +61,8 @@ function StudentNav (){
           return <Homepage />;
           case 'googledoc':
             return <Lesson />;
+            case 'newcoursebuy':
+              return <Buyanother />;
         default:
           return null;
       }
@@ -93,7 +96,7 @@ function StudentNav (){
 <path d="M2.42188 17.4751C3.18979 16.1447 4.2944 15.0399 5.62465 14.2718C6.9549 13.5037 8.46392 13.0994 10 13.0994C11.5361 13.0994 13.0451 13.5037 14.3753 14.2718C15.7056 15.0399 16.8102 16.1447 17.5781 17.4751" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg> My Account
         </li>
-        <Link to="/login">
+        <Link to="/logout">
         <li className="mainlink">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
   <path d="M13.5938 7.31885L16.875 10.6001L13.5938 13.8813" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -101,7 +104,13 @@ function StudentNav (){
   <path d="M8.125 17.4751H3.75C3.58424 17.4751 3.42527 17.4093 3.30806 17.292C3.19085 17.1748 3.125 17.0159 3.125 16.8501V4.3501C3.125 4.18434 3.19085 4.02537 3.30806 3.90816C3.42527 3.79095 3.58424 3.7251 3.75 3.7251H8.125" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>   Logout
         </li></Link>
-        
+        <li className={` mainlink ${selectedPage === 'newcoursebuy' ? 'activateding' : ''}`}  onClick={() => handleNavigationClick('newcoursebuy')}>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+<path d="M13.5938 7.31885L16.875 10.6001L13.5938 13.8813" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.125 10.6001H16.875" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.125 17.4751H3.75C3.58424 17.4751 3.42527 17.4093 3.30806 17.292C3.19085 17.1748 3.125 17.0159 3.125 16.8501V4.3501C3.125 4.18434 3.19085 4.02537 3.30806 3.90816C3.42527 3.79095 3.58424 3.7251 3.75 3.7251H8.125" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Buy  Another Course
+</li> 
 
     </ul>
 </div>
@@ -139,7 +148,7 @@ function StudentNav (){
 <path d="M2.42188 17.4751C3.18979 16.1447 4.2944 15.0399 5.62465 14.2718C6.9549 13.5037 8.46392 13.0994 10 13.0994C11.5361 13.0994 13.0451 13.5037 14.3753 14.2718C15.7056 15.0399 16.8102 16.1447 17.5781 17.4751" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg> My Account
 </li>
-<Link to="/login">
+<Link to="/logout">
 <li className="mainlink ">
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
 <path d="M13.5938 7.31885L16.875 10.6001L13.5938 13.8813" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -147,7 +156,13 @@ function StudentNav (){
 <path d="M8.125 17.4751H3.75C3.58424 17.4751 3.42527 17.4093 3.30806 17.292C3.19085 17.1748 3.125 17.0159 3.125 16.8501V4.3501C3.125 4.18434 3.19085 4.02537 3.30806 3.90816C3.42527 3.79095 3.58424 3.7251 3.75 3.7251H8.125" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>   Logout
 </li></Link>
-       
+<li className={` mainlink ${selectedPage === 'newcoursebuy' ? 'activateding' : ''}`}  onClick={() => handleNavigationClick('newcoursebuy')}>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+<path d="M13.5938 7.31885L16.875 10.6001L13.5938 13.8813" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.125 10.6001H16.875" stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.125 17.4751H3.75C3.58424 17.4751 3.42527 17.4093 3.30806 17.292C3.19085 17.1748 3.125 17.0159 3.125 16.8501V4.3501C3.125 4.18434 3.19085 4.02537 3.30806 3.90816C3.42527 3.79095 3.58424 3.7251 3.75 3.7251H8.125" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Buy  Another Course
+</li> 
       </ul>
     </div>
   </div>

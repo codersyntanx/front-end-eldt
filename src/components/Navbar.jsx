@@ -12,6 +12,7 @@ import ProfileDropdown from "./navbar/ProfileDropdown";
 import { USER_TYPE } from "../routes/PrivateRoutes";
 import { Link as ScrollLink } from 'react-scroll';
 import weblogo from "./Logo.svg"
+import { jwtDecode } from "jwt-decode";
 
 export default function Navbar({ className = "is-home" }, ...props) {
   const ref = useRef();
@@ -25,7 +26,15 @@ export default function Navbar({ className = "is-home" }, ...props) {
         behavior: "smooth",
     });
 };
+const [userId, setUserId]=useState(null)
 
+useEffect(() => {
+  const personId = localStorage.getItem("userId");
+  if (personId) {
+    const decoded = jwtDecode(personId);
+    setUserId(decoded);
+  }
+}, []);
   const [openUser, setOpenUser] = useState(false);
 
   const userState = useSelector((state) => state.user);
@@ -238,21 +247,43 @@ export default function Navbar({ className = "is-home" }, ...props) {
                       language={languageState?.language?.value}
                       setMenu={setMenu}
                     /> */}
+{
+  userId === null ?(<>
+    <div className="option-item">
+                    
+                    <Link
+                      onClick={() => {
+                        setMenu(false);
+                      }}
+                      to="/login"
+                    >
+                      <a className="default-btn">
+                        <Translate>Login</Translate>
+                      </a>
+                    </Link>
+                
+                </div>
+  </>):(
+    <>
+      <div className="option-item">
+                    
+                    <Link
+                      onClick={() => {
+                        setMenu(false);
+                      }}
+                      to="/studentdash"
+                    >
+                      <a className="default-btn">
+                        <Translate>Dashboard</Translate>
+                      </a>
+                    </Link>
+                
+                </div>
 
-                    <div className="option-item">
-                    
-                        <Link
-                          onClick={() => {
-                            setMenu(false);
-                          }}
-                          to="/login"
-                        >
-                          <a className="default-btn">
-                            <Translate>Login</Translate>
-                          </a>
-                        </Link>
-                    
-                    </div>
+    </>
+  )
+}
+                  
                   </div>
                 </div>
               </div>

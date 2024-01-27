@@ -20,7 +20,7 @@ const Quize = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [successmodal, setSuccessmodal] = useState(false);
   const [errormodal, setErrormodal] = useState(false);
-
+  const [fetcquiz, setFetcquiz] = useState(false);
   const [userId, setUserId] = useState("");
   const [title,setTitle]=useState("")
   const [userName, setUserName] = useState('');
@@ -50,21 +50,26 @@ const Quize = () => {
 
 navigate(`/StudentLesson/${index}/${Number(chap) + 1}`)
  }
-  const fetchquestions=()=> {
-    const fetchQuestions = async () => {
-      try {
-        const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getQuestionsForStudent/${userId}/${index}/${chap}`);
-        setQuestions(response.data.questions[0].questions);
-        setTitle(response.data.chaptertitle)
-        setLessonId(response.data.questions[0].lessonId)
-        console.log(res.data)
-      } catch (error) {
-        console.error('Error fetching questions:', error);
-      }
-    };
-// new lesson work
-    fetchQuestions();
-  };
+ const fetchQuestions = async () => {
+  setFetcquiz(true);
+  
+  try {
+    const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getQuestionsForStudent/${userId}/${index}/${chap}`);
+    setQuestions(response.data.questions[0].questions);
+    setTitle(response.data.chaptertitle);
+    setLessonId(response.data.questions[0].lessonId);
+    console.log(response.data); // Assuming you meant response.data instead of res.data
+  } catch (error) {
+    console.error('Error fetching questions:', error);
+  } finally {
+    setFetcquiz(false);
+  }
+};
+
+const fetchquestions = () => {
+  fetchQuestions();
+};
+
 
   const handleOptionSelect = (questionIndex, optionIndex) => {
     setSelectedOptions((prevSelections) => ({
@@ -168,8 +173,17 @@ navigate(`/StudentLesson/${index}/${Number(chap) + 1}`)
   return (
     <div className="main-body">
      <Navba page={"quiz"} chapterid={index}/>
-      <div className="quiz-head">{title}</div>
-      <div className="card-body">
+     
+
+{
+  questions.length === 0 ?(
+    <div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+  ):(
+    <>
+    <div className="quiz-head">{title}</div>
+     <div className="card-body">
         <div className="p-5">
         {questions.map((question, questionIndex) => {
   const result = results.find((result) => result.questionId === question._id);
@@ -243,7 +257,10 @@ navigate(`/StudentLesson/${index}/${Number(chap) + 1}`)
             </div>
           )}
         </div>
-      </div>
+      </div></>
+  )
+}
+     
       <Modal
   open={modalVisible}
   onOk={() => setModalVisible(false)}

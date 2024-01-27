@@ -12,12 +12,18 @@ letter-spacing: 1.2px;
     padding: 0;
     box-sizing: border-box;
   }
-  
-.slick-list{
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: fit-content;
-}
+  /* CSS */
+.missing-field {
+    border: 2px solid red;
+  }
+  .languageSelect__menu{
+    z-index: 1000000;
+
+  }
+  .slick-list{
+/* overflow-x: hidden; */
+    /* overflow-y: visible !important; */
+  }
 .slick-list::-webkit-scrollbar {
     width: 0px; /* Set the width of the scrollbar */
   }
