@@ -51,8 +51,7 @@ import Studypage from "../Studentdashboard/Studypage.jsx";
 import Quize from "../Studentdashboard/Quiz.jsx";
 import QuizLesson from "../Studentdashboard/QuizLessons.jsx";
 import Allchap from "../Studentdashboard/Allchap.jsx";
-import Logout from "../styles/logout.jsx";
-
+import Logout from "../Studentdashboard/Logout.jsx"
 const AppRoutes = () => {
   const [userId, setUserId]=useState(null)
 
