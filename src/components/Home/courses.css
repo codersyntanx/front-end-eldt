@@ -16,6 +16,10 @@ letter-spacing: 1.2px;
 .missing-field {
     border: 2px solid red;
   }
+  .error-border {
+    border-color: red !important;
+  }
+  
   .languageSelect__menu{
     z-index: 1000000;
 

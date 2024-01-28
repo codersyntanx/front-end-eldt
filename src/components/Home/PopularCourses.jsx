@@ -155,42 +155,62 @@ export default function PopularCourses({ language }) {
 
 
   const handlePayment = async () => {
+    if (!cardholderName || !email || !billingAddress || !zip) {
+      // Handle validation errors
+      if (!cardholderName) document.getElementById('cardholderName').classList.add('error-border');
+      if (!email) document.getElementById('email').classList.add('error-border');
+      if (!billingAddress) document.getElementById('billingAddress').classList.add('error-border');
+      if (!zip) document.getElementById('zip').classList.add('error-border');
+  
+      return;
+    }
+  
     try {
       setLoading(false);
-
-      // Basic validation
-      if (!cardholderName || !email || !billingAddress || !zip) {
-        openNotification("error", 'Please fill in all required fields.');
-        return;
-      }
-
-      const response = await axios.post(
-        'https://server-of-united-eldt.vercel.app/api/create-payment-intents',
-        {
-          amount: purchase.price,
-          courseEnrollments: [
-            {
-              courseId: purchase._id,
-              lessonIndex: 0,
-              language: purchase.language,
-            },
-          ],
-          fullName: cardholderName,
-          Email: email,
-          price: purchase.price,
-          address: billingAddress,
-          zip: zip,
-        }
-      );
-
+  
+      // Create payment intent
+      const response = await axios.post('http://localhost:3003/api/create-payment-intents', {
+        amount: purchase.price,
+        courseEnrollments: [
+          {
+            courseId: purchase._id,
+            lessonIndex: 0,
+            language: purchase.language,
+          },
+        ],
+        fullName: cardholderName,
+        Email: email,
+        price: purchase.price,
+        address: billingAddress,
+        zip: zip,
+      });
+  
       if (response.status === 200) {
+        // Confirm payment
         const confirmPayment = await stripe.confirmCardPayment(response.data.clientSecret, {
           payment_method: {
             card: elements.getElement(CardNumberElement),
           },
         });
-
+  
         if (confirmPayment.paymentIntent.status === 'succeeded') {
+          // Payment confirmed, now create or update student
+          await axios.post("http://localhost:3003/api/create-update-student", {
+            amount: purchase.price,
+            courseEnrollments: [
+              {
+                courseId: purchase._id,
+                lessonIndex: 0,
+                language: purchase.language,
+              },
+            ],
+            fullName: cardholderName,
+            Email: email,
+            price: purchase.price,
+            address: billingAddress,
+            zip: zip,
+          });
+  
           console.log('Payment confirmed');
           setModalVisible(false);
           visibleModal();
@@ -202,13 +222,13 @@ export default function PopularCourses({ language }) {
       }
     } catch (error) {
       console.error('Payment error:', error.message);
-
       errModal();
       setModalVisible(false);
     } finally {
       setLoading(true);
     }
   };
+  
 
 
 
@@ -538,7 +558,7 @@ export default function PopularCourses({ language }) {
           open={modalVisible}
           onCancel={handleCancel}
           closeIcon={null}
-          footer={null} // Remove the default footer
+          footer={null} 
         >
           <div className="mainblack">
             <span className="pricetxt">${purchase.price / 100}.00</span><br></br>
@@ -563,16 +583,16 @@ export default function PopularCourses({ language }) {
 
             <input
               type="text"
-              className={`form-control fnam ${!cardholderName && 'missing-field'}`}
-              id="name"
+              className="form-control fnam "
+              id="cardholderName"
               placeholder="Full Name"
               value={cardholderName}
               onChange={(e) => setCardholderName(e.target.value)}
             />
             <input
               type="text"
-              className={`form-control fnam ${!email && 'missing-field'}`}
-              id="name"
+              className="form-control fnam"
+              id="email"
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -596,14 +616,16 @@ export default function PopularCourses({ language }) {
             </label>
             <input
               value={billingAddress}
-              className={`form-control fname ${!billingAddress && 'missing-field'}`}
+              id="billingAddress"
+              className="form-control fname"
               onChange={(e) => setBillingAddress(e.target.value)}
               placeholder="Address"
             />
             <input
               type="text"
-              className={`form-control fname ${!zip && 'missing-field'}`}
+              className="form-control fname"
               placeholder="Zip code"
+              id="zip"
               value={zip}
               onChange={(e) => setZip(e.target.value)}
             />

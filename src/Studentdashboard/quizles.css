@@ -3,6 +3,12 @@
     background-size: cover;
     min-height: 100vh;
 }
+.loaderlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
 .card-hea{
     border-radius: 16px 16px 0px 0px;
     background: #2C292A;

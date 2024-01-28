@@ -9,7 +9,7 @@ import jsPDF from 'jspdf';
 import certificateim from "./certificateimage.png"
 import errorimage from "./Group 6674 (2).png"
 import successimage from "./Group 6674.png"
-
+import sitelogo from "./Logo (2).svg"
 const Quize = () => {
   const [questions, setQuestions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -169,7 +169,22 @@ const fetchquestions = () => {
   };
   
   
-  
+  const [scale, setScale] = useState(1); // Initial scale factor
+  const [zoomDirection, setZoomDirection] = useState(1); // Initial zoom direction
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      // Adjust scale based on zoom direction
+      if (scale >= 2) {
+        setZoomDirection(-1); // Change direction if scale reaches 2
+      } else if (scale <= 0.5) {
+        setZoomDirection(1); // Change direction if scale reaches 0.5
+      }
+      setScale(scale + 0.1 * zoomDirection); // Update scale
+    }, 200); // Decrease interval duration to increase speed
+
+    return () => clearInterval(timer); // Cleanup interval
+  }, [scale, zoomDirection]);
   return (
     <div className="main-body">
      <Navba page={"quiz"} chapterid={index}/>
@@ -177,9 +192,11 @@ const fetchquestions = () => {
 
 {
   questions.length === 0 ?(
-    <div class="spinner-border" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
+    <div className="image-container">
+    <div className="loaderlogo" style={{ transform: `scale(${scale})` }}>
+      <img src={sitelogo} alt="logo" />
+    </div>
+  </div>
   ):(
     <>
     <div className="quiz-head">{title}</div>

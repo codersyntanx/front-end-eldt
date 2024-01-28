@@ -4,7 +4,6 @@ import StudentRegistration from "./StudentRegistration";
 import Progre from "./Progre";
 import { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Lesson from "./Lesson";
 import CourseList from "./CourseList";
 import Coursedetail from "./Coursedetail";
 import { jwtDecode } from "jwt-decode";
@@ -59,8 +58,6 @@ function StudentNav (){
           return <StudentRegistration />;
         case 'homepage':
           return <Homepage />;
-          case 'googledoc':
-            return <Lesson />;
             case 'newcoursebuy':
               return <Buyanother />;
         default:
