@@ -122,7 +122,7 @@ function Coursedetail() {
 
                                             <span className="mx-3">{course.courseName} - {course.courselangugae}</span>  
                                                 </div>
-                          <Link to={`/Alllessons/${course.courseNameid}`}>
+                          <Link to={`/Alllessons/${index}`}>
                           <div className="warning">Open</div></Link>
 
                         </div>
@@ -155,7 +155,7 @@ function Coursedetail() {
               >
                 <div class="accordion-body">
                   <span>
-                    {uncomp.map((course) => (
+                    {uncomp.map((course,index) => (
                       <>
                         <div className="progress-bar-container mainlabel">
                 <div>     <Space wrap>
@@ -172,7 +172,7 @@ function Coursedetail() {
 
 
                           </div>   
-                          <Link to={`/quiz/${course.courseNameid}`}>
+                          <Link to={`/quiz/${index}`}>
                           <div className="warning">Open</div></Link>
                         </div>
                       </>

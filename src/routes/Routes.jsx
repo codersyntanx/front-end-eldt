@@ -52,6 +52,7 @@ import Quize from "../Studentdashboard/Quiz.jsx";
 import QuizLesson from "../Studentdashboard/QuizLessons.jsx";
 import Allchap from "../Studentdashboard/Allchap.jsx";
 import Logout from "../Studentdashboard/Logout.jsx"
+import Alltext from "../Studentdashboard/Alltext.jsx"
 const AppRoutes = () => {
   const [userId, setUserId]=useState(null)
 
@@ -92,6 +93,14 @@ const AppRoutes = () => {
              <Logout/>
             }
           />
+              <Route
+            path="/text"
+            element={
+             <Alltext/>
+            }
+          />
+          
+
      
     <Route
       path="/quiz/:id"

@@ -24,7 +24,7 @@ const navigate = useNavigate()
   const [chapterIndex, setChapterIndex] = useState(index);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-
+const [quiz,setQuiz]=useState("")
   const handleChapterClick = (index, title) => {
     setChapterIndex(index);
     localStorage.setItem("chapindex", chapterIndex)
@@ -38,13 +38,12 @@ const navigate = useNavigate()
   const handleNextPageClick = () => {
     stopSpeaking();
   
-
     if (currentPageIndex < totalPages - 1) {
       setCurrentPageIndex((prevIndex) => prevIndex + 1);
       setPage(chapters[chapterIndex].pages[currentPageIndex + 1]);
     } else {
       // Navigate to "/students" if there is no next page
-      navigate(`/test/${id}/${chapterIndex}`);
+      navigate(`/test/${quiz}/${chapterIndex}`);
      
     }
   };
@@ -73,6 +72,7 @@ const navigate = useNavigate()
           const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getCourseChapters/${userId}/${id}`);
           setChapters(response.data.chapters);
           setStudentprogress(response.data.studentProgress);
+          setQuiz(response.data.quizid)
           fetchChaptersTitles();
           // Set initial state only if chapters are available
           if (response.data.chapters.length > 0) {

@@ -11,10 +11,11 @@ function QuizLesson(){
     const [studentprogress, setStudentprogress] = useState([]);
     const [coursename, setCoursename] = useState([]);
     const [courselanguage, setCourselanguage] = useState("");
+    const [quiz,setQuiz]=useState("")
 
     const navigate = useNavigate()
     const changepage =(index,chap)=>{
-navigate(`/test/${id}/${index}`)
+navigate(`/test/${quiz}/${index}`)
     }
     useEffect(() => {
       const personId = localStorage.getItem("userId");
@@ -30,7 +31,7 @@ navigate(`/test/${id}/${index}`)
             setStudentprogress(response.data.studentProgress);
             setCoursename(response.data.courseName);
             setCourselanguage(response.data.language)
-
+            setQuiz(response.data.quizid)
             fetchChaptersTitles();
        
           } catch (error) {
