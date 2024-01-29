@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SocialLinks from "./footer/SocialLinks";
 import Payments from "./footer/Payments";
 import { useSelector } from "react-redux";
-import weblogo from "./Logo (2).svg"
+import weblogo from "./LOGO ELDT 2024 04 Artboard 5.svg"
 import "./ter.css"
 export default function Footer() {
   const currentYear = new Date().getFullYear();
