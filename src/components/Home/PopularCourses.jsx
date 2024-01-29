@@ -18,6 +18,7 @@ import google from "./images/google-pay-38 1.png"
 import apple from "./images/apple-logo-png-apple-mac-vector-logo-download-23 1.png"
 import Successi from "./images/Group 6674.png"
 import errir from "./images/Group 6674 (2).png"
+import { jwtDecode } from "jwt-decode";
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -102,8 +103,19 @@ export default function PopularCourses({ language }) {
   const [err, setErr] = useState(false)
   const [coulan, setCoulan] = useState("English")
   const [plans, setPlans] = useState([]);
+  const [userId, setUserId] = useState(null);
 
-
+  useEffect(() => {
+    const personId = localStorage.getItem("userId");
+    if (personId) {
+      const decoded = jwtDecode(personId);
+      setUserId(decoded);  
+      setEmail(decoded.Email)  
+      setBillingAddress(decoded.Address)
+      setCardholderName(decoded.Name)  
+      setZip(decoded.zip)
+      setBillingAddress(decoded.Address)
+    }},[])
 
   const languageOptions = [
     { value: 'English', label: 'English', image: "https://img.icons8.com/color/24/usa-circular.png", planId: null },
@@ -195,7 +207,7 @@ export default function PopularCourses({ language }) {
   
         if (confirmPayment.paymentIntent.status === 'succeeded') {
           // Payment confirmed, now create or update student
-          await axios.post("http://localhost:3003/api/create-update-student", {
+          await axios.post("http://localhost:3003/api/testersuccessuser", {
             amount: purchase.price,
             courseEnrollments: [
               {
@@ -369,7 +381,6 @@ export default function PopularCourses({ language }) {
 
   // Combine main settings with responsive settings
   const combinedSettings = { ...settings, responsive: responsiveSettings };
-
 
 
 
@@ -581,22 +592,25 @@ export default function PopularCourses({ language }) {
               <button className="applebtn"><img src={apple} alt="apple" /> PAY</button>
             </div>
 
-            <input
-              type="text"
-              className="form-control fnam "
-              id="cardholderName"
-              placeholder="Full Name"
-              value={cardholderName}
-              onChange={(e) => setCardholderName(e.target.value)}
-            />
-            <input
-              type="text"
-              className="form-control fnam"
-              id="email"
-              placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          
+               <input
+      type="text"
+      className="form-control fnam"
+      id="cardholderName"
+      placeholder="Full Name"
+      value={userId !== null ? userId.Name : cardholderName} // Set value to userId.Email if userId is not null, otherwise use email state
+      readOnly={userId !== null} // Set readOnly mode if userId is not null
+      onChange={(e) => setCardholderName(e.target.value)}
+    />
+          <input
+      type="text"
+      className="form-control fnam"
+      id="email"
+      placeholder="Email address"
+      value={userId !== null ? userId.Email : email} // Set value to userId.Email if userId is not null, otherwise use email state
+      readOnly={userId !== null} // Set readOnly mode if userId is not null
+      onChange={(e) => setEmail(e.target.value.toLowerCase())}
+    />
             <label className="labeltext">
               <span className="pasword">Payment information</span>
               <span className="secure"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -614,19 +628,23 @@ export default function PopularCourses({ language }) {
             <label className="labeltext">
               <span className="pasword">Country or region</span>
             </label>
-            <input
-              value={billingAddress}
-              id="billingAddress"
-              className="form-control fname"
-              onChange={(e) => setBillingAddress(e.target.value)}
-              placeholder="Address"
-            />
+          
+                 <input
+      type="text"
+      className="form-control fnam"
+      id="billingAddress"
+      placeholder="Address"
+      value={userId !== null ? userId.Address : billingAddress} // Set value to userId.Email if userId is not null, otherwise use email state
+      readOnly={userId !== null} // Set readOnly mode if userId is not null
+      onChange={(e) => setBillingAddress(e.target.value)}
+      />
             <input
               type="text"
               className="form-control fname"
               placeholder="Zip code"
               id="zip"
-              value={zip}
+              value={userId !== null ? userId.zip : zip} // Set value to userId.Email if userId is not null, otherwise use email state
+              readOnly={userId !== null} // Set readOnly mode if userId is not null
               onChange={(e) => setZip(e.target.value)}
             />
             <div className="termdiv">
