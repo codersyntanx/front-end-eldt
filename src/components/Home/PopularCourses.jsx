@@ -181,7 +181,7 @@ export default function PopularCourses({ language }) {
       setLoading(false);
   
       // Create payment intent
-      const response = await axios.post('http://localhost:3003/api/create-payment-intents', {
+      const response = await axios.post('https://server-of-united-eldt.vercel.app/api/create-payment-intents', {
         amount: purchase.price,
         courseEnrollments: [
           {
@@ -207,7 +207,7 @@ export default function PopularCourses({ language }) {
   
         if (confirmPayment.paymentIntent.status === 'succeeded') {
           // Payment confirmed, now create or update student
-          await axios.post("http://localhost:3003/api/testersuccessuser", {
+          await axios.post("https://server-of-united-eldt.vercel.app/api/testersuccessuser", {
             amount: purchase.price,
             courseEnrollments: [
               {
