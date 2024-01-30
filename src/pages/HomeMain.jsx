@@ -21,7 +21,7 @@ export default function HomeMain() {
   return (
     <>
       <Banner language={languageState.language.value} />
-      <Elements stripe={stripePromise}><PopularCourses id="targetSection" language={languageState.language.value} /></Elements> 
+      <Elements stripe={stripePromise}><PopularCourses id="targetSection" language={languageState.language.value} showCancelButton={true} /></Elements> 
       <Disclaimer language={languageState.language.value} />
       <HomeAboutUs language={languageState.language.value} />
       <FeedbackSliderWithFunFacts language={languageState.language.value} />

@@ -19,7 +19,9 @@ letter-spacing: 1.2px;
   .error-border {
     border-color: red !important;
   }
-  
+  .paymentmodal .buybtn2{
+    display: none;
+  }
   .languageSelect__menu{
     z-index: 1000000;
 

@@ -12,6 +12,28 @@ padding: 20px;
 .maincontainerforstudent .courses-area{
     display: none;
 }
+.maincontainerforstudent .buybtn{
+  display: none;  
+}
+.maincontainerforstudent .buybtn2{
+    display: flex !important;
+    width: 100%;
+    height: 56px;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: #FBB723;
+    color: #2C292A;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.32px;
+    margin-top: 24px;
+}
 .mainstudentdiv{
     min-height: 100vh;
 }

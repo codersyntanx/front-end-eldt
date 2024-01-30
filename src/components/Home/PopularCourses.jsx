@@ -86,7 +86,7 @@ function SamplepreArrow(props) {
     >Hello</div>
   );
 }
-export default function PopularCourses({ language }) {
+export default function PopularCourses({ language ,showCancelButton }) {
   const userState = useSelector((state) => state.user);
   const [selectedLang, setSelected] = useState("all");
   const [loading, setLoading] = useState(true);
@@ -585,7 +585,7 @@ export default function PopularCourses({ language }) {
               ELDT Theory certificate
             </span>
           </div>
-          <div className="main-content">
+          <div className="main-content paymentmodal">
             {/* Your payment form and input fields */}
             <div className="gpay">
               <button className="gpaybtn"><img src={google} alt="google" /> PAY</button>
@@ -679,7 +679,11 @@ export default function PopularCourses({ language }) {
             </div>
             <span className="message">Payment successfully processed</span><br></br>
             <span className="exp">Congratulations! You are now part of United. Click the button below to start your studies.</span>
-            <Link to="/login"><button className="buybtn">Start Now</button></Link>
+            {
+              showCancelButton ?( <Link to="/login"><button className="buybtn">Start Now</button></Link>):( <Link to="/studentdash"><button className="buybtn">Start Now</button></Link>)
+            }
+           
+            {/* <Link to="/studentdash"><button className="buybtn2">Start Now</button></Link> */}
           </div>
         </Modal>
         <Modal

@@ -12,7 +12,7 @@ function Buyanother(){
     return(
         <>
         <div className="container maincontainerforstudent">
-                          <Elements stripe={stripePromise}><PopularCourses id="targetSection" language={languageState.language.value} /></Elements> 
+                          <Elements stripe={stripePromise}><PopularCourses id="targetSection" language={languageState.language.value} showCancelButton={false}/></Elements> 
 
         </div>
 
