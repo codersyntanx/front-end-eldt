@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './Register.css';
 import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
-function StudentRegistration() {
+import { Modal } from 'antd';
+import Successi from "./Group 6674.png"
+function StudentRegistration({handleNavigationClick}) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -11,9 +13,12 @@ function StudentRegistration() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [userId, setUserId]=useState("")
   const [student, setStudent]=useState("")
+  const [modalvisible, setModalvisible]=useState(false)
 
   const [errors, setErrors] = useState({});
-
+  const hided =()=>{
+    setModalvisible(false)
+  }
 
   useEffect(() => {
     const personId = localStorage.getItem("userId");
@@ -55,6 +60,11 @@ function StudentRegistration() {
       if (Object.keys(errors).length === 0) {
         axios.put(`https://server-of-united-eldt.vercel.app/api/putstudent/${userId}`,{
         password :newPassword
+        })
+        .then(res=>{
+          if(res.data.status === true){
+            setModalvisible(true)
+          }
         })
       } else {
         setErrors(errors);
@@ -138,6 +148,21 @@ function StudentRegistration() {
           </div>
         </div>
       </div>
+      <Modal
+        open={modalvisible}
+        onCancel={hided}
+        closeIcon={null}
+        footer={null} 
+       >
+<div className="mainbody">
+  <div className="imgalign">
+    <img src={Successi} alt="success"/>
+  </div>
+  <span className="message">Password changed successfully</span><br></br>
+  <span className="exp">Now you can start your course</span>
+<button className="buybtn" onClick={()=>{handleNavigationClick("information")}}>Start now</button>
+</div>
+       </Modal>
     </>
   );
 }

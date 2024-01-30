@@ -6,13 +6,13 @@ import {
     const stripePromise = loadStripe('pk_test_51O5F9gFZtgAr5eHPPYRptE8ZBDBXAtaLj7XGBnSp106qIqacE80PBnqGyndDPhtDYDpBWNvpJ8YmObgxijiNX22o00C8ueO5lb'); // Replace with your actual public key
     import { useSelector } from "react-redux";
 
-function Buyanother(){
+function Buyanother({handleNavigationClick}){
     const languageState = useSelector((state) => state.language);
 
     return(
         <>
         <div className="container maincontainerforstudent">
-                          <Elements stripe={stripePromise}><PopularCourses id="targetSection" language={languageState.language.value} showCancelButton={false}/></Elements> 
+                          <Elements stripe={stripePromise}><PopularCourses id="targetSection" language={languageState.language.value} handleNavigationClick={handleNavigationClick} showCancelButton={false}/></Elements> 
 
         </div>
 

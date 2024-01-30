@@ -55,11 +55,11 @@ function StudentNav (){
           case 'information':
           return <Coursedetail />;
         case 'myaccount':
-          return <StudentRegistration />;
+          return <StudentRegistration handleNavigationClick={handleNavigationClick} />;
         case 'homepage':
           return <Homepage />;
             case 'newcoursebuy':
-              return <Buyanother />;
+              return <Buyanother handleNavigationClick={handleNavigationClick}/>;
         default:
           return null;
       }

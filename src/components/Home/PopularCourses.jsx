@@ -86,7 +86,7 @@ function SamplepreArrow(props) {
     >Hello</div>
   );
 }
-export default function PopularCourses({ language ,showCancelButton }) {
+export default function PopularCourses({ language ,showCancelButton,handleNavigationClick }) {
   const userState = useSelector((state) => state.user);
   const [selectedLang, setSelected] = useState("all");
   const [loading, setLoading] = useState(true);
@@ -680,7 +680,7 @@ export default function PopularCourses({ language ,showCancelButton }) {
             <span className="message">Payment successfully processed</span><br></br>
             <span className="exp">Congratulations! You are now part of United. Click the button below to start your studies.</span>
             {
-              showCancelButton ?( <Link to="/login"><button className="buybtn">Start Now</button></Link>):( <Link to="/studentdash"><button className="buybtn">Start Now</button></Link>)
+              showCancelButton ?( <Link to="/login"><button className="buybtn">Start Now</button></Link>):( <button onClick={()=>{handleNavigationClick("information")}} className="buybtn">Start Now</button>)
             }
            
             {/* <Link to="/studentdash"><button className="buybtn2">Start Now</button></Link> */}
