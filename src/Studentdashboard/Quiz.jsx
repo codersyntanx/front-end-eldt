@@ -155,7 +155,7 @@ const fetchquestions = () => {
       // Send results to the backend
       const response = await axios.post('https://server-of-united-eldt.vercel.app/api/saveResult', {
         studentId: userId,  // Assuming userId is available in your component state
-        courseId: index,  // Replace with the actual courseId
+        indexNumber: index,  // Replace with the actual courseId
         chapterId: lessonId,  // Replace with the actual chapterId
         percentage,
       });

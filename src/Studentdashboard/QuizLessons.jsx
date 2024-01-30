@@ -15,7 +15,7 @@ function QuizLesson(){
 
     const navigate = useNavigate()
     const changepage =(index,chap)=>{
-navigate(`/test/${quiz}/${index}`)
+navigate(`/test/${id}/${index}`)
     }
     useEffect(() => {
       const personId = localStorage.getItem("userId");

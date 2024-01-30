@@ -43,7 +43,7 @@ const [quiz,setQuiz]=useState("")
       setPage(chapters[chapterIndex].pages[currentPageIndex + 1]);
     } else {
       // Navigate to "/students" if there is no next page
-      navigate(`/test/${quiz}/${chapterIndex}`);
+      navigate(`/test/${id}/${chapterIndex}`);
      
     }
   };
