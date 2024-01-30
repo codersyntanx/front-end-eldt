@@ -9,6 +9,10 @@
     align-items: center;
     height: 60vh;
 }
+.tickcontent{
+    display: flex;
+    align-items: end;
+}
 .card-hea{
     border-radius: 16px 16px 0px 0px;
     background: #2C292A;

@@ -213,6 +213,7 @@ const fetchquestions = () => {
                     const isSelected = selectedOptions[questionIndex] === optionIndex;
                     const isCorrect = result?.isCorrect;
                     const isCorrectOption = result?.correctOption === optionIndex;
+                    const isIncorrectOption = isSelected && !isCorrect && submitAttempted;
 
 
                     return (
@@ -223,6 +224,16 @@ const fetchquestions = () => {
                           marginTop: '10px',
                           borderRadius: '12px',
                           cursor: 'pointer',
+                          display:"Flex",
+                          alignItems:"center",
+                          justifyContent:
+                          isSelected && !isCorrect && submitAttempted
+                          ? 'space-between' // Red for incorrect
+                          : isSelected
+                          ? isCorrect
+                            ? 'space-between' // Green for correct
+                            : '' // Initial background for selected option
+                          : '',
                           backgroundColor:
                           isSelected && !isCorrect && submitAttempted
                             ? '#FFDFDF' // Red for incorrect
@@ -249,13 +260,24 @@ const fetchquestions = () => {
                           <span style={{ color: '#008000' }}> (Correct)</span>
                         )}
                         {isCorrectOption && isCorrect && (
-
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+<div className='tickcontent'><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
   <path d="M21.5 13L14.1625 20L10.5 16.5" stroke="#55C275" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="#55C275" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>)}
+</svg>
+  </div>
+)}
+{
+  isIncorrectOption &&  (
+    <div className='tickcontent'><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="#FF3737" stroke-width="2" stroke-miterlimit="10"/>
+    <path d="M20 12L12 20" stroke="#FF3737" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 20L12 12" stroke="#FF3737" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  </div>
+  )
+}
                         {isSelected && !isCorrect && isCorrectOption && (
-                          <span style={{ color: '#FF0000' }}> (Incorrect)</span>
+                          <span style={{ color: '#FF0000',}}> (Incorrect)</span>
                         )}
                       </div>
                     );
