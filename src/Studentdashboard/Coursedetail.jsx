@@ -122,7 +122,7 @@ function Coursedetail() {
 
                                             <span className="mx-3">{course.courseName} - {course.courselangugae}</span>  
                                                 </div>
-                          <Link to={`/Alllessons/${index}`}>
+                          <Link to={`/Alllessons/${course.enrollindex}`}>
                           <div className="warning">Open</div></Link>
 
                         </div>
@@ -172,7 +172,7 @@ function Coursedetail() {
 
 
                           </div>   
-                          <Link to={`/quiz/${index}`}>
+                          <Link to={`/quiz/${course.enrollindex}`}>
                           <div className="warning">Open</div></Link>
                         </div>
                       </>
