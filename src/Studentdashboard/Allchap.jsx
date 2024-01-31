@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import Navba from "./Navba";
 import "./quizles.css"
+import sitelogo from "./Logo (2).svg"
 function Allchap(){
     const { id } = useParams();
     const [chaptertitles, setChaptertitles] = useState([]);
@@ -11,6 +12,7 @@ function Allchap(){
     const [studentprogress, setStudentprogress] = useState([]);
     const [coursename, setCoursename] = useState([]);
     const [courselanguage, setCourselanguage] = useState("");
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate()
     const changepage =(index)=>{
 navigate(`/StudentLesson/${id}/${index}`)
@@ -23,6 +25,7 @@ navigate(`/StudentLesson/${id}/${index}`)
       }
         if (userId) {
         const fetchData = async () => {
+          setLoading(true)
           try {
 
             const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getCourseChapters/${userId}/${id}`);
@@ -33,6 +36,8 @@ navigate(`/StudentLesson/${id}/${index}`)
        
           } catch (error) {
             console.error("Error fetching chapters:", error);
+          }finally {
+            setLoading(false);
           }
         };
     
@@ -42,22 +47,55 @@ navigate(`/StudentLesson/${id}/${index}`)
     }, [userId]);
         const fetchChaptersTitles = async () => {
             try {
+              setLoading(true)
+
               const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getChapterTitles/${userId}/${id}`);
               setChaptertitles(response.data.chapters);
              
             } catch (error) {
               console.error("Error fetching chapter titles:", error);
+            }finally {
+              setLoading(false);
             }
           };
+
+
+          const [scale, setScale] = useState(1); // Initial scale factor
+          const [zoomDirection, setZoomDirection] = useState(1); // Initial zoom direction
+        
+          useEffect(() => {
+            const timer = setInterval(() => {
+              // Adjust scale based on zoom direction
+              if (scale >= 2) {
+                setZoomDirection(-1); // Change direction if scale reaches 2
+              } else if (scale <= 0.5) {
+                setZoomDirection(1); // Change direction if scale reaches 0.5
+              }
+              setScale(scale + 0.1 * zoomDirection); // Update scale
+            }, 200); // Decrease interval duration to increase speed
+        
+            return () => clearInterval(timer); // Cleanup interval
+          }, [scale, zoomDirection]);
     return(
         <>
         <div className="main-body">
           <Navba/>
           <div className="progressgra d-flex text-center" style={{color:"black",background: "#C9C8C5"}}>
-  <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}> <span style={{display:"flex", margin:"auto", textAlign:"center", alignItems:"center",justifyContent:"center"}}>{Math.round(studentprogress.progressPercentage)}%</span></div>
+          <div className="displaypro" style={{ width: `${studentprogress.progressPercentage || 0}%`, backgroundColor: '#FBB723', height: "100%" }}>
+  <span style={{ display: "flex", margin: "auto", textAlign: "center", alignItems: "center", justifyContent: "center" }}>
+    {isNaN(studentprogress.progressPercentage) ? 0 : Math.round(studentprogress.progressPercentage)}%
+  </span>
+</div>
  
 </div>
-<div className="card-hea">My courses</div>
+{
+  loading ?(<>
+   <div className="image-container">
+    <div className="loaderlogo" style={{ transform: `scale(${scale})` }}>
+      <img src={sitelogo} alt="logo" />
+    </div>
+  </div>
+  </>):(<><div className="card-hea">My courses</div>
         <div className="card-body maincardbody ">
           <p className="course-Name">{coursename}-{courselanguage}</p>
           <span className="stu">Your progress {studentprogress.lessonIndex} of {studentprogress.totalChapters} complete. <b>Get certificate after complete</b></span>
@@ -68,7 +106,11 @@ navigate(`/StudentLesson/${id}/${index}`)
   <span >{Math.round(studentprogress.progressPercentage)}%</span></div>
 </div>
 <div className="wraperofitems">
-          {chaptertitles.map((chapter, index) => (
+{
+    chaptertitles.length === 0 ? (<div className="d-flex justify-content-center">
+    <div class="spinner-border " role="status">
+  <span class="visually-hidden">Loading...</span>
+</div></div>):(<> {chaptertitles.map((chapter, index) => (
               <div
               key={index}
               
@@ -101,8 +143,11 @@ navigate(`/StudentLesson/${id}/${index}`)
                       </>
                     )}
                   </div>
-                ))}
-            </div> </div>
+                ))}</>)}
+         
+            </div> </div></>)
+}
+
           
              </div> 
         </>

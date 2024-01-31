@@ -164,7 +164,12 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
     });
   };
 
-
+  function removeErrorBorder(elementId) {
+    const element = document.getElementById(elementId);
+    if (element.classList.contains('error-border')) {
+      element.classList.remove('error-border');
+    }
+  }
 
   const handlePayment = async () => {
     if (!cardholderName || !email || !billingAddress || !zip) {
@@ -593,24 +598,31 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
             </div>
 
           
-               <input
-      type="text"
-      className="form-control fnam"
-      id="cardholderName"
-      placeholder="Full Name"
-      value={userId !== null ? userId.Name : cardholderName} // Set value to userId.Email if userId is not null, otherwise use email state
-      readOnly={userId !== null} // Set readOnly mode if userId is not null
-      onChange={(e) => setCardholderName(e.target.value)}
-    />
-          <input
-      type="text"
-      className="form-control fnam"
-      id="email"
-      placeholder="Email address"
-      value={userId !== null ? userId.Email : email} // Set value to userId.Email if userId is not null, otherwise use email state
-      readOnly={userId !== null} // Set readOnly mode if userId is not null
-      onChange={(e) => setEmail(e.target.value.toLowerCase())}
-    />
+            <input
+  type="text"
+  className="form-control fnam"
+  id="cardholderName"
+  placeholder="Full Name"
+  value={userId !== null ? userId.Name : cardholderName}
+  readOnly={userId !== null}
+  onChange={(e) => {
+    setCardholderName(e.target.value);
+    removeErrorBorder('cardholderName');
+  }}
+/>
+<input
+  type="text"
+  className="form-control fnam"
+  id="email"
+  placeholder="Email address"
+  value={userId !== null ? userId.Email : email}
+  readOnly={userId !== null}
+  onChange={(e) => {
+    setEmail(e.target.value.toLowerCase());
+    removeErrorBorder('email'); // Call removeErrorBorder to remove error class
+  }}
+/>
+
             <label className="labeltext">
               <span className="pasword">Payment information</span>
               <span className="secure"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -629,24 +641,32 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
               <span className="pasword">Country or region</span>
             </label>
           
-                 <input
-      type="text"
-      className="form-control fnam"
-      id="billingAddress"
-      placeholder="Address"
-      value={userId !== null ? userId.Address : billingAddress} // Set value to userId.Email if userId is not null, otherwise use email state
-      readOnly={userId !== null} // Set readOnly mode if userId is not null
-      onChange={(e) => setBillingAddress(e.target.value)}
-      />
             <input
-              type="text"
-              className="form-control fname"
-              placeholder="Zip code"
-              id="zip"
-              value={userId !== null ? userId.zip : zip} // Set value to userId.Email if userId is not null, otherwise use email state
-              readOnly={userId !== null} // Set readOnly mode if userId is not null
-              onChange={(e) => setZip(e.target.value)}
-            />
+  type="text"
+  className="form-control fnam"
+  id="billingAddress"
+  placeholder="Address"
+  value={userId !== null ? userId.Address : billingAddress}
+  readOnly={userId !== null}
+  onChange={(e) => {
+    setBillingAddress(e.target.value);
+    removeErrorBorder('billingAddress');
+  }}
+/>
+
+<input
+  type="text"
+  className="form-control fname"
+  placeholder="Zip code"
+  id="zip"
+  value={userId !== null ? userId.zip : zip}
+  readOnly={userId !== null}
+  onChange={(e) => {
+    setZip(e.target.value);
+    removeErrorBorder('zip');
+  }}
+/>
+
             <div className="termdiv">
               <span className="term"> By continuing, you agree to the  <span className="condition">Terms of service </span></span>
             </div>

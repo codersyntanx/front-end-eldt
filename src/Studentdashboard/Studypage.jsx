@@ -24,6 +24,8 @@ const navigate = useNavigate()
   const [chapterIndex, setChapterIndex] = useState(index);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
+
 const [quiz,setQuiz]=useState("")
   const handleChapterClick = (index, title) => {
     setChapterIndex(index);
@@ -37,7 +39,10 @@ const [quiz,setQuiz]=useState("")
 
   const handleNextPageClick = () => {
     stopSpeaking();
-  
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Optional: Adds smooth scrolling behavior
+    });
     if (currentPageIndex < totalPages - 1) {
       setCurrentPageIndex((prevIndex) => prevIndex + 1);
       setPage(chapters[chapterIndex].pages[currentPageIndex + 1]);
@@ -51,7 +56,10 @@ const [quiz,setQuiz]=useState("")
 
   const handlePreviousPageClick = () => {
     stopSpeaking();
-
+    window.scrollTo({
+      top: 100,
+      behavior: 'smooth' // Optional: Adds smooth scrolling behavior
+    });
     if (currentPageIndex > 0) {
       setCurrentPageIndex((prevIndex) => prevIndex - 1);
       setPage(chapters[chapterIndex].pages[currentPageIndex - 1]);
@@ -68,6 +76,7 @@ const [quiz,setQuiz]=useState("")
     }
       if (userId) {
       const fetchData = async () => {
+        setLoading(true)
         try {
           const response = await axios.get(`https://server-of-united-eldt.vercel.app/api/getCourseChapters/${userId}/${id}`);
           setChapters(response.data.chapters);
@@ -81,6 +90,8 @@ const [quiz,setQuiz]=useState("")
           }
         } catch (error) {
           console.error("Error fetching chapters:", error);
+        } finally {
+          setLoading(false);
         }
       };
   
@@ -230,7 +241,11 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
             </div>
           
             </div>
-          <div className="contentdiv ">
+            {
+              loading ?(<div className="d-flex justify-content-center" style={{height:"60vh"}}>
+              <div class="spinner-border " role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div></div>):( <div className="contentdiv ">
    <div className="p-3" dangerouslySetInnerHTML={{ __html: page.description }} />
    {page.image !== "" ? (
   <img src={page.image} alt="explainimage" className="descimage"/>
@@ -241,7 +256,9 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
   <button className="previousbutton"  onClick={handlePreviousPageClick}><i class="fa-solid fa-angle-left"></i>Previous</button>
 <button className="previousbutton" onClick={handleNextPageClick}>Next<i class="fa-solid fa-angle-right"></i></button>
 </div>
-          </div>
+          </div>)
+            }
+         
          
 
           </div>
