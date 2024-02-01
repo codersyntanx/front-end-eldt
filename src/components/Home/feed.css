@@ -9,7 +9,28 @@
     right: 5%;
     top: 187px;
 }
-
+.slick-dots li.slick-active button:before{
+    content: "";
+}
+/* Style for inactive dots */
+.ant-carousel .slick-dots li {
+    background-color: rgb(158, 157, 157); /* Set background color for inactive dots */
+    width: 27%;
+    height: 10px;
+    border-radius: 10px;
+  }
+  :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-dots{
+    justify-content: left !important;
+  }  /* Style for active dot */
+  .ant-carousel .slick-dots li.slick-active {
+    background-color: #FBB723; /* Set background color for active dot */
+    width: 27%;
+    height: 10px;
+    border-radius: 10px;
+  }
+  
+  /* You can also define other styles such as size, margin, etc. */
+  
   :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots-bottom{
     bottom: 264px; /* Adjust this value as needed */
 
@@ -18,11 +39,23 @@
     width: 90%;
     margin-left: auto;
   }
+  .ant-carousel .slick-dots li button {
+    outline: none; /* Remove outline */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove box-shadow */
+  }
+  :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-dots li button{
+    background: none !important;
+  }
 /* .review_contain{
     background-color: white;
     width: 553px;
     height: 403px;
 } */
+.slick-dots slick-dots-bottom{
+    width: 100%;
+    background-color: green;
+}
 .right_side{
     width: 45%;
 }
@@ -38,7 +71,22 @@
     .svgcontainafter{
         display: none;
     }
-
+    .ant-carousel .slick-dots li {
+        background-color: rgb(158, 157, 157); /* Set background color for inactive dots */
+        width: 28%;
+        height: 10px;
+        border-radius: 10px;
+      }
+      :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-dots{
+        justify-content: left !important;
+      }  /* Style for active dot */
+      .ant-carousel .slick-dots li.slick-active {
+        background-color: #FBB723; /* Set background color for active dot */
+        width: 28%;
+        height: 10px;
+        border-radius: 10px;
+      }
+      
 }
 @media screen and (max-width: 1200px) {
     .svgcontain{
@@ -47,6 +95,21 @@
     .feedback-content .title{
         font-size: 32px;
     }
+    .ant-carousel .slick-dots li {
+        background-color: rgb(158, 157, 157); /* Set background color for inactive dots */
+        width: 31%;
+        height: 10px;
+        border-radius: 10px;
+      }
+      :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-dots{
+        justify-content: left !important;
+      }  /* Style for active dot */
+      .ant-carousel .slick-dots li.slick-active {
+        background-color: #FBB723; /* Set background color for active dot */
+        width: 31%;
+        height: 10px;
+        border-radius: 10px;
+      }
     
  .svgcontainafter {
    display: none;

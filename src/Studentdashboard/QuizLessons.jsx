@@ -5,6 +5,7 @@ import axios from "axios";
 import Navba from "./Navba";
 import "./quizles.css"
 import sitelogo from "./Logo (2).svg"
+import Loader from "./Loader";
 function QuizLesson(){
     const { id } = useParams();
     const [chaptertitles, setChaptertitles] = useState([]);
@@ -86,11 +87,12 @@ navigate(`/test/${id}/${index}`)
 </div>
 {
   loading ?(<>
-   <div className="image-container">
+   {/* <div className="image-container">
     <div className="loaderlogo" style={{ transform: `scale(${scale})` }}>
       <img src={sitelogo} alt="logo" />
     </div>
-  </div>
+  </div> */}
+<Loader/>
   </>):(<><div className="card-hea">My courses</div>
         <div className="card-body maincardbody">
           <p className="course-Name">{coursename}-{courselanguage}</p>
