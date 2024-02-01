@@ -19,7 +19,7 @@
     height: 10px;
     border-radius: 10px;
   }
-  :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-dots{
+  :where(.css-1b0bdye).ant-carousel .slick-dots li button{
     justify-content: left !important;
   }  /* Style for active dot */
   .ant-carousel .slick-dots li.slick-active {
@@ -31,11 +31,11 @@
   
   /* You can also define other styles such as size, margin, etc. */
   
-  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel .slick-dots-bottom{
+  :where(.css-1b0bdye).ant-carousel .slick-dots li button{
     bottom: 264px; /* Adjust this value as needed */
 
   }
-  :where(.css-dev-only-do-not-override-dkbvqv).ant-carousel{
+  :where(.css-1b0bdye).ant-carousel .slick-dots li button{
     width: 90%;
     margin-left: auto;
   }
@@ -44,7 +44,7 @@
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
   }
-  :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-dots li button{
+  :where(.css-1b0bdye).ant-carousel .slick-dots li button{
     background: none !important;
   }
 /* .review_contain{
@@ -77,7 +77,7 @@
         height: 10px;
         border-radius: 10px;
       }
-      :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-dots{
+      :where(.css-1b0bdye).ant-carousel .slick-dots li button{
         justify-content: left !important;
       }  /* Style for active dot */
       .ant-carousel .slick-dots li.slick-active {
@@ -101,7 +101,7 @@
         height: 10px;
         border-radius: 10px;
       }
-      :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-dots{
+      :where(.css-1b0bdye).ant-carousel .slick-dots li button{
         justify-content: left !important;
       }  /* Style for active dot */
       .ant-carousel .slick-dots li.slick-active {
