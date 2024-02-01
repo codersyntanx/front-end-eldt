@@ -44,7 +44,7 @@
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
   }
-  :where(.css-1b0bdye).ant-carousel .slick-dots li button{
+  :where(.css-1b0bdye).ant-carousel .slick-dots{
     background: none !important;
   }
 /* .review_contain{
