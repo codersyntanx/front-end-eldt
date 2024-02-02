@@ -12,6 +12,19 @@
 .slick-dots li.slick-active button:before{
     content: "";
 }
+.ant-carousel .slick-dots li button{
+  display: none;
+
+}
+:where(.css-1b0bdye).ant-carousel .slick-dots{
+  justify-content: end;
+}
+:where(.css-1b0bdye).ant-carousel .slick-dots li button:hover, :where(.css-1b0bdye).ant-carousel .slick-dots li button:focus{
+  display: none;
+}
+:where(.css-1b0bdye).ant-carousel .slick-dots li.slick-active button{
+  display: none;
+}
 /* Style for inactive dots */
 .ant-carousel .slick-dots li {
     background-color: rgb(158, 157, 157); /* Set background color for inactive dots */
