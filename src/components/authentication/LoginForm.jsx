@@ -6,6 +6,7 @@ import { Translator, Translate } from "react-auto-translate";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import back from "./back.png"
 import {
   getCompletedListCourses,
   getPurchasedCourses,
@@ -50,8 +51,18 @@ const failedclose = ()=>{
 const successclose = ()=>{
   setSuccessmodal(false)
 }
+const successemail = ()=>{
+  setSuccess(false)
+}
+const removeerror =()=>{
+  setError(false)
+}
 const gotodash =()=>{
   navigate("/studentdash");
+}
+const loginpage =()=>{
+  setForget(true)
+  setSuccess(false)
 }
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -121,6 +132,10 @@ const recoverEmail = async (e) => {
         to={languageState?.language?.value || "en"}
         googleApiKey={import.meta.env.VITE_GOOGLE_TRANSLATE_KEY}
       >
+        <Link to="/">
+                  <span className="bolding"><i class="fa-solid fa-arrow-left-long"></i><span className="mx-2">Back</span> </span>
+
+        </Link>
         <div className="mainlog">
           <img src={logomain} alt="web-logo"/>
         </div>
@@ -186,28 +201,6 @@ const recoverEmail = async (e) => {
           </form>
         </div>
             </>
-          ): success ?(
-            <>
-            <div className="mainbody">
-  <div className="imgalign">
- 
-  <img src={successmsg} alt="success"/>
-  </div>
-  <span className="message" style={{marginTop:"24px"}}> <Translate>Your password has been successfully sent to your email. </Translate></span><br></br>
-  <span className="exp" > <Translate>Please enter your email inbox and access the password reset email we sent you. With this, you will be able to change your password.</Translate></span>
-</div>
-            </>
-          ):error?(
-            <>
-              <div className="mainbody">
-  <div className="imgalign">
- 
-  <img src={errormsg} alt="success"/>
-  </div>
-  <span className="message" style={{marginTop:"24px"}}> <Translate>This Email is not been registered </Translate></span><br></br>
-  <span className="exp" > <Translate>Please enter the valid email to recover your account </Translate></span>
-</div>
-            </>
           ):(
             <>  
 
@@ -261,6 +254,25 @@ const recoverEmail = async (e) => {
 <button className="buybtn" onClick={failedclose}>Try again</button>
 </div>
        </Modal>
+
+
+       {/* //forget password  error*/}
+       <Modal
+        open={error}
+        onCancel={removeerror}
+        closeIcon={null}
+        footer={null} 
+       >
+<div className="mainbody">
+  <div className="imgalign">
+    <img src={errormsg} alt="success"/>
+  </div>
+  <span className="message" style={{marginTop:"24px"}}> <Translate>This Email is not been registered </Translate></span><br></br>
+  <span className="exp" > <Translate>Please enter the valid email to recover your account </Translate></span>
+  <button className="buybtn" onClick={removeerror}>Try again</button>
+
+</div>
+       </Modal>
        <Modal
         open={successmodal}
         onCancel={successclose}
@@ -276,6 +288,49 @@ const recoverEmail = async (e) => {
 <button className="buybtn" onClick={gotodash}>Go to Dashboard</button>
 </div>
        </Modal>
+
+       {/* succes sent email */}
+       <Modal
+        open={success}
+        onCancel={successemail}
+        closeIcon={null}
+        footer={null} 
+       >
+<div className="mainbody">
+  <div className="imgalign">
+    <img src={successmsg} alt="success"/>
+  </div>
+  <span className="message" style={{marginTop:"24px"}}> <Translate>Your password has been successfully sent to your email. </Translate></span><br></br>
+  <span className="exp" > <Translate>Please enter your email inbox and access the password reset email we sent you. With this, you will be able to change your password.</Translate></span>
+<button className="buybtn" onClick={loginpage}>Go to Login</button>
+</div>
+       </Modal>
     </>
   );
 }
+
+
+
+// : success ?(
+//   <>
+//   <div className="mainbody">
+// <div className="imgalign">
+
+// <img src={successmsg} alt="success"/>
+// </div>
+// <span className="message" style={{marginTop:"24px"}}> <Translate>Your password has been successfully sent to your email. </Translate></span><br></br>
+// <span className="exp" > <Translate>Please enter your email inbox and access the password reset email we sent you. With this, you will be able to change your password.</Translate></span>
+// </div>
+//   </>
+// ):error?(
+//   <>
+//     <div className="mainbody">
+// <div className="imgalign">
+
+// <img src={errormsg} alt="success"/>
+// </div>
+// <span className="message" style={{marginTop:"24px"}}> <Translate>This Email is not been registered </Translate></span><br></br>
+// <span className="exp" > <Translate>Please enter the valid email to recover your account </Translate></span>
+// </div>
+//   </>
+// )

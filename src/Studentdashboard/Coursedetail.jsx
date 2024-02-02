@@ -45,10 +45,7 @@ function Coursedetail() {
             border-radius: 16px;
             background: #F5F5F5;
           }
-          .accordion-body{
-            border-top: 1px solid #DBDBDB;
-
-          }
+         
           .accordion-item{
             border-radius: 16px;
             border:none;

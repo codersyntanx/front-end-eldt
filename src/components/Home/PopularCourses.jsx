@@ -31,6 +31,10 @@ import {
 
 
 const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    minHeight: '50px', // Adjust the height of the input field
+  }),
   menu: (provided, state) => ({
     ...provided,
     position: 'absolute !important',
@@ -104,6 +108,7 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
   const [coulan, setCoulan] = useState("English")
   const [plans, setPlans] = useState([]);
   const [userId, setUserId] = useState(null);
+  const [confirmemail, setConfirmemail] = useState("");
 
   useEffect(() => {
     const personId = localStorage.getItem("userId");
@@ -159,7 +164,6 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
   const openNotification = (type, message) => {
     notification[type]({
       message,
-      description,
       duration: 3,
     });
   };
@@ -170,18 +174,37 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
       element.classList.remove('error-border');
     }
   }
-
+function isValidEmail(email) {
+    // Regular expression for basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = emailRegex.test(email);
+    
+    if (isValid) {
+        console.log('Email is valid.');
+        return true;
+    } else {
+        console.log('Email is invalid.');
+        return false;
+    }
+}
   const handlePayment = async () => {
+    if (!isValidEmail(email)) {
+        openNotification("error", "Please enter a valid email address");
+        return;
+    }
     if (!cardholderName || !email || !billingAddress || !zip) {
       // Handle validation errors
       if (!cardholderName) document.getElementById('cardholderName').classList.add('error-border');
       if (!email) document.getElementById('email').classList.add('error-border');
       if (!billingAddress) document.getElementById('billingAddress').classList.add('error-border');
       if (!zip) document.getElementById('zip').classList.add('error-border');
-  
+      if (!confirmemail) document.getElementById('confirmedemail').classList.add('error-border');
       return;
     }
-  
+  if(email != confirmemail){
+        openNotification("error","Confirm Email must be same")
+    return;
+  }
     try {
       setLoading(false);
   
@@ -436,7 +459,7 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
                 <animated.div style={propsSpring} className="container" >
                   <Slider {...combinedSettings}>
                     {plans.map((plan) => (
-                      <div key={plan._id} className=" card-content mx-auto" style={{ width: "90%" }}>
+                      <div key={plan._id} className=" card-content mx-auto" >
                         <div className="plancard d-flex mt-2">
                           <img src={plan.image} height="58px" alt="plan1" />
                           <span className="flex-end">
@@ -546,8 +569,8 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
                           <span  className="mx-2"><Translate>TPR Certified:</Translate><strong className="strong-text"> Yes</strong> </span>
                         </div>
                         <button
-                          className=" buy-button"
-                          style={{ marginTop: "24px" }}
+                          className=" buy-button "
+                          style={{ marginTop: "40px" }}
                           onClick={() => { showModal(plan) }}
                         >
                           <Translate>Buy Now</Translate>
@@ -620,6 +643,17 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
   onChange={(e) => {
     setEmail(e.target.value.toLowerCase());
     removeErrorBorder('email'); // Call removeErrorBorder to remove error class
+  }}
+/>
+<input
+  type="text"
+  className="form-control fnam"
+  id="confirmedemail"
+  placeholder="Confirm Email address"
+  value={userId !== null ? userId.Email : confirmemail}
+  readOnly={userId !== null}
+  onChange={(e) => {
+    setConfirmemail(e.target.value.toLowerCase());
   }}
 />
 

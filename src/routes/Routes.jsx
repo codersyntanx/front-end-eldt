@@ -53,6 +53,7 @@ import QuizLesson from "../Studentdashboard/QuizLessons.jsx";
 import Allchap from "../Studentdashboard/Allchap.jsx";
 import Logout from "../Studentdashboard/Logout.jsx"
 import Alltext from "../Studentdashboard/Alltext.jsx"
+import Loader from "../Studentdashboard/Loader.jsx";
 const AppRoutes = () => {
   const [userId, setUserId]=useState(null)
 
@@ -100,7 +101,11 @@ const AppRoutes = () => {
             }
           />
           
-
+<Route
+path="/loader"
+element={
+  <Loader/>
+}/>
      
     <Route
       path="/quiz/:id"

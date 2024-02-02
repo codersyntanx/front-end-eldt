@@ -3,6 +3,11 @@
     background-size: cover;
     min-height: 100vh;
 }
+.card-body2{
+    width: 80%;
+    background-color: white;
+    margin: auto;
+}
 .loaderlogo{
     display: flex;
     justify-content: center;
@@ -55,6 +60,8 @@ background: #F5F5F5;
     width: 80%;
     margin: auto;
     background-color: white;
+    border-radius: 0px 0px 20px 20px;
+
 }
 .course-Name{
     color: #2C292A;
@@ -209,11 +216,33 @@ padding-top: 20px;
     margin: auto;
     overflow: hidden;
 }
+.paddingdiv{
+   width: 70%;
+   margin: auto;
+   padding-top: 20px;
+}
+.mianrounded{
+    padding: 20px;
+}
 @media (max-width:786px) {
     .maincardbody{
         padding: 20px !important;
     }
     .navbar-nav{
         margin-top: 30px;
+    }
+    .card-body2{
+        width: 90%;
+    }
+    .quiz-head{
+        width: 90%;
+    }
+    .paddingdiv{
+        width: 90%;
+        margin: auto;
+        padding-top: 20px;
+     }
+     .mianrounded{
+        padding: 0px;
     }
 }

@@ -8,6 +8,12 @@ font-weight: 700;
 line-height: 160%; /* 25.6px */
 letter-spacing: 0.8px;
 }
+.accordion-body{
+    border-top: 1px solid #DBDBDB;
+    padding-left:"10px";
+    padding-right:"10px"
+
+  }
 .progress-bar-container {
     display: flex;
     align-items: center;

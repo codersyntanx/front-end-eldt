@@ -5,6 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 function Navba ({page,chapterid}){
   const [chapter, setChapter]=useState("")
   const [lesson, setLesson]=useState("")
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+      setIsOpen(!isOpen);
+  };
 const navigate = useNavigate()
   useEffect(()=>{
 const chapter = localStorage.getItem("chapindex")
@@ -37,7 +42,7 @@ if(chapter != ""){
     <Link className="navbar-brand" to="/studentdash">
      <img src={logo} alt="logo"/> 
     </Link>
-    <button
+    {/* <button
       className="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -47,8 +52,23 @@ if(chapter != ""){
       aria-label="Toggle navigation"
     >
       <span className="navbar-toggler-icon" />
-    </button>
-    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+    </button> */}
+    <div style={{border:"none"}} className="navbar-toggler"  data-bs-toggle="collapse" data-bs-target="#navbarNav"  aria-controls="navbarNavDropdown" aria-expanded="false"
+      aria-label="Toggle navigation" onClick={handleToggle}>
+                    {isOpen ? (
+                       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <path d="M25 7L7 25" stroke="#FBB723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M25 25L7 7" stroke="#FBB723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                      <path d="M6.25 20H33.75" stroke="#FBB723" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M6.25 10H33.75" stroke="#FBB723" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M6.25 30H33.75" stroke="#FBB723" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    )}
+                </div>
+    <div  className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
       <ul className="navbar-nav ms-auto">
         <li className="nav-item">
           <Link className="nav-link d-flex" aria-current="page"  to="/studentdash">

@@ -5,6 +5,7 @@ import axios from "axios";
 import "./coursetitle.css";
 import { Switch, Slider, Progress, Modal } from 'antd';
 import Navba from "./Navba";
+import Loader from "./Loader";
 
 function Studypage() {
   const [chapters, setChapters] = useState([]);
@@ -150,6 +151,31 @@ const [quiz,setQuiz]=useState("")
       console.error("Error fetching chapter titles:", error);
     }
   };
+  function toCamelCase(str) {
+    // Convert the string to lowercase and split it into words
+    const words = str.toLowerCase().split(' ');
+
+    // If there are more than two words, truncate and add ellipsis
+    if (words.length > 2) {
+        // Slice the array to get the first two words
+        const truncatedWords = words.slice(0, 2);
+        // Capitalize the first letter of each word
+        for (let i = 0; i < truncatedWords.length; i++) {
+            truncatedWords[i] = truncatedWords[i].charAt(0).toUpperCase() + truncatedWords[i].slice(1);
+        }
+        // Join the truncated words and add ellipsis
+        return truncatedWords.join(' ') + '...';
+    } else {
+        // Capitalize the first letter of each word
+        for (let i = 0; i < words.length; i++) {
+            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        }
+        // Join the words back together with spaces and return
+        return words.join(' ');
+    }
+}
+
+
 
     return (
       <div className="learning">
@@ -176,7 +202,7 @@ const [quiz,setQuiz]=useState("")
 </div>
 <div className="d-flex mainpro align-items-center gap-2">
 
-Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<span className="maincontent">Autoplay</span>  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_2606_46918)">
     <path d="M20.3546 11.01C20.8248 11.333 20.8248 12.0271 20.3546 12.3501L8.37728 20.5777C7.83786 20.9483 7.10404 20.5621 7.10404 19.9076L7.10403 11.6801L7.10404 3.45247C7.10404 2.79804 7.83787 2.41185 8.37728 2.78239L20.3546 11.01Z" fill="white"/>
   </g>
@@ -192,19 +218,11 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
           <div className="card-con">
             <div className="titles">
             <div className="dropdown">
-            <span
-  className="dropdown-toggle"
-  type="button"
-  id="dropdownMenuButton"
-  data-bs-toggle="dropdown"
-  aria-haspopup="true"
-  aria-expanded="false"
->
-  
-  {chapti}
-  
+            
+<span  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+{chapti}
+    <i class="fa-solid fa-angle-down mt-1 mx-3"></i>
 </span>
-
               <div style={{overflowY:"scroll", height:"500px"}} className="dropdown-menu" aria-labelledby="dropdownMenuButton" onClick={stopSpeaking}>
                 {chaptertitles.map((chapter, index) => (
                   <div
@@ -214,7 +232,7 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
                   >
                     {chapter.available ? (
                       <>
-                      <div>{index +1}. <span style={{ color: "#2C292A" }}>{chapter.title}</span></div>
+                      <div>{index +1}. <span style={{ color: "#2C292A" }}>{toCamelCase(chapter.title)}</span></div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
   <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="#FBB723" stroke-width="2" stroke-miterlimit="10"/>
   <path d="M20 16L14 12V20L20 16Z" stroke="#FBB723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -222,7 +240,7 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
                       </>
                     ) : (
                       <>
-                      <div>{index +1}. <span style={{ color: "#2C292A" }}>{chapter.title}</span></div>
+                      <div>{index +1}. <span style={{ color: "#2C292A" }}>{toCamelCase(chapter.title)}</span></div>
                        
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
   <path d="M26 11H6C5.44772 11 5 11.4477 5 12V26C5 26.5523 5.44772 27 6 27H26C26.5523 27 27 26.5523 27 26V12C27 11.4477 26.5523 11 26 11Z" stroke="#2C292A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -243,9 +261,8 @@ Auto play  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
             </div>
             {
               loading ?(<div className="d-flex justify-content-center" style={{height:"60vh"}}>
-              <div class="spinner-border " role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div></div>):( <div className="contentdiv ">
+              <Loader/>
+              </div>):( <div className="contentdiv ">
    <div className="p-3" dangerouslySetInnerHTML={{ __html: page.description }} />
    {page.image !== "" ? (
   <img src={page.image} alt="explainimage" className="descimage"/>

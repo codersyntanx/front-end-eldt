@@ -13,6 +13,9 @@ p {
   color: red !important;
   margin-top: 5px;
 }
+:where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-slider .slick-track, :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-slider .slick-list{
+  overflow-x: hidden !important;
+}
 .emailsent{
   color: #0A0A0A;
 text-align: center;
@@ -60,6 +63,12 @@ a {
 }
 .mainlog{
 margin-bottom: 80px;
+margin-top: 40px;
+}
+.bolding{
+  font-size: 24px;
+  font-weight: bold;
+  font-family: inter;
 }
 .block-open-close .title-open.active:after,
 .faq-accordion .accordion .accordion__button.active i {

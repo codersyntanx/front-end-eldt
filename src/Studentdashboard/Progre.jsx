@@ -191,12 +191,79 @@ const formonth =(day)=>{
 </svg>{errors.lastName}</div>}
 <label className="foam-label">Date of birth</label>
 <div className="dobs">
-  <div className="dateob">
+  
+<div className="dateob">
+<label className="fomlbl">Month</label>
+<div class="dropdown">
+<button class="btn registinput dpbtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    {month}
+    <i class="fa-solid fa-angle-down mt-1"></i>
+</button>
+   
+  <ul class="dropdown-menu yeardropdown">
+  <li><a class="dropdown-item" onClick={()=>{formonth("January")}}>January</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("February")}}>February</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("March")}}>March</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("April")}}>April</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("May")}}>May</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("June")}}>June</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("July")}}>July</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("August")}}>August</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("September")}}>September</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("October")}}>October</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("November")}}>November</a></li>
+    <li><a class="dropdown-item" onClick={()=>{formonth("December")}}>December</a></li>
+  </ul>
+</div>
+</div>
+<div className="dateob">
+<label className="fomlbl">Day</label>
+<div class="dropdown">
+<button class="btn registinput dpbtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  {day} 
+    <i class="fa-solid fa-angle-down mt-1"></i>
+</button>
+  <ul class="dropdown-menu yeardropdown">
+    <li><a class="dropdown-item" onClick={()=>{forday("2")}}>2</a></li>
+    <li><a class="dropdown-item"  onClick={()=>{forday("3")}}>3</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("4")}}>4</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("5")}}>5</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("6")}}>6</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("7")}}>7</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("8")}}>8</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("9")}}>9</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("10")}}>10</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("11")}}>11</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("12")}}>12</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("13")}}>13</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("14")}}>14</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("15")}}>15</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("16")}}>16</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("17")}}>17</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("18")}}>18</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("19")}}>19</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("20")}}>20</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("21")}}>21</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("22")}}>22</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("23")}}>23</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("24")}}>24</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("25")}}>25</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("26")}}>26</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("27")}}>27</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("28")}}>28</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("29")}}>29</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("30")}}>30</a></li>
+    <li><a class="dropdown-item" onClick={()=>{forday("31")}}>31</a></li>
+  </ul>
+</div>
+</div>
+<div className="dateob">
 <label className="fomlbl">Year</label>
 <div class="dropdown">
-  <button class="btn dpbtn registinput dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    {year} 
-  </button>
+  <button class="btn registinput dpbtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  {year} 
+    <i class="fa-solid fa-angle-down mt-1"></i>
+</button>
   <ul class="dropdown-menu yeardropdown">
   <li><a class="dropdown-item" onClick={()=>{foryear("2023")}}>2023</a></li>
   <li><a class="dropdown-item" onClick={()=>{foryear("2022")}}>2022</a></li>
@@ -263,68 +330,6 @@ const formonth =(day)=>{
   <li><a class="dropdown-item" onClick={()=>{foryear("1961")}}>1961</a></li>
   <li><a class="dropdown-item" onClick={()=>{foryear("1960")}}>1960</a></li>
  
-  </ul>
-</div>
-</div>
-<div className="dateob">
-<label className="fomlbl">Month</label>
-<div class="dropdown">
-  <button class="btn registinput dpbtn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    {month}
-  </button>
-  <ul class="dropdown-menu yeardropdown">
-  <li><a class="dropdown-item" onClick={()=>{formonth("January")}}>January</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("February")}}>February</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("March")}}>March</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("April")}}>April</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("May")}}>May</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("June")}}>June</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("July")}}>July</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("August")}}>August</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("September")}}>September</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("October")}}>October</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("November")}}>November</a></li>
-    <li><a class="dropdown-item" onClick={()=>{formonth("December")}}>December</a></li>
-  </ul>
-</div>
-</div>
-<div className="dateob">
-<label className="fomlbl">Day</label>
-<div class="dropdown">
-  <button class="btn dpbtn registinput dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    {day}
-  </button>
-  <ul class="dropdown-menu yeardropdown">
-    <li><a class="dropdown-item" onClick={()=>{forday("2")}}>2</a></li>
-    <li><a class="dropdown-item"  onClick={()=>{forday("3")}}>3</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("4")}}>4</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("5")}}>5</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("6")}}>6</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("7")}}>7</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("8")}}>8</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("9")}}>9</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("10")}}>10</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("11")}}>11</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("12")}}>12</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("13")}}>13</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("14")}}>14</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("15")}}>15</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("16")}}>16</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("17")}}>17</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("18")}}>18</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("19")}}>19</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("20")}}>20</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("21")}}>21</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("22")}}>22</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("23")}}>23</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("24")}}>24</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("25")}}>25</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("26")}}>26</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("27")}}>27</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("28")}}>28</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("29")}}>29</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("30")}}>30</a></li>
-    <li><a class="dropdown-item" onClick={()=>{forday("31")}}>31</a></li>
   </ul>
 </div>
 </div>

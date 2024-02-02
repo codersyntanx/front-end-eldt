@@ -10,6 +10,7 @@ import certificateim from "./certificateimage.png"
 import errorimage from "./Group 6674 (2).png"
 import successimage from "./Group 6674.png"
 import sitelogo from "./Logo (2).svg"
+import Loader from './Loader';
 const Quize = () => {
   const [questions, setQuestions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -193,20 +194,18 @@ const fetchquestions = () => {
 {
   questions.length === 0 ?(
     <div className="image-container">
-    <div className="loaderlogo" style={{ transform: `scale(${scale})` }}>
-      <img src={sitelogo} alt="logo" />
-    </div>
+   <Loader/>
   </div>
   ):(
     <>
     <div className="quiz-head">{title}</div>
-     <div className="card-body">
-        <div className="p-5">
+     <div className="card-body2">
+        <div className="paddingdiv">
         {questions.map((question, questionIndex) => {
   const result = results.find((result) => result.questionId === question._id);
 
   return (
-    <div className="border rounded p-3 mb-3" key={question._id}>
+    <div className="border rounded mianrounded mb-3 " key={question._id}>
       <b>{questionIndex + 1}.{question.questionText}</b>
       <div className="p-3">
       {question.options.map((option, optionIndex) => {
