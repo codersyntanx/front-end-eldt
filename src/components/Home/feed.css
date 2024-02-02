@@ -31,10 +31,10 @@
   
   /* You can also define other styles such as size, margin, etc. */
   
-  :where(.css-1b0bdye).ant-carousel .slick-dots li button{
-    bottom: 264px; /* Adjust this value as needed */
+  /* :where(.css-1b0bdye).ant-carousel .slick-dots li button{
+    bottom: 264px;
 
-  }
+  } */
   :where(.css-1b0bdye).ant-carousel .slick-dots li button{
     width: 90%;
     margin-left: auto;
