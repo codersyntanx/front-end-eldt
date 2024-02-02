@@ -1,6 +1,6 @@
 .svgcontain{
     position: relative;
-    top: 244px;
+    top: 334px;
     right: 80px;
 }
 .svgcontainafter {
@@ -20,15 +20,18 @@
     border-radius: 10px;
   }
   :where(.css-1b0bdye).ant-carousel .slick-dots li button{
-    justify-content: left !important;
-  }  /* Style for active dot */
+    justify-content: end !important;
+  } 
+   /* Style for active dot */
   .ant-carousel .slick-dots li.slick-active {
     background-color: #FBB723; /* Set background color for active dot */
     width: 27%;
     height: 10px;
     border-radius: 10px;
   }
-  
+  .right_side{
+    padding: 3px;
+  }
   /* You can also define other styles such as size, margin, etc. */
   
   /* :where(.css-1b0bdye).ant-carousel .slick-dots li button{
