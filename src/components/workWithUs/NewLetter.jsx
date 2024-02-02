@@ -64,9 +64,7 @@ export default function NewsLetter() {
             </h2>
             <p>
               <Translate>
-                Stay ahead of the competition with United ELDT's comprehensive
-                online Entry Level Driving Training course. Subscribe to our
-                newsletter for exclusive updates and industry insights.
+              Stay ahead of the competition with the comprehensive online entry-level driver training course from United ELDT. Subscribe to our newsletter for exclusive updates and industry insights.
               </Translate>
             </p>
 {

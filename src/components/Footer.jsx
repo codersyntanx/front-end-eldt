@@ -55,14 +55,14 @@ export default function Footer() {
 
               <div className="item">
                 <div className="ref-bottom flex f-direction-row">
-                  <div className="email-bottom">
+                  <div className="email-bottom bottomemail">
                     <span className="title-bottom">
                       <Translate>Connect with us</Translate>
                     </span>
                     <p>
                       <Translate>
-                        Please contact us by email or through our online contact
-                        form.
+                        Please contact us by email or through our online <u><strong>contact
+                        form.</strong> </u>
                       </Translate>
                     </p>
                     <SocialLinks />
@@ -196,27 +196,15 @@ export default function Footer() {
                       </a>
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/faq">
-                      <a>
-                        <Translate>FAQs</Translate>
-                      </a>
-                    </Link>
-                  </li>
+                
                   <li>
                     <Link to="/contact-us">
                       <a>
-                        <Translate>Contact us</Translate>
+                        <Translate>Connect with me</Translate>
                       </a>
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/work-with-us">
-                      <a>
-                        <Translate>Work with us</Translate>
-                      </a>
-                    </Link>
-                  </li>
+                
 
                   <li>
                     <Link to="/privacy-policy">

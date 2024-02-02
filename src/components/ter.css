@@ -1,17 +1,22 @@
 .cards svg{
-    width: 30px;
-    height: 30px;
+    width: 41px;
+    height: 41px;
 }
 .cards{
     display: flex;
     flex-wrap: wrap;
-    column-gap: 10px;
+    column-gap: 12px;
     align-items: center;
     justify-content: center;
-    width: 60%;
+    width: 80%;
 }
 @media (max-width: 1440px){
     .cards{
-        width: 80%;
+        width: 100%;
+    }
+}
+@media (max-width: 1080px){
+    .cards{
+        width: 85%;
     }
 }
