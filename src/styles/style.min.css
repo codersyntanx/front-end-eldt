@@ -13,7 +13,7 @@ p {
   color: red !important;
   margin-top: 5px;
 }
-:where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-slider .slick-track, :where(.css-dev-only-do-not-override-1b0bdye).ant-carousel .slick-slider .slick-list{
+:where(.css-1b0bdye).ant-carousel .slick-slider .slick-track, :where(.css-1b0bdye).ant-carousel .slick-slider .slick-list{
   overflow-x: hidden !important;
 }
 .emailsent{
