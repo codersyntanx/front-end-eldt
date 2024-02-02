@@ -1,6 +1,7 @@
 import React from "react";
 import { Translator, Translate } from "react-auto-translate";
 import Swal from "sweetalert2";
+import imagecall from "./phoneforcalltocall.png"
 export default function CallToPhone({ language }) {
   return (
     <>
@@ -12,7 +13,7 @@ export default function CallToPhone({ language }) {
         
         <div className="callphone-block">
           <div className="left-side">
-            <img src={`images/iphone-layout.png`} />
+            <img src={imagecall} />
           </div>
           <div className="right-side">
             <div className="right-content">
@@ -38,7 +39,7 @@ export default function CallToPhone({ language }) {
   <path d="M22.1596 0C22.2341 0 22.3085 0 22.3872 0C22.5699 2.25671 21.7085 3.94291 20.6617 5.16401C19.6345 6.37667 18.2279 7.5528 15.9529 7.37435C15.8012 5.14996 16.664 3.58881 17.7094 2.37053C18.679 1.23515 20.4565 0.224828 22.1596 0Z" fill="#2C292A"/>
   <path d="M29.0455 23.4889C29.0455 23.5114 29.0455 23.5311 29.0455 23.5522C28.4061 25.4885 27.4942 27.148 26.3813 28.6881C25.3653 30.0862 24.1203 31.9677 21.8974 31.9677C19.9765 31.9677 18.7006 30.7326 16.7319 30.6989C14.6495 30.6651 13.5043 31.7317 11.6002 32.0001C11.3824 32.0001 11.1646 32.0001 10.9511 32.0001C9.55291 31.7977 8.42456 30.6904 7.60253 29.6928C5.17861 26.7447 3.30551 22.9367 2.95703 18.0635C2.95703 17.5858 2.95703 17.1094 2.95703 16.6317C3.10457 13.144 4.79921 10.3084 7.0517 8.93414C8.24048 8.20345 9.8747 7.58096 11.6944 7.85918C12.4743 7.98003 13.271 8.24701 13.9694 8.51118C14.6312 8.76552 15.4589 9.21658 16.2429 9.19269C16.7741 9.17723 17.3024 8.90041 17.8378 8.7051C19.406 8.13881 20.9432 7.48962 22.9695 7.79454C25.4047 8.1627 27.133 9.24468 28.201 10.914C26.141 12.2251 24.5124 14.2007 24.7906 17.5745C25.0379 20.6392 26.8197 22.4322 29.0455 23.4889Z" fill="#2C292A"/>
 </svg>
-                  <Translate><div className="getitbtns">Download on the<br /><span className="getitbtnboldtext">App Store</span></div></Translate>
+                  <div className="getitbtns"><Translate>Download on the</Translate><br /><span className="getitbtnboldtext"><Translate>App Store</Translate></span></div>
                 </button>
                 <button
                   onClick={() => {
@@ -70,7 +71,7 @@ export default function CallToPhone({ language }) {
                       fill="#2C292A"
                     />
                   </svg>
-                  <Translate><div className="getitbtns">Get it on <br /><span className="getitbtnboldtext">Download Google Play</span></div></Translate>
+                  <div className="getitbtns"><Translate>Get it on</Translate> <br /><span className="getitbtnboldtext"><Translate>Google Play</Translate> </span></div>
                 </button>
 
               </div>

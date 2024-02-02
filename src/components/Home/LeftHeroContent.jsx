@@ -189,12 +189,12 @@ function LeftHeroContent(...props) {
           <DivFrame3 className="main-block-buttons">
             <ComprarAgora className="buy-now">
               <Link to="" onClick={handleClick}>
-                <Translate>{`Buy Now!`}</Translate>
+                <Translate>{`Buy Now`}</Translate>
               </Link>
             </ComprarAgora>
             <FaleConosco className="contact-us">
             <Link to="/contact-us" >
-            <Translate>{`Contact Us!`}</Translate>
+            <Translate>{`Contact Us`}</Translate>
           </Link>
             </FaleConosco>
           </DivFrame3>

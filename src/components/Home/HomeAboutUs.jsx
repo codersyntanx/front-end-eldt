@@ -111,6 +111,7 @@ export default function HomeAboutUs({ language }) {
 
                 <h2 className="title">
                   <Translate>
+                  
                     Welcome to United ELDT - Your Gateway to Professional
                     Driving Careers
                   </Translate>
@@ -144,7 +145,7 @@ export default function HomeAboutUs({ language }) {
                 </div>
               </div>
 
-              <div className="about-image desktop tw-h-[600px]">
+              <div className="about-image desktop ">
                 <video
                   src="http://unitedcdlschool.com/wp-content/uploads/2023/01/video_2023-01-28_16-32-41.mp4"
                   controls="playsinline autoplay loop"

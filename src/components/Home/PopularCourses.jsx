@@ -436,7 +436,7 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
                 <animated.div style={propsSpring} className="container" >
                   <Slider {...combinedSettings}>
                     {plans.map((plan) => (
-                      <div key={plan._id} className=" card-content" style={{ width: "90%" }}>
+                      <div key={plan._id} className=" card-content mx-auto" style={{ width: "90%" }}>
                         <div className="plancard d-flex mt-2">
                           <img src={plan.image} height="58px" alt="plan1" />
                           <span className="flex-end">
@@ -449,7 +449,7 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
 
 
                         <span className="classer">  <Translate>{plan.courseName}</Translate></span>
-                        <div className="d-flex mt-4">
+                        <div className="d-flex toper">
                           <div className="categoria">
 
 
@@ -461,7 +461,7 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
 
                         </div>
 
-                        <div className="dropdown mt-3" >
+                        <div className="dropdown toper" >
                           <Translate>Select the desired language:</Translate><br></br>
 
                           <Select
@@ -488,7 +488,7 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
 
                         </div>
 
-                        <div className="mt-4 Acesso">
+                        <div className="toper   Acesso">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -511,9 +511,9 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
                               strokeLinejoin="round"
                             />
                           </svg>{" "}
-                          <span><Translate>Access:</Translate><strong className="strong-text">Unlimited</strong> </span>
+                          <span className="mx-2"><Translate>Access:</Translate><strong className="strong-text"> Unlimited</strong> </span>
                         </div>
-                        <div className="mt-4 Acesso">
+                        <div className="mt-3  Acesso">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -543,7 +543,7 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
                               strokeLinejoin="round"
                             />
                           </svg>{" "}
-                          <span><Translate>Certificate:</Translate><strong className="strong-text">Yes</strong> </span>
+                          <span  className="mx-2"><Translate>TPR Certified:</Translate><strong className="strong-text"> Yes</strong> </span>
                         </div>
                         <button
                           className=" buy-button"

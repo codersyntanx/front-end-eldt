@@ -706,12 +706,12 @@ textarea.form-control {
   padding: 120px 0;
 }
 .about-area .about-image {
-  text-align: center;
   position: relative;
   overflow: hidden;
-  width: 586px;
+  width: 800px;
   border-radius: 16px;
   max-height: 902px;
+  margin-left: auto;
 }
 .about-area .about-image video {
   width: 100%;
@@ -724,7 +724,7 @@ textarea.form-control {
 }
 .about-area .about-content {
   width: calc(100% - 586px);
- max-width: 632px;
+ max-width: 638px;
 }
 .about-content .sub-title {
   display: block;
@@ -965,10 +965,10 @@ textarea.form-control {
   .about-area .about-content h2 {
     max-width: initial;
   }
-  .about-area .about-area-block,
   .about-area .about-bottom .features-list {
     flex-direction: column;
   }
+  
 
   .about-image.mobile {
     display: block;
@@ -3304,6 +3304,10 @@ textarea.form-control {
   .courses-details-desc-style-two .details-content p {
     font-size: 18px;
   }
+ 
+  .about-area .about-area-block{
+    justify-content: center;
+  }
   .courses-details-desc-style-two .courses-curriculum ul li .courses-name {
     font-size: 14px;
   }
@@ -3500,17 +3504,17 @@ textarea.form-control {
     no-repeat;
   margin: auto;
   border-radius: 16px;
-  height: 280px;
+  height: 303px;
 }
 .callphone-block .left-side {
-  top: -76px;
+  top: -90px;
   position: absolute;
   left: 48px;
   z-index: 1;
 }
 .callphone-block .right-side {
   margin-left: auto;
-  margin-right: 168px;
+  margin-right: 243px;
   max-width: 578px;
   min-width: 578px;
   padding: 80px 0;
@@ -3531,7 +3535,7 @@ textarea.form-control {
   font-weight: 300;
   margin-bottom: 15px;
   line-height: 25px;
-  max-width: 400px;
+  max-width: 450px;
   display: block;
   color: whitesmoke;
 }
@@ -3698,6 +3702,7 @@ textarea.form-control {
   max-width: 554px;
   margin: 50px 0;
   position: relative;
+  margin-left: auto;
 }
 .disclaimer .feedback-content {
   max-width: 495px;
@@ -3710,14 +3715,13 @@ textarea.form-control {
   line-height: 32px;
   font-size: 20px;
   font-weight: 500;
-  padding-top: 80px;
 }
 .feedback-content .title {
   font-size: 40px;
   line-height: 48px;
   font-weight: 800;
   letter-spacing: 2px;
-  max-width: 550px;
+  max-width: 700px;
 }
 .feedback-content .sub,
 .single-feedback-item p {
@@ -4076,6 +4080,53 @@ textarea.form-control {
   box-shadow: none;
   border-radius: 16px;
 }
+@media (max-width:988px) {
+  .about-area{
+  }
+}
+@media (max-width:1080px) {
+  .about-area{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .about-area .about-image{
+    width: 500px !important;
+  }
+  .about-content{
+    max-width: 500px !important;
+  }
+}
+@media (max-width:1440px) {
+  .callphone-block .right-side{
+    margin-right: 163px;
+    margin-top: 70px;
+  }
+  .about-area .about-image{
+    width: 682px;
+  }
+  .about-area{
+    padding-left: 30px;
+    padding-right: 30px;
+    column-gap: 40px;
+  }
+  .callphone-block .right-side .right-content .text-block{
+    margin-bottom: 30px;
+  }
+  .callphone-block {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    max-width: 1554px;
+    background: url("https://res.cloudinary.com/dezhgxayn/image/upload/v1706874973/for1440_v4px4j.png") center/cover
+      no-repeat;
+    margin: auto;
+    border-radius: 16px;
+    height: 400px;
+  }
+  .callphone-block .left-side img{
+    display: none;
+  }
+}
 @media (max-width: 1300px) {
   .video-area .left-side {
     width: 700px;
@@ -4092,6 +4143,28 @@ textarea.form-control {
   .courses-details-desc-style-two .courses-curriculum ul li .courses-name {
     margin: 0 25px 0 12px;
     max-width: 280px;
+  }
+}
+@media (max-width:1300px) {
+  .callphone-block {
+    background: url("https://res.cloudinary.com/dlj1daxbn/image/upload/v1704995259/Group_1171278589_ibxniz.png") center/cover
+      no-repeat;
+      height: 303px;
+  }
+  .callphone-block .left-side img{
+    display: flex;
+  }
+  .callphone-block .right-side{
+    margin-top: 0px;
+    margin-right: 10px;
+  }
+}
+@media (max-width:1200px) {
+  .callphone-block .left-side img{
+    display: none;
+  }
+  .callphone-block{
+    background-image: url("https://res.cloudinary.com/dezhgxayn/image/upload/v1706876956/Group_1171278619_ltoubh.png");
   }
 }
 @media (max-width: 1100px) {
@@ -4159,6 +4232,9 @@ textarea.form-control {
   display: block;
   height: auto;
   width: 100%;
+}
+.feedback-content .left-block{
+  max-width: 700px;
 }
 @media (max-width: 1200px) {
   .get-instant-courses-image {
@@ -4980,6 +5056,7 @@ overflow-x: hidden;
   .login-form{
     margin: auto;
   }
+  
 }
 @media (max-width: 1152px) {
   .login-forgot-password {
@@ -6259,10 +6336,17 @@ padding-bottom: 150px;
     border-bottom: 2px solid rgba(44, 41, 42, 0.15);
   }
 }
+@media (max-width:360px) {
+  .callphone-block{
+    background: url("https://res.cloudinary.com/dezhgxayn/image/upload/v1706877715/forsmall_screen_f2vxqq.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+  }
+}
 @media (max-width: 990px) {
   .callphone-block {
     flex-direction: column;
-    background: url("../images/Rectangle31.png") center/cover
+    background: url("https://res.cloudinary.com/dezhgxayn/image/upload/v1706876956/Group_1171278619_ltoubh.png") center/cover
       no-repeat;
     max-width: 550px;
     padding: 27px 20px 0;
@@ -6672,7 +6756,9 @@ padding-bottom: 150px;
   {
     display: hidden !important;
   }
-  
+  .about-area .about-image{
+    width: 350px !important;
+  }
   .courses-item .courses-block .price-line {
     font-size: 16px;
     flex-direction: column;

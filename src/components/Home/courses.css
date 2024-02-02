@@ -7,6 +7,9 @@ font-weight: 500;
 line-height: 120%; /* 28.8px */
 letter-spacing: 1.2px;
 }
+.toper{
+    margin-top: 30px;
+}
 * {
     margin: 0;
     padding: 0;
@@ -577,6 +580,9 @@ margin-top: 24px;
 
 @media (max-width: 450px) {
 
+   .slick-arrow{
+    display: none !important
+   }
     .ant-modal-content{
         padding: 0px !important;
         width: 100% !important;
