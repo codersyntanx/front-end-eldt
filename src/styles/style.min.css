@@ -3287,6 +3287,9 @@ textarea.form-control {
   width: 22px;
   height: 22px;
 }
+.slick-slider slick-initialized{
+  padding: 7px;
+}
 @media (max-width: 1200px) {
   .advisor-area .content-instructor {
     flex-wrap: wrap;
@@ -4100,6 +4103,13 @@ textarea.form-control {
   .callphone-block .right-side{
     margin-right: 163px;
     margin-top: 70px;
+  }
+  .feedback-content{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .feedback-content .left-block{
+    width: 553px;
   }
   .about-area .about-image{
     width: 682px;
