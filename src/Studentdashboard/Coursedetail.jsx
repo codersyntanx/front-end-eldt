@@ -51,11 +51,7 @@ function Coursedetail() {
             border:none;
             background: #F5F5F5;
           }
-          .accordion{
-            border-radius: 20px;
-            border:none;
-            margin-top:35px
-          }
+         
          
           .progress-bar {
             height: 20px;
@@ -76,60 +72,45 @@ function Coursedetail() {
       <div className="main-contain-regist">
         <div className="card-head">My courses</div>
         <div className="card-body">
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button
-                  class="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <label className="mainlabel">Courses - Actives</label>
-                </button>
-              </h2>
-              <div
-                id="collapseOne"
-                class="accordion-collapse collapse"
-                aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body">
-                  <span>
-                
-                    {uncomp.map((course,index) => (
-                     
-                      <>
-                      
-                        <div className="progress-bar-container mainlabel ">
-<div>
-<Space wrap>
-  <Progress
-    type="circle"
-    percent={parseFloat(course.studentProgress)}
-    size={80}
-    strokeColor="#FBB723"  // Change color to #FBB723
-    strokeWidth={20}       // Increase thickness to 10 (you can adjust this value)
-    format={() => null}
-  />
-</Space>
-
-
-                                            <span className="mx-3">{course.courseName} - {course.courselangugae}</span>  
-                                                </div>
-                          <Link to={`/Alllessons/${course.enrollindex}`}>
-                          <div className="warning">Open</div></Link>
-
-                        </div>
-                      </>
-                    ))}
-                  </span>
-                </div>
-              </div>
+        <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <div class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <label className="mainlabel">Courses - Actives</label>
+                <i class="accordion-arrow fas fa-chevron-down"></i> 
             </div>
-          </div>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <span>
+                    {uncomp.map((course,index) => (
+                        <>
+                            <div className="progress-bar-container mainlabel">
+                                <div>
+                                    <Space wrap>
+                                        <Progress
+                                            type="circle"
+                                            percent={parseFloat(course.studentProgress)}
+                                            size={80}
+                                            strokeColor="#FBB723"  // Change color to #FBB723
+                                            strokeWidth={20}       // Increase thickness to 10 (you can adjust this value)
+                                            format={() => null}
+                                        />
+                                    </Space>
+                                    <span className="mx-3">{course.courseName} - {course.courselangugae}</span>
+                                </div>
+                                <Link to={`/Alllessons/${course.enrollindex}`}>
+                                    <div className="warning">Open</div>
+                                </Link>
+                            </div>
+                        </>
+                    ))}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingtwo">
@@ -142,6 +123,8 @@ function Coursedetail() {
                   aria-controls="collapsetwo"
                 >
                   <label className="mainlabel">Quizzes</label>
+                  <i class="accordion-arrow fas fa-chevron-down"></i> 
+
                 </button>
               </h2>
               <div
@@ -191,6 +174,8 @@ function Coursedetail() {
                   aria-controls="collapsethree"
                 >
                   <label className="mainlabel">Courses - Completed</label>
+                  <i class="accordion-arrow fas fa-chevron-down"></i> 
+
                 </button>
               </h2>
               <div

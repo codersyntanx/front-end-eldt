@@ -8,10 +8,28 @@ font-weight: 700;
 line-height: 160%; /* 25.6px */
 letter-spacing: 0.8px;
 }
+.accordion-arrow {
+    transition: transform 0.3s ease;
+}
+.accordion-button::after {
+    display: none;
+}
+.accordion-button{
+    justify-content: space-between;
+    border: none;
+}
+
+
+.accordion{
+    border-radius: 20px;
+    border:none;
+    margin-top:35px;
+    overflow: hidden;
+  }
 .accordion-body{
     border-top: 1px solid #DBDBDB;
-    padding-left:"10px";
-    padding-right:"10px"
+    padding-left:10px;
+    padding-right:10px
 
   }
 .progress-bar-container {

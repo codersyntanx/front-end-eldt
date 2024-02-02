@@ -180,9 +180,14 @@ const [quiz,setQuiz]=useState("")
     return (
       <div className="learning">
         <Navba page={"Alllessons"} chapterid={id}/>
-      <div className="progressgra d-flex">
+      {/* <div className="progressgra d-flex">
   <div className="displaypro" style={{ width: `${studentprogress.progressPercentage}%`, backgroundColor: '#FBB723',height:"100%" }}><span style={{display:"flex", margin:"auto", textAlign:"center", alignItems:"center",justifyContent:"center"}} className="percentshow">{Math.round(studentprogress.progressPercentage)}%</span></div>
   
+</div> */}
+<div className="displaypro" style={{ width: `${studentprogress.progressPercentage || 0}%`, backgroundColor: '#FBB723', height: "100%" }}>
+  <span style={{ display: "flex", margin: "auto", textAlign: "center", alignItems: "center", justifyContent: "center" }}>
+    {isNaN(studentprogress.progressPercentage) ? 0 : Math.round(studentprogress.progressPercentage)}%
+  </span>
 </div>
 <button className="prebtn" onClick={handlePreviousPageClick} disabled={currentPageIndex === 0}>
               <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86" viewBox="0 0 86 86" fill="none">
