@@ -122,14 +122,13 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
       setZip(decoded.zip)
       setBillingAddress(decoded.Address)
     }},[])
-
   const languageOptions = [
     { value: 'English', label: 'English', image: "https://img.icons8.com/color/24/usa-circular.png", planId: null },
     { value: 'Spanish', label: 'Spanish', image: "https://img.icons8.com/color/24/spain2-circular.png", planId: null },
-    { value: 'Portuguese', label: 'Portuguese', image: "https://img.icons8.com/color/24/portugal-circular.png", planId: null },
+    { value: 'Portuguese', label: 'Portuguese', image: "https://img.icons8.com/color/24/brazil-circular.png", planId: null },
     { value: 'Russian', label: 'Russian', image: "https://img.icons8.com/color/24/russian-federation-circular.png", planId: null },
     { value: 'Arabic', label: 'Arabic', image: "https://img.icons8.com/color/24/palestine-circular.png", planId: null },
-    { value: 'Indian', label: 'Indian', image: "https://img.icons8.com/fluency/24/india-circular.png", planId: null },
+    { value: 'Hindi', label: 'Hindi', image: "https://img.icons8.com/fluency/24/india-circular.png", planId: null },
     { value: 'French', label: 'French', image: "https://img.icons8.com/color/24/france-circular.png", planId: null },
     { value: 'Urdu', label: 'Urdu', image: "https://img.icons8.com/color/24/pakistan-circular.png", planId: null },
   ];
@@ -456,7 +455,7 @@ function isValidEmail(email) {
             <>
 
 
-              <div className="caroselcomponent">
+              {/* <div className="caroselcomponent">
                 <animated.div style={propsSpring} className="container" >
                   <Slider {...combinedSettings}>
                     {plans.map((plan) => (
@@ -486,7 +485,7 @@ function isValidEmail(email) {
                         </div>
 
                         <div className="dropdown toper" >
-                          <Translate>Select the desired language:</Translate><br></br>
+                          <Translate>Select the desired language:</Translate><br></br> */}
 
                           {/* <Select
                             options={languageOptions}
@@ -506,12 +505,12 @@ function isValidEmail(email) {
                             styles={customStyles}
                             components={{ DropdownIndicator: CustomDropdownIndicator }}
                           /> */}
-                  <CustomDropdown options={languageOptions} handleLanguageChange={handleLanguageChange} planId={plan._id} />
+                  <CustomDropdown options={languageOptions} handleLanguageChange={handleLanguageChange} language={language} plans={plans} showModal={showModal}/>
 
 
 
 
-                        </div>
+                        {/* </div>
 
                         <div className="toper   Acesso">
                           <svg
@@ -582,7 +581,7 @@ function isValidEmail(email) {
                     ))}
                   </Slider>
                 </animated.div>
-              </div>
+              </div> */}
             </>
           ) : (
             <>
