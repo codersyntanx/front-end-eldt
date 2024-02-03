@@ -693,12 +693,7 @@ margin-top: 24px;
         margin-bottom: 150px;
 
     }
-    .card-content{
-        width:90%;
-        margin: auto;
-        height: 542px;
-        margin-left: 20px !important;
-    }
+  
     .categoria{
         font-size: 16px;
         padding-right: 25px;
@@ -713,11 +708,18 @@ margin-top: 24px;
     }
   
 }
-
+@media (max-width: 786px) {
+       .card-content{
+        width:90%;
+        margin: auto;
+        height: 542px;
+        margin-left: 20px !important;
+    }
+}
 
 @media (max-width: 450px) {
 
-  
+ 
    .slick-arrow{
     display: none !important
    }

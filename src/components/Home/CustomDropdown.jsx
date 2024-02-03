@@ -4,7 +4,6 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
   const [visibleItems, setVisibleItems] = useState(4); // Initial number of visible items
 
   useEffect(() => {
-    // Update the number of visible items based on screen width
     const updateVisibleItems = () => {
       const screenWidth = window.innerWidth;
       if (screenWidth >= 1920) {
@@ -14,23 +13,21 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
       } else if (screenWidth >= 1080) {
         setVisibleItems(3);
       } else if (screenWidth >= 786) {
-        setVisibleItems(2);
-      } else if (screenWidth >= 250) {
         setVisibleItems(1);
       } else {
-        setVisibleItems(0);
+        setVisibleItems(1);
       }
     };
-
-    // Call the update function initially and add event listener for window resize
-    updateVisibleItems();
+  
+    updateVisibleItems(); // Call the update function initially
+  
     window.addEventListener('resize', updateVisibleItems);
-
-    // Cleanup the event listener
+  
     return () => {
       window.removeEventListener('resize', updateVisibleItems);
     };
   }, []);
+  
 
  
 
