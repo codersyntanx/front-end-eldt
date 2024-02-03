@@ -3208,8 +3208,36 @@ textarea.form-control {
   .main-title-hero{
     min-width: auto;
   }
+  .footer-content .item p{
+    text-align: center !important;
+  }
 }
-@media (max-width: 786px) {}
+.card-custom{
+  padding: 20px;
+}
+@media (max-width: 786px) {
+  .subscribe-content .newsletter-form{
+    width: 100% !important;
+  }
+  .card-custom{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+ 
+  
+  .footer-area{
+    padding-top: 0px !important;
+    border-top: none !important;
+  }
+  .footer-content{
+    margin-bottom: 0px !important;
+    row-gap: 0px !important;
+  }
+  .footer-content .item{
+    padding-top: 0px !important;
+    padding: 0px !important;
+  }
+}
 
 .instructor-header-content {
   display: flex;
@@ -3321,7 +3349,7 @@ textarea.form-control {
   }
  
   .about-area .about-area-block{
-    justify-content: center;
+    justify-content: left;
   }
   .courses-details-desc-style-two .courses-curriculum ul li .courses-name {
     font-size: 14px;
@@ -4111,7 +4139,8 @@ textarea.form-control {
     padding-right: 10px !important;
   }
   .about-area .about-image{
-    width: 500px !important;
+    width: 100% !important;
+    height: 237px;
   }
   .about-content{
     max-width: 500px !important;
@@ -5319,8 +5348,7 @@ overflow-x: hidden;
 .footer-area {
   position: relative;
   z-index: 1;
-  border-top: 3px solid rgba(44, 41, 42, 0.1);
-  padding-top: 60px;
+ 
 }
 .footer-content {
   padding-bottom: 51px;
@@ -5344,6 +5372,9 @@ overflow-x: hidden;
   }
   .footer-content{
     justify-content: space-between;
+  }
+  .footer-content .item:first-child{
+    padding-top: 0px !important;
   }
 }
 

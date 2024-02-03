@@ -89,7 +89,7 @@ export default function FeedbackSliderWithFunFacts({ language }) {
    
     <div className="carousel_cover">
       <div className="right-block">
-                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
+                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-rounded-xl">
                   <div style={{ lineHeight: "160%", marginTop: "20px" }}>
                     Initially, I was skeptical about online CDL endorsement
                     platforms, but this one proved me wrong. The content was
@@ -115,7 +115,7 @@ export default function FeedbackSliderWithFunFacts({ language }) {
        <div className="carousel_cover">
 
     <div className="right-block">
-                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
+                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins  tw-rounded-xl">
                   <div style={{ lineHeight: "160%", marginTop: "20px" }}>
                     Initially, I was skeptical about online CDL endorsement
                     platforms, but this one proved me wrong. The content was
@@ -140,7 +140,7 @@ export default function FeedbackSliderWithFunFacts({ language }) {
     </div>
     <div className="carousel_cover">
     <div className="right-block">
-                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins tw-p-10 tw-rounded-xl">
+                <div className="card-custom tw-w-full  tw-bg-white tw-text-[#2C292A] Poppins  tw-rounded-xl">
                   <div style={{ lineHeight: "160%", marginTop: "20px" }}>
                     Initially, I was skeptical about online CDL endorsement
                     platforms, but this one proved me wrong. The content was
