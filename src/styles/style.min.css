@@ -6841,7 +6841,7 @@ padding-bottom: 150px;
     display: hidden !important;
   }
   .about-area .about-image{
-    width: 350px !important;
+    width: 100% !important;
   }
   .courses-item .courses-block .price-line {
     font-size: 16px;
