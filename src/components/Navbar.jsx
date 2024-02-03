@@ -174,7 +174,7 @@ useEffect(() => {
                 </Link>
 
                 <button
-                  className={`button-open-menu ${menu ? "is-open" : ""}`}
+                  className={`button-open-menu mb-3 ${menu ? "is-open" : ""}`}
                   onClick={toggleNavbar}
                   type="button"
                 >
