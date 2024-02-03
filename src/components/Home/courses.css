@@ -63,6 +63,7 @@ justify-content: space-between;
     column-gap: 10px;
     align-items: center;
 }
+
 .dropoptions{
     margin-top: 10px;
     display: flex;
@@ -690,6 +691,10 @@ margin-top: 24px;
     .newcontainer{
         width: 90%;
     }
+    .maincontentslider{
+max-width: 95% !important;
+    }
+  
   
     .ultima {
         font-size: 16px;

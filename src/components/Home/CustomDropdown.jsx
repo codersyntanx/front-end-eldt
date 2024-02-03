@@ -99,7 +99,8 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
           )} 
 
 </div>
-        <div className='container'>
+<div className='customslider'>
+  <div className='container maincontentslider'>
             <div className='mainconofslider'>   {plans.slice(startIndex, startIndex + visibleItems).map((plan, index) => (
                       <div key={plan._id} className=" card-content mx-auto " >
                         <div className="plancard d-flex mt-2">
@@ -228,6 +229,8 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
             ))}
           </div>
         </div>
+</div>
+        
     
 
      

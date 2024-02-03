@@ -603,16 +603,16 @@ function isValidEmail(email) {
         >
           <div className="mainblack">
             <span className="pricetxt">${purchase.price / 100}.00</span><br></br>
-            <span className="description"><span className="categoryi"> {purchase.courseName} </span>-
+            <span className="description"><span className="categoryi"> {purchase.courseName} </span>
               {
                 purchase.language ? (
-                  <> {purchase.language} </>
+                  <>({purchase.language})  </>
                 ) : (
-                  <>English</>
+                  <>(English) </>
                 )
               }
 
-               - ELDT Theory certificate
+                - ELDT Theory certificate
             </span>
           </div>
           <div className="main-content paymentmodal">
