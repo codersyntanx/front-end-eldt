@@ -5,7 +5,9 @@
     justify-content: center;
     align-items: center;
     background: rgba(0, 0, 0, 0.5);
-    width: 100%;
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
   }
   .loader {
     width: 1em;
