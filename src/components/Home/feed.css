@@ -63,6 +63,10 @@
   :where(.css-1b0bdye).ant-carousel .slick-dots{
     background: none !important;
   }
+  .carousel_cover{
+    padding: 5px;
+  }
+  /* :where(.css-1b0bdye).ant-carousel .slick-list .slick-slide >div>div */
 /* .review_contain{
     background-color: white;
     width: 553px;
