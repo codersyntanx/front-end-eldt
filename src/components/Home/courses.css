@@ -710,7 +710,7 @@ margin-top: 24px;
 }
 @media (max-width: 786px) {
        .card-content{
-        width:90%;
+        width:100%;
         margin: auto;
         height: 542px;
         margin-left: 20px !important;
