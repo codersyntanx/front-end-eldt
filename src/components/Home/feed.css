@@ -89,7 +89,7 @@
         display: none;
     }
     :where(.css-1b0bdye).ant-carousel{
-      padding: 5px;
+      padding: 7px;
     }
     .ant-carousel .slick-dots li {
         background-color: rgb(158, 157, 157); /* Set background color for inactive dots */
