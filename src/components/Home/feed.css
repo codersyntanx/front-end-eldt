@@ -119,7 +119,7 @@
     .ant-carousel .slick-dots li {
         background-color: rgb(158, 157, 157); /* Set background color for inactive dots */
         width: 32%;
-        height: 10px;
+        height: 8px;
         border-radius: 10px;
       }
       :where(.css-1b0bdye).ant-carousel .slick-dots li button{
@@ -128,7 +128,7 @@
       .ant-carousel .slick-dots li.slick-active {
         background-color: #FBB723; /* Set background color for active dot */
         width: 32%;
-        height: 10px;
+        height: 8px;
         border-radius: 10px;
       }
     

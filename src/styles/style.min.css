@@ -6459,7 +6459,12 @@ padding-bottom: 150px;
   .feedback-area .left-block {
     width: 100%;
     padding: 0;
+    text-align: left;
     /* padding-top: 80px !important; */
+  }
+  .feedback-content{
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .feedback-area .right-block {
     width: 100%;
