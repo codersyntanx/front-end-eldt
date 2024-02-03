@@ -12,7 +12,7 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
       } else if (screenWidth >= 1440) {
         setVisibleItems(3);
       } else if (screenWidth >= 1080) {
-        setVisibleItems(3);
+        setVisibleItems(2.5);
       } else if (screenWidth >= 786) {
         setVisibleItems(2);
       } else {
@@ -102,7 +102,7 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
 <div className='customslider'>
   <div className='container maincontentslider'>
             <div className='mainconofslider'>    {plans.slice(startIndex, startIndex + visibleItems).map((plan, index) => (
-                      <div key={plan._id} className=" card-content mx-auto " >
+                      <div key={plan._id} className=" card-content mx-auto " style={{ width: `${100 / visibleItems}%` }}>
                         <div className="plancard d-flex mt-2">
                           <img src={plan.image} height="58px" alt="plan1" />
                           <span className="flex-end">
