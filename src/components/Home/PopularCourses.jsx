@@ -117,6 +117,7 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
       const decoded = jwtDecode(personId);
       setUserId(decoded);  
       setEmail(decoded.Email)  
+      setConfirmemail(decoded.Email)
       setBillingAddress(decoded.Address)
       setCardholderName(decoded.Name)  
       setZip(decoded.zip)

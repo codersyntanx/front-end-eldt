@@ -572,9 +572,9 @@ margin-top: 24px;
         left: 10px;
         display: grid;
     }
-    .card-content{
+    /* .card-content{
         margin-right: 20px !important
-    }
+    } */
     .prebtns{
         margin-left: 0px;
         margin-top: 10px;
@@ -678,11 +678,9 @@ margin-top: 24px;
         margin-bottom: 150px;
 
     }
+   
     .card-content{
-        width:90%;
-        margin: auto;
         height: 542px;
-        margin-left: 20px !important;
     }
     .categoria{
         font-size: 16px;

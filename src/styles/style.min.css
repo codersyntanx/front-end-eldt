@@ -5,6 +5,9 @@ ul {
   padding: 0;
   margin: 0;
 }
+body{
+  overflow-x: hidden;
+}
 body,
 p {
   font-size: 16px;
@@ -3227,8 +3230,8 @@ textarea.form-control {
     padding-right: 0px !important;
   }
   .card-custom{
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 8px;
+    padding-right: 5px;
   }
  
   

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Translator, Translate } from "react-auto-translate";
 function CustomSelect({ options, handleLanguageChange,language,plans,showModal }) {
-  const [visibleItems, setVisibleItems] = useState(4); // Initial number of visible items
+  const [visibleItems, setVisibleItems] = useState(1); // Initial number of visible items
 
   useEffect(() => {
     // Update the number of visible items based on screen width
@@ -50,8 +50,8 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
   const showItem = (index) => {
     setStartIndex(index);
   };
-  // Function to show the next item
-  const showNextItem = () => {
+   // Function to show the next item
+   const showNextItem = () => {
     if (startIndex < plans.length - 1) {
       setStartIndex(startIndex + 1);
     }
@@ -101,7 +101,7 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
 </div>
 <div className='customslider'>
   <div className='container maincontentslider'>
-            <div className='mainconofslider'>   {plans.slice(startIndex, startIndex + visibleItems).map((plan, index) => (
+            <div className='mainconofslider'>    {plans.slice(startIndex, startIndex + visibleItems).map((plan, index) => (
                       <div key={plan._id} className=" card-content mx-auto " >
                         <div className="plancard d-flex mt-2">
                           <img src={plan.image} height="58px" alt="plan1" />
