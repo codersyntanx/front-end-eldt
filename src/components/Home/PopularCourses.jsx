@@ -27,6 +27,7 @@ import {
   useElements,
   PaymentRequestButtonElement
 } from '@stripe/react-stripe-js';
+import CustomDropdown from "./CustomDropdown";
 
 
 
@@ -423,14 +424,14 @@ function isValidEmail(email) {
           <div className="container p-4">
             <div className="section-title">
               <span className="sub-title">
-                <Translate>Take the course your way.</Translate>
+                <Translate>Take the course your way</Translate>
               </span>
               <h3 className="tab-title" >
                 <Translate>Choose a course in the language of your preference</Translate>
               </h3>
               <span className="sub">
                 <Translate>
-                  Enjoy high-level learning methods; you are the creator of your own career, and we will guide you every step of the way.
+                  Enjoy high-level learning methods; you are the creator of your own career, and we will guide you every step of the way
                 </Translate>
               </span>
             </div>
@@ -487,7 +488,7 @@ function isValidEmail(email) {
                         <div className="dropdown toper" >
                           <Translate>Select the desired language:</Translate><br></br>
 
-                          <Select
+                          {/* <Select
                             options={languageOptions}
                             className="mt-1"
                             menuPosition="absolute"
@@ -504,7 +505,8 @@ function isValidEmail(email) {
                             )}
                             styles={customStyles}
                             components={{ DropdownIndicator: CustomDropdownIndicator }}
-                          />
+                          /> */}
+                  <CustomDropdown options={languageOptions} handleLanguageChange={handleLanguageChange} planId={plan._id} />
 
 
 
@@ -575,6 +577,7 @@ function isValidEmail(email) {
                         >
                           <Translate>Buy Now</Translate>
                         </button>
+
                       </div>
                     ))}
                   </Slider>
@@ -601,7 +604,7 @@ function isValidEmail(email) {
         >
           <div className="mainblack">
             <span className="pricetxt">${purchase.price / 100}.00</span><br></br>
-            <span className="description"><span className="categoryi">{purchase.courseName} </span>-
+            <span className="description"><span className="categoryi"> {purchase.courseName} </span>-
               {
                 purchase.language ? (
                   <> {purchase.language} </>
@@ -610,7 +613,7 @@ function isValidEmail(email) {
                 )
               }
 
-              ELDT Theory certificate
+               - ELDT Theory certificate
             </span>
           </div>
           <div className="main-content paymentmodal">

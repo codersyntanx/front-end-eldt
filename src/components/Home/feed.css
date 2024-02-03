@@ -29,7 +29,7 @@
 .ant-carousel .slick-dots li {
     background-color: rgb(158, 157, 157); /* Set background color for inactive dots */
     width: 27%;
-    height: 10px;
+    height: 8px;
     border-radius: 10px;
   }
   :where(.css-1b0bdye).ant-carousel .slick-dots li button{
@@ -38,8 +38,8 @@
    /* Style for active dot */
   .ant-carousel .slick-dots li.slick-active {
     background-color: #FBB723; /* Set background color for active dot */
-    width: 27%;
-    height: 10px;
+    width: 26%;
+    height: 8px;
     border-radius: 10px;
   }
   .right_side{
@@ -87,6 +87,9 @@
     .svgcontainafter{
         display: none;
     }
+    :where(.css-1b0bdye).ant-carousel{
+      padding: 5px;
+    }
     .ant-carousel .slick-dots li {
         background-color: rgb(158, 157, 157); /* Set background color for inactive dots */
         width: 29%;
@@ -113,7 +116,7 @@
     }
     .ant-carousel .slick-dots li {
         background-color: rgb(158, 157, 157); /* Set background color for inactive dots */
-        width: 31%;
+        width: 32%;
         height: 10px;
         border-radius: 10px;
       }
@@ -122,7 +125,7 @@
       }  /* Style for active dot */
       .ant-carousel .slick-dots li.slick-active {
         background-color: #FBB723; /* Set background color for active dot */
-        width: 31%;
+        width: 32%;
         height: 10px;
         border-radius: 10px;
       }
