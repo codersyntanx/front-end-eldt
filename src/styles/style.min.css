@@ -3219,6 +3219,9 @@ textarea.form-control {
   .subscribe-content .newsletter-form{
     width: 100% !important;
   }
+  .footer-content .email-bottom{
+    padding-right: 0px !important;
+  }
   .card-custom{
     padding-left: 0px;
     padding-right: 0px;
@@ -4130,8 +4133,7 @@ textarea.form-control {
   border-radius: 16px;
 }
 @media (max-width:988px) {
-  .about-area{
-  }
+  
 }
 @media (max-width:1080px) {
   .about-area{
@@ -5403,7 +5405,7 @@ overflow-x: hidden;
   padding: 0 40px;
 }
 .bottomemail{
-  padding-top: 60px;
+  padding-top: 40px;
 }
 .footer-content .item:first-child {
   padding-left: 0;
