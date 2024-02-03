@@ -55,6 +55,7 @@ font-style: normal;
 font-weight: 300;
 line-height: 160%; /* 25.6px */
 letter-spacing: 0.8px;
+justify-content: space-between;
 }
 .dropoptions .option{
     display: flex;
@@ -191,7 +192,9 @@ flex: 0 0 auto;
     width:368px;
     height: 542px;
 }
-
+.downicon{
+    align-items: end;
+}
 .categoria{
  color: #2C292A;
 font-family: Inter;

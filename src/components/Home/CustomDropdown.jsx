@@ -130,8 +130,10 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
                           <Translate>Select the desired language:</Translate><br></br>
                           <div className="custom-select">
               <div className="selected-option" onClick={() => toggleDropdown(index)}>
-                <img src={dropdownStates[index].selectedOption.image} alt={dropdownStates[index].selectedOption.label} className="language-image" />
-                <span>{dropdownStates[index].selectedOption.label}</span>
+                <div className='d-flex'> <img src={dropdownStates[index].selectedOption.image} alt={dropdownStates[index].selectedOption.label} className="language-image" />
+                <span className='mx-2'>{dropdownStates[index].selectedOption.label}</span></div>
+               
+                <i class="fa-solid fa-angle-down downicon"></i>
               </div>
               {dropdownStates[index].isOpen && (
                 <div className="options dropoptions">
