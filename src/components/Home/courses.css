@@ -63,7 +63,6 @@ justify-content: space-between;
     column-gap: 10px;
     align-items: center;
 }
-
 .dropoptions{
     margin-top: 10px;
     display: flex;
@@ -572,9 +571,9 @@ margin-top: 24px;
         left: 10px;
         display: grid;
     }
-    /* .card-content{
+    .card-content{
         margin-right: 20px !important
-    } */
+    }
     .prebtns{
         margin-left: 0px;
         margin-top: 10px;
@@ -586,6 +585,7 @@ margin-top: 24px;
     }
     .mainconofslider{
         margin-bottom: 40px;
+        column-gap: 0px;
     }
     .navigation-dots {
         display: flex;
@@ -678,9 +678,11 @@ margin-top: 24px;
         margin-bottom: 150px;
 
     }
-   
     .card-content{
+        width:90%;
+        margin: auto;
         height: 542px;
+        margin-left: 20px !important;
     }
     .categoria{
         font-size: 16px;
@@ -689,10 +691,6 @@ margin-top: 24px;
     .newcontainer{
         width: 90%;
     }
-    .maincontentslider{
-max-width: 95% !important;
-    }
-  
   
     .ultima {
         font-size: 16px;
