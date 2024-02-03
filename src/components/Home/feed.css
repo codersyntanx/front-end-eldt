@@ -82,8 +82,9 @@
 }
 @media screen and (max-width: 1440px) {
     .svgcontain{
-        right: 50px;
+        right: 100px;
     }
+ 
     .svgcontainafter{
         display: none;
     }
@@ -109,7 +110,8 @@
 }
 @media screen and (max-width: 1200px) {
     .svgcontain{
-        top: 400px;
+        top: 440px;
+        right: 130px;
     }
     .feedback-content .title{
         font-size: 32px;
