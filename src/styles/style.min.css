@@ -3219,6 +3219,10 @@ textarea.form-control {
   .subscribe-content .newsletter-form{
     width: 100% !important;
   }
+  .about-area .about-image{
+    width: 100% !important;
+    height: 237px;
+  }
   .footer-content .email-bottom{
     padding-right: 0px !important;
   }
@@ -4140,10 +4144,7 @@ textarea.form-control {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
-  .about-area .about-image{
-    width: 100% !important;
-    height: 237px;
-  }
+ 
   .about-content{
     max-width: 500px !important;
   }
