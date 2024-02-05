@@ -315,12 +315,10 @@ function isValidEmail(email) {
   const modalRef = useRef(null);
 
   const handleInputFocus = () => {
-    // Scroll the modal to the top of the viewport when an input field is focused
+    // Scroll the modal up by 80px when an input field is focused
     if (modalRef.current) {
-      window.scrollTo({
-        top: modalRef.current.offsetTop, // Scroll to the top of the modal
-        behavior: 'smooth', // Add smooth scrolling behavior
-      });
+      const scrollTop = modalRef.current.scrollTop;
+      modalRef.current.scrollTo({ top: scrollTop - 80, behavior: 'smooth' });
     }
   };
 
