@@ -281,16 +281,12 @@ function isValidEmail(email) {
   };
   
 
-const handleupward =()=>{
-  console.log("moving upward...")
+const handleupward =(idofinput)=>{
   const screenWidth = window.innerWidth;
   if (screenWidth >= 786) {
 
-    window.scrollTo({
-      top: window.scrollY + 200,
-      behavior: "smooth",
-    });
-    const modalContainer = document.querySelector('.ant-modal-body');
+
+    const modalContainer = document.getElementById(idofinput);
 
     if (modalContainer) {
       console.log("moving upward...")
@@ -658,7 +654,7 @@ const handleupward =()=>{
   placeholder="Full Name"
   value={userId !== null ? userId.Name : cardholderName}
   readOnly={userId !== null}
-  onClick={handleupward}
+  onClick={()=>{handleupward("cardholderName")}}
   onChange={(e) => {
     setCardholderName(e.target.value);
     removeErrorBorder('cardholderName');
@@ -671,7 +667,7 @@ const handleupward =()=>{
   placeholder="Email address"
   value={userId !== null ? userId.Email : email}
   readOnly={userId !== null}
-  onClick={handleupward}
+  onClick={()=>{handleupward("email")}}
   onChange={(e) => {
     setEmail(e.target.value.toLowerCase());
     removeErrorBorder('email'); // Call removeErrorBorder to remove error class
@@ -684,7 +680,7 @@ const handleupward =()=>{
   placeholder="Confirm Email address"
   value={userId !== null ? userId.Email : confirmemail}
   readOnly={userId !== null}
-  onClick={handleupward}
+  onClick={()=>{handleupward("confirmedemail")}}
   onChange={(e) => {
     setConfirmemail(e.target.value.toLowerCase());
   }}
@@ -715,7 +711,7 @@ const handleupward =()=>{
   placeholder="Address"
   value={userId !== null ? userId.Address : billingAddress}
   readOnly={userId !== null}
-  onClick={handleupward}
+  onClick={()=>{handleupward("billingAddress")}}
   onChange={(e) => {
     setBillingAddress(e.target.value);
     removeErrorBorder('billingAddress');
@@ -729,7 +725,7 @@ const handleupward =()=>{
   id="zip"
   value={userId !== null ? userId.zip : zip}
   readOnly={userId !== null}
-  onClick={handleupward}
+  onClick={()=>{handleupward("zip")}}
   onChange={(e) => {
     setZip(e.target.value);
     removeErrorBorder('zip');
