@@ -281,7 +281,16 @@ function isValidEmail(email) {
   };
   
 
-
+const handleupward =()=>{
+  const screenWidth = window.innerWidth;
+  if (screenWidth >= 786) {
+    const modalContainer = document.querySelector('.ant-modal-body');
+    if (modalContainer) {
+      modalContainer.scrollTop -= 80; // Adjust the scroll amount as needed
+    }
+  }
+    
+}
 
   const handleLanguageChange = (selectedOption, planId) => {
     // Update language in state
@@ -311,21 +320,6 @@ function isValidEmail(email) {
     }
   };
 
-
-  const modalRef = useRef(null);
-
-  const handleInputFocus = () => {
-    // Get the position of the focused input field
-    const inputField = document.getElementById('cardholderName'); // Adjust the ID to match your input field
-    if (inputField) {
-      const inputTopPosition = inputField.getBoundingClientRect().top;
-
-      // Scroll the modal container to ensure the input field remains visible
-      if (modalRef.current) {
-        modalRef.current.scrollTop = inputTopPosition - 20; // Adjust the offset as needed
-      }
-    }
-  };
 
 
 
@@ -647,7 +641,7 @@ function isValidEmail(email) {
               <button className="applebtn"><img src={apple} alt="apple" /> PAY</button>
             </div>
 
-        <div ref={modalRef}>
+      
             <input
   type="text"
   className="form-control fnam"
@@ -655,7 +649,7 @@ function isValidEmail(email) {
   placeholder="Full Name"
   value={userId !== null ? userId.Name : cardholderName}
   readOnly={userId !== null}
-  onFocus={handleInputFocus}
+  onClick={handleupward}
   onChange={(e) => {
     setCardholderName(e.target.value);
     removeErrorBorder('cardholderName');
@@ -668,7 +662,7 @@ function isValidEmail(email) {
   placeholder="Email address"
   value={userId !== null ? userId.Email : email}
   readOnly={userId !== null}
-  onFocus={handleInputFocus}
+  onClick={handleupward}
   onChange={(e) => {
     setEmail(e.target.value.toLowerCase());
     removeErrorBorder('email'); // Call removeErrorBorder to remove error class
@@ -681,7 +675,7 @@ function isValidEmail(email) {
   placeholder="Confirm Email address"
   value={userId !== null ? userId.Email : confirmemail}
   readOnly={userId !== null}
-  onFocus={handleInputFocus}
+  onClick={handleupward}
   onChange={(e) => {
     setConfirmemail(e.target.value.toLowerCase());
   }}
@@ -712,7 +706,7 @@ function isValidEmail(email) {
   placeholder="Address"
   value={userId !== null ? userId.Address : billingAddress}
   readOnly={userId !== null}
-  onFocus={handleInputFocus}
+  onClick={handleupward}
   onChange={(e) => {
     setBillingAddress(e.target.value);
     removeErrorBorder('billingAddress');
@@ -726,13 +720,12 @@ function isValidEmail(email) {
   id="zip"
   value={userId !== null ? userId.zip : zip}
   readOnly={userId !== null}
-  onFocus={handleInputFocus}
+  onClick={handleupward}
   onChange={(e) => {
     setZip(e.target.value);
     removeErrorBorder('zip');
   }}
 />
-</div>   
             <div className="termdiv">
               <span className="term"> By continuing, you agree to the  <span className="condition">Terms of service </span></span>
             </div>
