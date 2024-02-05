@@ -206,7 +206,7 @@ const recoverEmail = async (e) => {
             <>  
 
             <h2>
-            <Translate>I forgot my password</Translate>
+            <Translate>Forgot my password</Translate>
           </h2>
             <form>
             <div className="form-group email">

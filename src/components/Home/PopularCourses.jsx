@@ -609,6 +609,7 @@ function isValidEmail(email) {
         <Modal
           open={modalVisible}
           onCancel={handleCancel}
+          className="custom-modal"
           closeIcon={null}
           footer={null} 
         >

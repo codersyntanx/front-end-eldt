@@ -689,6 +689,11 @@ margin-top: 24px;
     .straightcard{
         display: none;
     }
+    .custom-modal {
+        top: 0;
+        width: 100%;
+      }
+   
     .caroselcomponent{
         display: flex;
         width: 90%;
