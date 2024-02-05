@@ -315,10 +315,15 @@ function isValidEmail(email) {
   const modalRef = useRef(null);
 
   const handleInputFocus = () => {
-    // Scroll the modal up by 80px when an input field is focused
-    if (modalRef.current) {
-      const scrollTop = modalRef.current.scrollTop;
-      modalRef.current.scrollTo({ top: scrollTop - 80, behavior: 'smooth' });
+    // Get the position of the focused input field
+    const inputField = document.getElementById('cardholderName'); // Adjust the ID to match your input field
+    if (inputField) {
+      const inputTopPosition = inputField.getBoundingClientRect().top;
+
+      // Scroll the modal container to ensure the input field remains visible
+      if (modalRef.current) {
+        modalRef.current.scrollTop = inputTopPosition - 20; // Adjust the offset as needed
+      }
     }
   };
 
@@ -619,7 +624,7 @@ function isValidEmail(email) {
           className="custom-modal"
           closeIcon={null}
           footer={null} 
-          ref={modalRef} 
+
         >
           <div className="mainblack">
             <span className="pricetxt">${purchase.price / 100}.00</span><br></br>
@@ -642,7 +647,7 @@ function isValidEmail(email) {
               <button className="applebtn"><img src={apple} alt="apple" /> PAY</button>
             </div>
 
-          
+        <div ref={modalRef}>
             <input
   type="text"
   className="form-control fnam"
@@ -727,7 +732,7 @@ function isValidEmail(email) {
     removeErrorBorder('zip');
   }}
 />
-
+</div>   
             <div className="termdiv">
               <span className="term"> By continuing, you agree to the  <span className="condition">Terms of service </span></span>
             </div>
