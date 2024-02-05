@@ -279,23 +279,31 @@ function isValidEmail(email) {
       setLoading(true);
     }
   };
+  const handleupward = (idofinput) => {
+    const targetElement = document.getElementById(idofinput);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  
+      // After a delay of 500 milliseconds (adjust as needed),
+      // add a bottom margin of 30px to the modal content
+      setTimeout(() => {
+        const modalContent = document.getElementById(idofinput); // Selector for Ant Design modal's content
+        if (modalContent) {
+          modalContent.style.marginTop = '60px';
+        }
+      }, 500);
+    }
+  };
+  
+  
+  
+  
+  
+  
+  
+  
   
 
-const handleupward =(idofinput)=>{
-  const screenWidth = window.innerWidth;
-  if (screenWidth >= 786) {
-
-
-    const modalContainer = document.getElementById(idofinput);
-
-    if (modalContainer) {
-      console.log("moving upward...")
-      modalContainer.scrollTop -= 80; // Adjust the scroll amount as needed
-     
-    }
-  }
-    
-}
 
   const handleLanguageChange = (selectedOption, planId) => {
     // Update language in state
@@ -623,7 +631,7 @@ const handleupward =(idofinput)=>{
           className="custom-modal"
           closeIcon={null}
           footer={null} 
-
+         id="mainmodalforpay"
         >
           <div className="mainblack">
             <span className="pricetxt">${purchase.price / 100}.00</span><br></br>
