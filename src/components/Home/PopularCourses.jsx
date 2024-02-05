@@ -289,7 +289,7 @@ function isValidEmail(email) {
       setTimeout(() => {
         const modalContent = document.getElementById(idofinput); // Selector for Ant Design modal's content
         if (modalContent) {
-          modalContent.style.marginTop = '60px';
+          modalContent.style.marginTop = '30px';
         }
       }, 500);
     }
