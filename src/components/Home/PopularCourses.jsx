@@ -223,7 +223,7 @@ function isValidEmail(email) {
           {
             courseId: purchase._id,
             lessonIndex: 0,
-            language:purchase.language,
+            language: purchase.language || 'English', 
           },
         ],
         fullName: cardholderName,
@@ -280,6 +280,7 @@ function isValidEmail(email) {
     }
   };
   const handleupward = (idofinput) => {
+  
     const targetElement = document.getElementById(idofinput);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -289,9 +290,9 @@ function isValidEmail(email) {
       setTimeout(() => {
         const modalContent = document.getElementById(idofinput); // Selector for Ant Design modal's content
         if (modalContent) {
-          modalContent.style.marginTop = '30px';
+          modalContent.style.marginTop = '40px';
         }
-      }, 500);
+      }, 100);
     }
   };
   
