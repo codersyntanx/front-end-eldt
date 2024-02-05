@@ -147,9 +147,10 @@ const recoverEmail = async (e) => {
             <Translate>Welcome back</Translate>
           </span>
           <h2>
-            <Translate>Connect your account</Translate>
+            <Translate>Log In </Translate>
           </h2>
-
+<span className="logindesc">(First time logging in? Check Your Email for Login Info)</span>
+<br></br><br></br><br></br>
           <form>
             <div className="form-group email">
               <label>

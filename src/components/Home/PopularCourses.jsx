@@ -106,6 +106,7 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
   const [purchase, setpurchase] = useState("")
   const [succ, setSucc] = useState(false)
   const [err, setErr] = useState(false)
+  const [available, setAvailable] = useState(false)
   const [coulan, setCoulan] = useState("English")
   const [plans, setPlans] = useState([]);
   const [userId, setUserId] = useState(null);
@@ -139,8 +140,14 @@ export default function PopularCourses({ language ,showCancelButton,handleNaviga
   const errModal = () => {
     setErr(true)
   }
+  const availblemodal = () => {
+    setAvailable(true)
+  }
   const hideModal = () => {
     setSucc(false)
+  }
+  const hideavailble = () => {
+    setAvailable(false)
   }
   const errhideModal = () => {
     setErr(false)
@@ -216,7 +223,7 @@ function isValidEmail(email) {
           {
             courseId: purchase._id,
             lessonIndex: 0,
-            language: purchase.language,
+            language:purchase.language,
           },
         ],
         fullName: cardholderName,
@@ -225,7 +232,10 @@ function isValidEmail(email) {
         address: billingAddress,
         zip: zip,
       });
-  
+  if(response.data.available === true){
+    availblemodal()
+    return
+  }
       if (response.status === 200) {
         // Confirm payment
         const confirmPayment = await stripe.confirmCardPayment(response.data.clientSecret, {
@@ -757,6 +767,22 @@ function isValidEmail(email) {
             <span className="message" style={{ marginTop: "24px" }}>Error processing payment</span><br></br>
             <span className="exp" >Please try again. If the issue persists, contact your card issuer or try using another card.</span>
             <button className="buybtn" onClick={errhideModal}>To try again</button>
+          </div>
+        </Modal>
+        <Modal
+          open={available}
+          onCancel={hideavailble}
+          closeIcon={null}
+          footer={null}
+        >
+          <div className="mainbody">
+            <div className="imgalign">
+
+              <img src={errir} alt="success" />
+            </div>
+            <span className="message" style={{ marginTop: "24px" }}>You have already purchase this course</span><br></br>
+            <span className="exp" >Please buy another course or select diffrent language</span>
+            <button className="buybtn" onClick={hideavailble}>To try again</button>
           </div>
         </Modal>
       </Translator>

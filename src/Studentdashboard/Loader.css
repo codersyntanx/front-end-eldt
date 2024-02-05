@@ -1,14 +1,13 @@
 
   .maincontainer{
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    width: 80%;
-    margin: auto;
-    border-radius: 20px;
-    margin-top: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+  .logocon{
+    height: 59vh;
   }
   .loader {
     width: 1em;
@@ -20,7 +19,12 @@
     transform: translateZ(0);
     margin-right: -54px;
   }
- 
+ .comlogo{
+  width: 100px;
+  position: absolute;
+  top: 78px;
+  left: 42px;
+}
   
   @keyframes mulShdSpin {
     0%,

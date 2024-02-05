@@ -78,10 +78,11 @@ function StudentRegistration({handleNavigationClick}) {
   return (
     <>
       <div className="main-contain-regist">
-        <div className="card-head">My courses</div>
+        <div className="card-head">My account</div>
         <div className="card-body">
           <form>
-            <label className="foam-label">First name</label>
+          
+              <label className="foam-label">First name</label>
             <input
               className="registinput"
               type="text"
@@ -90,7 +91,15 @@ function StudentRegistration({handleNavigationClick}) {
               readOnly
               style={{backgroundColor:"#F0F0F0"}}
             />
-
+  <label className="foam-label">Middle name</label>
+            <input
+              className="registinput"
+              type="text"
+              placeholder="Name"
+              value={student.middleName}
+              readOnly
+              style={{backgroundColor:"#F0F0F0"}}
+            />
             <label className="foam-label">Last name</label>
             <input
               className='registinput'
@@ -107,6 +116,33 @@ function StudentRegistration({handleNavigationClick}) {
               type="email"
               placeholder="Email"
               value={student.Email}
+              readOnly
+              style={{backgroundColor:"#F0F0F0"}}
+            />
+              <label className="foam-label">Date of birth</label>
+            <input
+              className='registinput'
+              type="email"
+              placeholder="Email"
+              value={student.dateOfBirth}
+              readOnly
+              style={{backgroundColor:"#F0F0F0"}}
+            />
+              <label className="foam-label">License State</label>
+            <input
+              className='registinput'
+              type="email"
+              placeholder="Email"
+              value={student.state}
+              readOnly
+              style={{backgroundColor:"#F0F0F0"}}
+            />
+             <label className="foam-label">License Number</label>
+            <input
+              className='registinput'
+              type="email"
+              placeholder="Email"
+              value={student.licenseNumber}
               readOnly
               style={{backgroundColor:"#F0F0F0"}}
             />

@@ -56,12 +56,15 @@ font-weight: 300;
 line-height: 160%; /* 25.6px */
 letter-spacing: 0.8px;
 justify-content: space-between;
+cursor: pointer;
 }
 .dropoptions .option{
     display: flex;
     /* padding: 10px; */
     column-gap: 10px;
     align-items: center;
+    cursor: pointer;
+    width: 100%;
 }
 .dropoptions{
     margin-top: 10px;
@@ -464,10 +467,12 @@ margin-left: 10px;
 }
 .navigationbtn {
     /* margin: auto; */
-    width: 10%;
+    width: 95%;
     position: relative;
     top: 300px;
     left: 40px;
+    display: flex;
+    justify-content: space-between;
 }
 .termdiv{
     margin-top: 24px;
@@ -569,12 +574,11 @@ margin-top: 24px;
 
 @media (max-width:1440px) {
     .navigationbtn {
-        /* margin: auto; */
-        width: 100%;
+        margin: auto;
+        width: 90%;
         position: relative;
         top: 300px;
         left: 10px;
-        display: grid;
     }
     .customslider .container{
         width: 80%;

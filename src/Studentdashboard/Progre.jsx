@@ -195,10 +195,11 @@ const formonth =(day)=>{
 <div className="dateob">
 <label className="fomlbl">Month</label>
 <div class="dropdown">
-<button class="btn registinput dpbtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    {month}
+<div class=" registinput dpbtn"  data-bs-toggle="dropdown" aria-expanded="false">
+    <input type='text' style={{width:"100%"}} value={month} onChange={(e)=>{setMonth(e.target.value)}}/>
+
     <i class="fa-solid fa-angle-down mt-1"></i>
-</button>
+</div>
    
   <ul class="dropdown-menu yeardropdown">
   <li><a class="dropdown-item" onClick={()=>{formonth("January")}}>January</a></li>
@@ -219,10 +220,10 @@ const formonth =(day)=>{
 <div className="dateob">
 <label className="fomlbl">Day</label>
 <div class="dropdown">
-<button class="btn registinput dpbtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-  {day} 
+<div class=" registinput dpbtn"  data-bs-toggle="dropdown" aria-expanded="false">
+  <input type='number' style={{width:"100%"}} value={day} onChange={(e)=>{setDay(e.target.value)}}/>
     <i class="fa-solid fa-angle-down mt-1"></i>
-</button>
+</div>
   <ul class="dropdown-menu yeardropdown">
     <li><a class="dropdown-item" onClick={()=>{forday("2")}}>2</a></li>
     <li><a class="dropdown-item"  onClick={()=>{forday("3")}}>3</a></li>
@@ -260,10 +261,10 @@ const formonth =(day)=>{
 <div className="dateob">
 <label className="fomlbl">Year</label>
 <div class="dropdown">
-  <button class="btn registinput dpbtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-  {year} 
+  <div class=" registinput dpbtn" data-bs-toggle="dropdown" aria-expanded="false">
+  <input type='number' style={{width:"100%"}} value={year} onChange={(e)=>{setYear(e.target.value)}}/>
     <i class="fa-solid fa-angle-down mt-1"></i>
-</button>
+</div>
   <ul class="dropdown-menu yeardropdown">
   <li><a class="dropdown-item" onClick={()=>{foryear("2023")}}>2023</a></li>
   <li><a class="dropdown-item" onClick={()=>{foryear("2022")}}>2022</a></li>

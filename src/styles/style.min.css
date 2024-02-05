@@ -4280,7 +4280,6 @@ textarea.form-control {
 .subscribe-content .sub-title,
 .welcome {
   line-height: 32px;
-  color: #fbb723;
   font-weight: 500;
 }
 .checkout-area .cart-side-left .content .info .list span,
@@ -4928,13 +4927,18 @@ textarea.form-control {
 }
 .login-register-block h2 {
   color: #2c292a;
-  margin: 16px 0 55px;
+  margin: 16px 0 10px;
   font-weight: 800;
   line-height: 48px;
   font-size: 40px;
 }
 .login-form {
   padding-right: 90px;
+}
+.logindesc{
+  font-weight: 800;
+  font-family: inter;
+  font-size: 14px;
 }
 .register-form {
 width: 1079px;

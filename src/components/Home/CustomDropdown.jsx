@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import { Translator, Translate } from "react-auto-translate";
 function CustomSelect({ options, handleLanguageChange,language,plans,showModal }) {
-  const [visibleItems, setVisibleItems] = useState(4); // Initial number of visible items
+  const [visibleItems, setVisibleItems] = useState(1); // Initial number of visible items
 
   useEffect(() => {
     const updateVisibleItems = () => {
@@ -18,32 +18,45 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
         setVisibleItems(1);
       }
     };
-  
+
     updateVisibleItems(); // Call the update function initially
-  
+
     window.addEventListener('resize', updateVisibleItems);
-  
+
     return () => {
       window.removeEventListener('resize', updateVisibleItems);
     };
   }, []);
-  
 
- 
-
-
-
- 
-
-  const initialDropdownState = plans.map((plan) => ({
+  const initialDropdownState = plans.map(() => ({
     isOpen: false,
     selectedOption: options[0]
   }));
 
   const [dropdownStates, setDropdownStates] = useState(initialDropdownState);
 
+  const wrapperRef = useRef(null);
 
-  const [startIndex, setStartIndex] = useState(0); // Index of the first visible item
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+        console.log("test");
+        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+            console.log("testing");
+            // Click occurred outside the dropdown, so close all dropdowns
+            setDropdownStates(dropdownStates.map(() => ({ isOpen: false, selectedOption: options[0] })));
+        }
+    };
+
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+}, [dropdownStates, options]);
+
+
+
+  const [startIndex, setStartIndex] = useState(0);
 
   // Function to show a specific item
   const showItem = (index) => {

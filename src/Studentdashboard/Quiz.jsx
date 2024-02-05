@@ -256,7 +256,7 @@ const fetchquestions = () => {
                       >
                         {option.optionText}
                         {isCorrectOption && !isCorrect && (
-                          <span style={{ color: '#008000' }}> (Correct)</span>
+                          <span style={{ color: '#008000' }}> </span>
                         )}
                         {isCorrectOption && isCorrect && (
 <div className='tickcontent'><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
