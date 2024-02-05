@@ -146,7 +146,6 @@ const APlataformaPossuiInt = styled("div")(({ theme }) => ({}));
 function LeftHeroContent(...props) {
   const languageState = useSelector((state) => state.language);
   const handleClick = () => {
-    console.log("pushed");
     window.scrollTo({
       top: window.scrollY + 1000,
       behavior: "smooth",

@@ -282,11 +282,20 @@ function isValidEmail(email) {
   
 
 const handleupward =()=>{
+  console.log("moving upward...")
   const screenWidth = window.innerWidth;
   if (screenWidth >= 786) {
+
+    window.scrollTo({
+      top: window.scrollY + 200,
+      behavior: "smooth",
+    });
     const modalContainer = document.querySelector('.ant-modal-body');
+
     if (modalContainer) {
+      console.log("moving upward...")
       modalContainer.scrollTop -= 80; // Adjust the scroll amount as needed
+     
     }
   }
     
