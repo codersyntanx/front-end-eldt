@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import Select from 'react-select';
 import { useSpring, animated } from "react-spring";
 import "./courses.css"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Modal, Button, notification } from 'antd';
 import google from "./images/google-pay-38 1.png"
 import apple from "./images/apple-logo-png-apple-mac-vector-logo-download-23 1.png"
@@ -312,7 +312,14 @@ function isValidEmail(email) {
   };
 
 
+  const modalRef = useRef(null);
 
+  const handleInputFocus = () => {
+    // Scroll the modal into view when input field is focused
+    if (modalRef.current) {
+      modalRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
 
 
@@ -612,6 +619,7 @@ function isValidEmail(email) {
           className="custom-modal"
           closeIcon={null}
           footer={null} 
+          ref={modalRef} 
         >
           <div className="mainblack">
             <span className="pricetxt">${purchase.price / 100}.00</span><br></br>
@@ -642,6 +650,7 @@ function isValidEmail(email) {
   placeholder="Full Name"
   value={userId !== null ? userId.Name : cardholderName}
   readOnly={userId !== null}
+  onFocus={handleInputFocus}
   onChange={(e) => {
     setCardholderName(e.target.value);
     removeErrorBorder('cardholderName');
@@ -654,6 +663,7 @@ function isValidEmail(email) {
   placeholder="Email address"
   value={userId !== null ? userId.Email : email}
   readOnly={userId !== null}
+  onFocus={handleInputFocus}
   onChange={(e) => {
     setEmail(e.target.value.toLowerCase());
     removeErrorBorder('email'); // Call removeErrorBorder to remove error class
@@ -666,6 +676,7 @@ function isValidEmail(email) {
   placeholder="Confirm Email address"
   value={userId !== null ? userId.Email : confirmemail}
   readOnly={userId !== null}
+  onFocus={handleInputFocus}
   onChange={(e) => {
     setConfirmemail(e.target.value.toLowerCase());
   }}
@@ -696,6 +707,7 @@ function isValidEmail(email) {
   placeholder="Address"
   value={userId !== null ? userId.Address : billingAddress}
   readOnly={userId !== null}
+  onFocus={handleInputFocus}
   onChange={(e) => {
     setBillingAddress(e.target.value);
     removeErrorBorder('billingAddress');
@@ -709,6 +721,7 @@ function isValidEmail(email) {
   id="zip"
   value={userId !== null ? userId.zip : zip}
   readOnly={userId !== null}
+  onFocus={handleInputFocus}
   onChange={(e) => {
     setZip(e.target.value);
     removeErrorBorder('zip');
