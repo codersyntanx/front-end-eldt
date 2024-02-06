@@ -669,7 +669,7 @@ function isValidEmail(email) {
   placeholder="Full Name"
   value={userId !== null ? userId.Name : cardholderName}
   readOnly={userId !== null}
-  onFocus={()=>{handleupward("cardholderName")}}
+  onClick={()=>{handleupward("cardholderName")}}
   onChange={(e) => {
     setCardholderName(e.target.value);
     removeErrorBorder('cardholderName');
@@ -682,7 +682,7 @@ function isValidEmail(email) {
   placeholder="Email address"
   value={userId !== null ? userId.Email : email}
   readOnly={userId !== null}
-  onFocus={()=>{handleupward("email")}}
+  onClick={()=>{handleupward("email")}}
   onChange={(e) => {
     setEmail(e.target.value.toLowerCase());
     removeErrorBorder('email'); // Call removeErrorBorder to remove error class
@@ -695,7 +695,7 @@ function isValidEmail(email) {
   placeholder="Confirm Email address"
   value={userId !== null ? userId.Email : confirmemail}
   readOnly={userId !== null}
-  onFocus={()=>{handleupward("confirmedemail")}}
+  onClick={()=>{handleupward("confirmedemail")}}
   onChange={(e) => {
     setConfirmemail(e.target.value.toLowerCase());
   }}
@@ -726,7 +726,7 @@ function isValidEmail(email) {
   placeholder="Address"
   value={userId !== null ? userId.Address : billingAddress}
   readOnly={userId !== null}
-  onFocus={()=>{handleupward("billingAddress")}}
+  onClick={()=>{handleupward("billingAddress")}}
   onChange={(e) => {
     setBillingAddress(e.target.value);
     removeErrorBorder('billingAddress');
@@ -740,7 +740,7 @@ function isValidEmail(email) {
   id="zip"
   value={userId !== null ? userId.zip : zip}
   readOnly={userId !== null}
-  onFocus={()=>{handleupward("zip")}}
+  onClick={()=>{handleupward("zip")}}
   onChange={(e) => {
     setZip(e.target.value);
     removeErrorBorder('zip');
