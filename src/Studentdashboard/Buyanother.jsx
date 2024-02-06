@@ -1,4 +1,5 @@
 import PopularCourses from "../components/Home/PopularCourses"
+import "./first.css"
 import {
     Elements
     } from '@stripe/react-stripe-js';

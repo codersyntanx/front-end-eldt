@@ -28,6 +28,7 @@ import {
   PaymentRequestButtonElement
 } from '@stripe/react-stripe-js';
 import CustomDropdown from "./CustomDropdown";
+import Buynew from "../../Studentdashboard/Buynew";
 
 
 
@@ -536,8 +537,13 @@ function isValidEmail(email) {
                             styles={customStyles}
                             components={{ DropdownIndicator: CustomDropdownIndicator }}
                           /> */}
-                  <CustomDropdown options={languageOptions} handleLanguageChange={handleLanguageChange} language={language} plans={plans} showModal={showModal}/>
+                          <div className="customcard">
+                                              <CustomDropdown options={languageOptions} handleLanguageChange={handleLanguageChange} language={language} plans={plans} showModal={showModal}/>
 
+                          </div>
+<div className="buynewcourse">
+                                               <Buynew options={languageOptions} handleLanguageChange={handleLanguageChange} language={language} plans={plans} showModal={showModal}/>
+</div>
 
 
 
@@ -663,7 +669,7 @@ function isValidEmail(email) {
   placeholder="Full Name"
   value={userId !== null ? userId.Name : cardholderName}
   readOnly={userId !== null}
-  onClick={()=>{handleupward("cardholderName")}}
+  onFocus={()=>{handleupward("cardholderName")}}
   onChange={(e) => {
     setCardholderName(e.target.value);
     removeErrorBorder('cardholderName');
@@ -676,7 +682,7 @@ function isValidEmail(email) {
   placeholder="Email address"
   value={userId !== null ? userId.Email : email}
   readOnly={userId !== null}
-  onClick={()=>{handleupward("email")}}
+  onFocus={()=>{handleupward("email")}}
   onChange={(e) => {
     setEmail(e.target.value.toLowerCase());
     removeErrorBorder('email'); // Call removeErrorBorder to remove error class
@@ -689,7 +695,7 @@ function isValidEmail(email) {
   placeholder="Confirm Email address"
   value={userId !== null ? userId.Email : confirmemail}
   readOnly={userId !== null}
-  onClick={()=>{handleupward("confirmedemail")}}
+  onFocus={()=>{handleupward("confirmedemail")}}
   onChange={(e) => {
     setConfirmemail(e.target.value.toLowerCase());
   }}
@@ -720,7 +726,7 @@ function isValidEmail(email) {
   placeholder="Address"
   value={userId !== null ? userId.Address : billingAddress}
   readOnly={userId !== null}
-  onClick={()=>{handleupward("billingAddress")}}
+  onFocus={()=>{handleupward("billingAddress")}}
   onChange={(e) => {
     setBillingAddress(e.target.value);
     removeErrorBorder('billingAddress');
@@ -734,7 +740,7 @@ function isValidEmail(email) {
   id="zip"
   value={userId !== null ? userId.zip : zip}
   readOnly={userId !== null}
-  onClick={()=>{handleupward("zip")}}
+  onFocus={()=>{handleupward("zip")}}
   onChange={(e) => {
     setZip(e.target.value);
     removeErrorBorder('zip');

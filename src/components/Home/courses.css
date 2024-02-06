@@ -7,6 +7,9 @@ font-weight: 500;
 line-height: 120%; /* 28.8px */
 letter-spacing: 1.2px;
 }
+.buynewcourse{
+    display: none;
+}
 .toper{
     margin-top: 35px;
 }
@@ -685,6 +688,9 @@ margin-top: 24px;
 
 }
 
+.custom-modal {
+    top: 20px;
+  }
 @media (max-width: 786px) {
     .straightcard{
         display: none;

@@ -1,17 +1,16 @@
 import React, { useEffect, useState,useRef } from 'react';
 import { Translator, Translate } from "react-auto-translate";
-function CustomSelect({ options, handleLanguageChange,language,plans,showModal }) {
+function Buynew({ options, handleLanguageChange,language,plans,showModal }) {
   const [visibleItems, setVisibleItems] = useState(1); // Initial number of visible items
-
   useEffect(() => {
     const updateVisibleItems = () => {
       const screenWidth = window.innerWidth;
       if (screenWidth >= 1920) {
-        setVisibleItems(4);
+        setVisibleItems(3);
       } else if (screenWidth >= 1440) {
-        setVisibleItems(3);
+        setVisibleItems(2);
       } else if (screenWidth >= 1080) {
-        setVisibleItems(3);
+        setVisibleItems(2);
       } else if (screenWidth >= 786) {
         setVisibleItems(1);
       } else {
@@ -261,4 +260,4 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal }
   );
 }
 
-export default CustomSelect;
+export default Buynew;
