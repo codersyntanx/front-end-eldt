@@ -92,7 +92,7 @@ function SamplepreArrow(props) {
     >Hello</div>
   );
 }
-export default function PopularCourses({ language ,showCancelButton,handleNavigationClick }) {
+export default function PopularCourses({ language ,showCancelButton,handleNavigationClick,large,medium }) {
   const userState = useSelector((state) => state.user);
   const [selectedLang, setSelected] = useState("all");
   const [loading, setLoading] = useState(true);
@@ -538,12 +538,12 @@ function isValidEmail(email) {
                             components={{ DropdownIndicator: CustomDropdownIndicator }}
                           /> */}
                           <div className="customcard">
-                                              <CustomDropdown options={languageOptions} handleLanguageChange={handleLanguageChange} language={language} plans={plans} showModal={showModal}/>
+                                              <CustomDropdown options={languageOptions} handleLanguageChange={handleLanguageChange} language={language} plans={plans}  large={large} medium={medium} showModal={showModal}/>
 
                           </div>
-<div className="buynewcourse">
+{/* <div className="buynewcourse">
                                                <Buynew options={languageOptions} handleLanguageChange={handleLanguageChange} language={language} plans={plans} showModal={showModal}/>
-</div>
+</div> */}
 
 
 

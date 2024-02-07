@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams,Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import "./coursetitle.css";
@@ -19,7 +19,10 @@ function Studypage() {
 const navigate = useNavigate()
   const { id } = useParams();
   const {index}=useParams()
-
+useEffect(()=>{
+  localStorage.setItem("chapindex", index)
+  localStorage.setItem("lessonid", id)
+},[])
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [chapterIndex, setChapterIndex] = useState(index);
@@ -189,6 +192,10 @@ const [quiz,setQuiz]=useState("")
     {isNaN(studentprogress.progressPercentage) ? 0 : Math.round(studentprogress.progressPercentage)}%
   </span>
 </div>
+<div className="backbutton mt-3" style={{width:"90%"}}>  <Link to={`/Alllessons/${id}`}>
+                  <span className="bolding"><i class="fa-solid fa-arrow-left-long"></i><span className="mx-2">Back</span> </span>
+
+        </Link></div>
 <button className="prebtn" onClick={handlePreviousPageClick} disabled={currentPageIndex === 0}>
               <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86" viewBox="0 0 86 86" fill="none">
   <path d="M53.75 69.875L26.875 43L53.75 16.125" stroke="#2C292A" stroke-width="9.55556" stroke-linecap="round" stroke-linejoin="round"/>

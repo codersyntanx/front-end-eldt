@@ -1,7 +1,10 @@
 import React, { useEffect, useState,useRef } from 'react';
 import { Translator, Translate } from "react-auto-translate";
 function Buynew({ options, handleLanguageChange,language,plans,showModal }) {
-  const [visibleItems, setVisibleItems] = useState(1); // Initial number of visible items
+  const [visibleItems, setVisibleItems] = useState(1);
+  const [startIndex, setStartIndex] = useState(0);
+  const [dropdownStates, setDropdownStates] = useState([]);
+
   useEffect(() => {
     const updateVisibleItems = () => {
       const screenWidth = window.innerWidth;
@@ -16,73 +19,68 @@ function Buynew({ options, handleLanguageChange,language,plans,showModal }) {
       } else {
         setVisibleItems(1);
       }
+  
+      // Adjust startIndex if it exceeds the number of plans
+      if (startIndex + visibleItems > plans.length) {
+        setStartIndex(plans.length - visibleItems);
+      }
     };
-
-    updateVisibleItems(); // Call the update function initially
-
-    window.addEventListener('resize', updateVisibleItems);
-
+  
+    updateVisibleItems();
+  
+    const handleResize = () => {
+      updateVisibleItems();
+    };
+  
+    window.addEventListener('resize', handleResize);
+  
     return () => {
-      window.removeEventListener('resize', updateVisibleItems);
+      window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [startIndex, visibleItems, plans.length]);
+  
+  
+  useEffect(() => {
+    const initialDropdownState = plans.map((plan) => {
+      // Find the option whose value matches plan.language
+      const selectedOption = options.find(option => option.value === plan.language) || options[0];
+      
+      return {
+        isOpen: false,
+        selectedOption: selectedOption
+      };
+    });
+    setDropdownStates(initialDropdownState);
+  }, [plans, options]);
+  
+  
+  
 
- 
-
- 
-
-
-
-
-  const [startIndex, setStartIndex] = useState(0);
-
-  // Function to show a specific item
-  const showItem = (index) => {
-    setStartIndex(index);
+  const handleClickOutside = (event, index) => {
+    const dropdownContainers = document.querySelectorAll('.card-content');
+    dropdownContainers.forEach((container, idx) => {
+      if (index === idx && !container.contains(event.target)) {
+        setDropdownStates(prevStates => {
+          const updatedStates = [...prevStates];
+          updatedStates[index].isOpen = false;
+          return updatedStates;
+        });
+      }
+    });
   };
-  // Function to show the next item
-  const showNextItem = () => {
-    if (startIndex < plans.length - 1) {
-      setStartIndex(startIndex + 1);
-    }
-  };
-
-  // Function to show the previous item
-  const showPreviousItem = () => {
-    if (startIndex > 0) {
-      setStartIndex(startIndex - 1);
-    }
-  };
- 
-  const initialDropdownState = plans.map(() => ({
-    isOpen: false,
-    selectedOption: options[0]
-  }));
-
-  const [dropdownStates, setDropdownStates] = useState(initialDropdownState);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      const dropdownContainers = document.querySelectorAll('.card-content');
-
-      dropdownContainers.forEach(container => {
-        if (!container.contains(event.target)) {
-          // Click occurred outside the dropdown, so close the dropdown
-          const index = container.dataset.index;
-          setDropdownStates(prevStates => {
-            const updatedStates = [...prevStates];
-            updatedStates[index].isOpen = false;
-            return updatedStates;
-          });
-        }
+    const handleOutsideClick = (event) => {
+      dropdownStates.forEach((state, index) => {
+        handleClickOutside(event, index);
       });
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleOutsideClick);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, []);
+  }, [dropdownStates]);
 
   const toggleDropdown = (index) => {
     setDropdownStates((prevStates) => {
@@ -92,7 +90,8 @@ function Buynew({ options, handleLanguageChange,language,plans,showModal }) {
     });
   };
 
-  const handleOptionSelect = (option, index, planId) => {
+  const handleOption = (option, index, planId) => {
+    alert("this we are here")
     setDropdownStates((prevStates) => {
       const updatedStates = [...prevStates];
       updatedStates[index].selectedOption = option;
@@ -101,7 +100,25 @@ function Buynew({ options, handleLanguageChange,language,plans,showModal }) {
     });
     handleLanguageChange(option, planId);
   };
+  
+  
+  const showNextItem = () => {
+    if (startIndex + visibleItems < plans.length) {
+      setStartIndex(startIndex + 1);
+    }
+  };
+  
+  const showPreviousItem = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - 1);
+    }
+  };
+  
+  
 
+  const showItem = (index) => {
+    setStartIndex(index);
+  };
   return (
     <>
      <Translator
@@ -121,8 +138,8 @@ function Buynew({ options, handleLanguageChange,language,plans,showModal }) {
 </div>
 <div className='customslider'>
   <div className='container maincontentslider'>
-            <div className='mainconofslider'>    {plans.slice(startIndex, startIndex + visibleItems).map((plan, index) => (
-                      <div key={plan._id} className=" card-content mx-auto "data-index={index} >
+            <div className='mainconofslider'>                {plans.slice(startIndex, startIndex + visibleItems).map((plan, index) => (
+                      <div key={plan._id} className=" card-content mx-auto " >
                         <div className="plancard d-flex mt-2">
                           <img src={plan.image} height="58px" alt="plan1" />
                           <span className="flex-end">
@@ -151,21 +168,24 @@ function Buynew({ options, handleLanguageChange,language,plans,showModal }) {
                           <Translate>Select the desired language:</Translate><br></br>
                           <div className="custom-select">
               <div className="selected-option" onClick={() => toggleDropdown(index)}>
-                <div className='d-flex'> <img src={dropdownStates[index].selectedOption.image} alt={dropdownStates[index].selectedOption.label} className="language-image" />
-                <span className='mx-2'>{dropdownStates[index].selectedOption.label}</span></div>
+                <div className='d-flex'> <img src={dropdownStates[index]?.selectedOption.image} alt={dropdownStates[index]?.selectedOption.label} className="language-image" />
+                <span className='mx-2'>{dropdownStates[index]?.selectedOption.label}</span></div>
                
                 <i class="fa-solid fa-angle-down downicon"></i>
               </div>
-              {dropdownStates[index].isOpen && (
-                <div className="options dropoptions">
-                  {options.map((option) => (
-                    <div key={option.value} className="option" onClick={() => handleOptionSelect(option, index, plan._id)}>
-                      <img src={option.image} alt={option.label} className="language-image" />
-                      <span>{option.label}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
+              {dropdownStates[index] && dropdownStates[index]?.isOpen && (
+  <div className="options dropoptions">
+    {options.map((option) => (
+   <div key={option?.value} className="option" onClick={() => { console.log("Option clicked"); handleOption(option, index, plan._id); }}>
+   <img src={option?.image} alt={option?.label} className="language-image" />
+   <span>{option?.label}</span>
+ </div>
+ 
+  
+    ))}
+  </div>
+)}
+
             </div>
     </div>
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams,Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import Navba from "./Navba";
@@ -100,7 +100,9 @@ navigate(`/test/${id}/${index}`)
   </span>
 </div> 
 </div>
-{
+
+<div className="coverofall">
+  {
   loading ?(<>
    {/* <div className="image-container">
     <div className="loaderlogo" style={{ transform: `scale(${scale})` }}>
@@ -108,7 +110,12 @@ navigate(`/test/${id}/${index}`)
     </div>
   </div> */}
 <Loader/>
-  </>):(<><div className="card-hea">My courses</div>
+  </>):(<>
+    <div className="backbutton">  <Link to="/studentdash">
+                  <span className="bolding"><i class="fa-solid fa-arrow-left-long"></i><span className="mx-2">Back</span> </span>
+
+        </Link></div>
+  <div className="card-hea">My courses</div>
         <div className="card-body maincardbody">
           <p className="course-Name">{coursename}-{courselanguage}</p>
           <span className="stu">Your progress {studentprogress.lessonIndex} of {studentprogress.totalChapters} complete. <b>Get certificate after complete</b></span>
@@ -158,6 +165,8 @@ navigate(`/test/${id}/${index}`)
   }
           
              </div></div></>)}
+</div>
+
              <div className="footerforstudy">
 Copyright 2024, United ELDT
 </div>

@@ -69,6 +69,13 @@ function Coursedetail() {
           }
         `}
       </style>
+      <div className="backbtn">
+           <Link to="/">
+                  <span className="bolding"><i class="fa-solid fa-arrow-left-long"></i><span className="mx-2">Back</span> </span>
+
+        </Link>
+      </div>
+   
       <div className="main-contain-regist">
         <div className="card-head">My courses</div>
         <div className="card-body">

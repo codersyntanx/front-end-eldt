@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams,Link } from 'react-router-dom';
 import Navba from './Navba';
 import "./quizles.css";
 import { jwtDecode } from "jwt-decode";
@@ -198,6 +198,10 @@ const fetchquestions = () => {
   </div>
   ):(
     <>
+        <div className="backbutton mt-3">  <Link to={`/quiz/${index}`}>
+                  <span className="bolding"><i class="fa-solid fa-arrow-left-long"></i><span className="mx-2">Back</span> </span>
+
+        </Link></div>
     <div className="quiz-head">{title}</div>
      <div className="card-body2">
         <div className="paddingdiv">
@@ -295,7 +299,11 @@ const fetchquestions = () => {
             </div>
           )}
         </div>
-      </div><div className='bottommargin'></div></>
+      </div><div className='bottommargin'></div>
+      <div className="footerforstudy">
+Copyright 2024, United ELDT
+</div>
+      </>
   )
 }
      

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Banner from "../components/Home/Banner";
 import { useSelector } from "react-redux";
 import Disclaimer from "../components/Home/Disclaimer";
@@ -18,10 +18,13 @@ const stripePromise = loadStripe('pk_test_51O5F9gFZtgAr5eHPPYRptE8ZBDBXAtaLj7XGB
 
 export default function HomeMain() {
   const languageState = useSelector((state) => state.language);
+  const [large, setLarge]=useState(4)
+
+  const [medium, setMedium]=useState(3)
   return (
     <>
       <Banner language={languageState.language.value} />
-      <Elements stripe={stripePromise}><PopularCourses id="targetSection" language={languageState.language.value} showCancelButton={true} /></Elements> 
+      <Elements stripe={stripePromise}><PopularCourses id="targetSection" language={languageState.language.value}large={large} medium={medium} showCancelButton={true} /></Elements> 
       <Disclaimer language={languageState.language.value} />
       <HomeAboutUs language={languageState.language.value} />
       <FeedbackSliderWithFunFacts language={languageState.language.value} />

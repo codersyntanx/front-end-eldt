@@ -4,10 +4,12 @@
     min-height: 100vh;
 }
 .coverofall {
-    margin-top: 146px 
+    margin-top: 50px 
 }
 
-
+.footerforstudy{
+    margin-top: 10vh;
+}
 .lastSvg{
     margin-right: 10px;
 }
@@ -45,6 +47,11 @@
     width: 80%;
     margin: auto;
     margin-top: 35px;
+    
+}
+.backbutton{
+    width: 80%;
+    margin: auto;
 }
 .quiz-head{
     border-radius: 16px 16px 0px 0px;
@@ -125,18 +132,15 @@ margin-bottom: 20px;
     background: #FBB723;
     /* width: 1080px; */
     height: 56px;
-    padding: 24px;
     justify-content: center;
     align-items: center;
     gap: 8px;
     margin-top: 20px;
     margin-bottom: 60px;
 }
-.bottommargin{
-    height: 130px;
-}
+
 .wraperofitems{
-    height: 380px;
+    height: 607px;
     overflow-y:auto ;
     padding-right: 10px;
 }
@@ -231,7 +235,18 @@ padding-top: 20px;
 }
 @media (max-width:1440px) {
     .coverofall{
-        margin-top: 80px;
+        margin-top: 40px;
+    }
+    .footerforstudy{
+        margin-top: 5vh;
+        position: relative;
+        bottom: 0px;
+    
+    
+    
+    }
+    .wraperofitems{
+        height: 380px;
     }
 }
 @media (max-width:786px) {
