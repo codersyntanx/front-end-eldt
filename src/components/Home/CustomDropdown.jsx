@@ -142,7 +142,7 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal,l
   </div>
 <div className='customslider'>
   <div className='container maincontentslider'>
-            <div className='mainconofslider'>                {plans.slice(startIndex, startIndex + visibleItems).map((plan, index) => (
+            <div className='mainconofslider' >                {plans.slice(startIndex, startIndex + visibleItems).map((plan, index) => (
                         <motion.div
                         key={plan._id}
                         className=" card-content mx-auto "
