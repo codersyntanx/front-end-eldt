@@ -281,21 +281,25 @@ function isValidEmail(email) {
     }
   };
   const handleupward = (idofinput) => {
-    const targetElement = document.getElementById(idofinput);
-    if (targetElement) {
-        // Calculate the scroll position by subtracting 100 pixels
-        const scrollPosition = targetElement.offsetTop - 100;
-        window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
-
-        // After a delay of 500 milliseconds (adjust as needed),
-        // add a bottom margin of 30px to the modal content
-        setTimeout(() => {
-            const modalContent = document.getElementById(idofinput); // Selector for Ant Design modal's content
-            if (modalContent) {
-                modalContent.style.marginTop = '40px';
-            }
-        }, 100);
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 786) {
+      const targetElement = document.getElementById(idofinput);
+      if (targetElement) {
+          // Calculate the scroll position by subtracting 100 pixels
+          const scrollPosition = targetElement.offsetTop - 100;
+          window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+  
+          // After a delay of 500 milliseconds (adjust as needed),
+          // add a bottom margin of 30px to the modal content
+          setTimeout(() => {
+              const modalContent = document.getElementById(idofinput); // Selector for Ant Design modal's content
+              if (modalContent) {
+                  modalContent.style.marginTop = '40px';
+              }
+          }, 100);
+      }
     }
+
 };
 
   
