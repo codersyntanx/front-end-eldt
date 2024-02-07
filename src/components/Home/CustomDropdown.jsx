@@ -169,7 +169,7 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal,l
 
                         <div className="dropdown toper" >
                           <Translate>Select the desired language:</Translate><br></br>
-                          <div className="custom-select">
+                          <div className="custom-select mt-2">
               <div className="selected-option" onClick={() => toggleDropdown(index)}>
                 <div className='d-flex'> <img src={dropdownStates[index]?.selectedOption.image} alt={dropdownStates[index]?.selectedOption.label} className="language-image" />
                 <span className='mx-2'>{dropdownStates[index]?.selectedOption.label}</span></div>

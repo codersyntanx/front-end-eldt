@@ -4256,9 +4256,9 @@
         font-size: 13px
     }
 
-    .edemy-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .mobile-none {
+    /* .edemy-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .mobile-none {
         display: none
-    }
+    } */
 }
 
 @media only screen and (min-width:1920px) {
