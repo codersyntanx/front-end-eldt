@@ -146,17 +146,11 @@ const APlataformaPossuiInt = styled("div")(({ theme }) => ({}));
 function LeftHeroContent(...props) {
   const languageState = useSelector((state) => state.language);
   const handleClick = () => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth <= 1920) {
-         window.scrollTo({
-      top: window.scrollY + 1000,
-      behavior: "smooth",
-    });
-    }else{
+ 
       window.scrollTo({
-        top: window.scrollY + 1250,
+        top: window.scrollY + 1400,
         behavior: "smooth", });
-    }
+    
  
   };
   return (

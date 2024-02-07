@@ -288,9 +288,7 @@ function isValidEmail(email) {
           // Calculate the scroll position by subtracting 100 pixels
           const scrollPosition = targetElement.offsetTop - 100;
           window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
-  
-          // After a delay of 500 milliseconds (adjust as needed),
-          // add a bottom margin of 30px to the modal content
+
           setTimeout(() => {
               const modalContent = document.getElementById(idofinput); // Selector for Ant Design modal's content
               if (modalContent) {
