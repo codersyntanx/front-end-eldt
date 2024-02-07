@@ -3,6 +3,9 @@
     background-size: cover;
     min-height: 100vh;
 }
+.wraperofitems{
+    margin-top: 40px;
+}
 .coverofall {
     margin-top: 50px 
 }

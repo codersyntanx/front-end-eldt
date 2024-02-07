@@ -94,7 +94,7 @@ navigate(`/test/${id}/${index}`)
         <div className="main-body">
           <Navba/>
           <div className="progressgra d-flex text-center" style={{color:"black",background: "#C9C8C5"}}>
-          <div className="displaypro" style={{ width: `${studentprogress.progressPercentage || 0}%`, backgroundColor: '#FBB723', height: "100%" }}>
+          <div className="displaypro " style={{ width: `${studentprogress.progressPercentage || 0}%`, backgroundColor: '#FBB723', height: "100%" }}>
   <span style={{ display: "flex", margin: "auto", textAlign: "center", alignItems: "center", justifyContent: "center" }}>
     {isNaN(studentprogress.progressPercentage) ? 0 : Math.round(studentprogress.progressPercentage)}%
   </span>

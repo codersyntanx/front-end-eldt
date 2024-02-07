@@ -61,8 +61,8 @@ export default function Footer() {
                     </span>
                     <p>
                       <Translate>
-                        Please contact us by email or through our online <u><strong>contact
-                        form.</strong> </u>
+                        Please contact us by email or through our online <u><strong><Link to="/contact-us">contact
+                        form.</Link></strong> </u>
                       </Translate>
                     </p>
                     <SocialLinks />
