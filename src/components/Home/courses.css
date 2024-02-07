@@ -461,13 +461,39 @@ border-radius: 50%;
 background-color: #FBB723;
 font-size: 30px;
 }
+.nextbtns :hover{
+    background-color: black;
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
 .prebtns{
     width: 55px;
 height: 55px;
 border-radius: 50%;
 background-color: #FBB723;
 font-size: 30px;
-margin-left: 10px;
+cursor: pointer;
+margin-bottom: 30px;
+}
+.prebtns :hover{
+    background-color: black;
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 .navigationbtn {
     /* margin: auto; */

@@ -1,5 +1,6 @@
 import React, { useEffect, useState,useRef } from 'react';
 import { Translator, Translate } from "react-auto-translate";
+import { motion } from 'framer-motion';
 function CustomSelect({ options, handleLanguageChange,language,plans,showModal,large,medium }) {
   const [visibleItems, setVisibleItems] = useState(1);
   const [startIndex, setStartIndex] = useState(0);
@@ -142,7 +143,14 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal,l
 <div className='customslider'>
   <div className='container maincontentslider'>
             <div className='mainconofslider'>                {plans.slice(startIndex, startIndex + visibleItems).map((plan, index) => (
-                      <div key={plan._id} className=" card-content mx-auto " >
+                        <motion.div
+                        key={plan._id}
+                        className=" card-content mx-auto "
+                        initial={{ opacity: 0, x: -100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 100 }}
+                        transition={{ duration: 0.5 }}
+                      >
                         <div className="plancard d-flex mt-2">
                           <img src={plan.image} height="58px" alt="plan1" />
                           <span className="flex-end">
@@ -255,7 +263,7 @@ function CustomSelect({ options, handleLanguageChange,language,plans,showModal,l
   <Translate>Buy Now</Translate>
 </button>
 
-</div>
+</motion.div>
 ))}
   
 
